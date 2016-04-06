@@ -1,0 +1,190 @@
+body
+{
+    font-family: 'Lato', Helvetica, Arial, sans-serif;
+    overflow: auto;
+    background-color: #eee;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+/* BOOTSTRAP ELEMENT OVERRIDES */
+/* NAVBAR */
+.navbar
+{
+    border: none;
+    background-color: #fff;
+}
+
+.navbar-brand
+{
+    height: auto;
+}
+
+.navbar-default .navbar-nav li a
+{
+    color: #000;
+    margin-top: 20px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.navbar-default .navbar-nav li a:hover
+{
+    color: #E21414;
+    font-weight: bold;
+}
+
+.navbar-default .navbar-nav .active
+{
+    color: #E21414;
+    font-weight: bold;
+}
+
+/* Carousel */
+.carousel-inner .item img
+{
+    width: 1600px;
+    height: 670px;
+}
+
+.slide-text
+{
+    margin-top: 300px;
+    margin-bottom: 500px;
+}
+
+@media (min-width: 767px)
+{
+    .slide-text
+    {
+        font-size: 36px;
+        margin-top: 80px;
+        margin-bottom: 90px;
+    }
+}
+
+@media (max-width: 768px)
+{
+    .slide-text
+    {
+        font-size: 20px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+}
+
+#find
+{
+    background-color: #fff;
+}
+
+#kost
+{
+    padding-top: 30px;
+    background-color: #f6f6f6;
+}
+
+#campus
+{
+    background-color: #fff;
+}
+
+#map
+{
+    width: 820px;
+    height: 330px;
+    margin-bottom: 10px;
+}
+
+.form-control
+{
+    padding-left: 20px;
+}
+
+.button-direction
+{
+    padding-left: 80px;
+    padding-top: 40px;
+}
+
+.box
+{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.container h2
+{
+    text-align: center;
+}
+
+.information
+{
+    font-size: 15px;
+    text-align: center;
+    color: #000;
+}
+
+.item .image img
+{
+    width: 210px;
+    height: 150px;
+}
+
+.item .detail-image img
+{
+    width: 550px;
+    height: 330px;
+}
+
+.table-bordered .items
+{
+    border: solid #f6f6f6;
+}
+
+.thumbnail
+{
+    margin-bottom: 30px;
+}
+
+.thumbnail img
+{
+    width: 130px;
+    height: 130px;
+}
+
+.unpad img
+{
+    width: 150px;
+    height: 130px;
+}
+
+.content .meta h3
+{
+    color: #fff;
+}
+
+.contact p
+{
+    font-size: 14px;
+}
+
+.footer
+{
+    font-size: 16px;
+    font-weight: 700;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    padding-top: 20px;
+    color: #fff;
+    background: #333;
+}
