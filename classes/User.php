@@ -5,8 +5,14 @@ use PDO;
 
 class User
 {
-    private $username;
-    private $password;
+    private $username = "";
+    private $password = "";
+    private $fullname = "";
+    private $email = "";
+    private $address = "";
+    private $phone = "";
+    private $picture = "";
+    private $status = "pencari_kos"; // pencari_kos/pemilik_kos
 
     public function setUsername($username)
     {
@@ -26,7 +32,7 @@ class User
         ];
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT, $options);
 
-        $this->password = bcrypt($hashedPassword);
+        //$this->password = bcrypt($hashedPassword);
     }
 
     public function login()
@@ -34,5 +40,16 @@ class User
         // cek username sama password dari database
         // kalau eksis gimana
         // kalau ngga ada gimana
+    }
+
+    public function register()
+    {
+        if($this->status == "pencari_kos") {
+            $query = "INSERT INTO members";
+        } else($this->status == "pemilik_kos") {
+            $query = "INSERT INTO pemilik_kos";
+        }
+
+        $query .= "(username, password, email, full_name) VALUES(:username, :password, :email, :fullname)";
     }
 }

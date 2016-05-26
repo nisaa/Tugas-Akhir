@@ -31,9 +31,7 @@ include "views/frontend/components/header.php";
           <div class="item">
             <img src="resources/images/slide3.jpg" alt="slide3">
             <div class="carousel-caption">
-
-                <div class="slide-text">Make today awesome<br> So yesterday get jealous</div>
-
+              <div class="slide-text">Make today awesome<br> So yesterday get jealous</div>
             </div>
           </div>
         </div>
@@ -61,12 +59,12 @@ include "views/frontend/components/header.php";
                   <div class="row">
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label> Fasilitas Kamar</label>
+                        <label>Fasilitas Kamar</label>
                         <div class="row">
                           <div class="col-md-12">
                             <div class="checkbox">
                               <label>
-                                <input type="checkbox" name="bathroom"> Kamar Mandi Dalam
+                                <input type="checkbox" name="bathroom">Kamar Mandi Dalam
                                 </label>
                             </div>
                           </div><!-- /.col -->
@@ -75,7 +73,7 @@ include "views/frontend/components/header.php";
                           <div class="col-md-12">
                             <div class="checkbox">
                               <label>
-                                <input type="checkbox" name="bed"> Tempat Tidur
+                                <input type="checkbox" name="bed">Tempat Tidur
                               </label>
                             </div>
                           </div>
@@ -84,7 +82,7 @@ include "views/frontend/components/header.php";
                           <div class="col-md-12">
                             <div class="checkbox">
                               <label>
-                                <input type="checkbox" name="cupboard"> Lemari
+                                <input type="checkbox" name="cupboard">Lemari
                               </label>
                             </div>
                           </div>
@@ -93,7 +91,7 @@ include "views/frontend/components/header.php";
                           <div class="col-md-12">
                             <div class="checkbox">
                               <label>
-                                <input type="checkbox" name="table"> Meja
+                                <input type="checkbox" name="table">Meja
                               </label>
                             </div>
                           </div>
@@ -103,12 +101,12 @@ include "views/frontend/components/header.php";
 
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label> Fasilitas Umum</label>
+                        <label>Fasilitas Umum</label>
                         <div class="row">
                           <div class="col-md-12">
                             <div class="checkbox">
                               <label>
-                                <input type="checkbox" name="kitchen" value=""> Dapur
+                                <input type="checkbox" name="kitchen" value="">Dapur
                               </label>
                             </div>
                           </div>
@@ -117,7 +115,7 @@ include "views/frontend/components/header.php";
                           <div class="col-md-12">
                             <div class="checkbox">
                               <label>
-                                <input type="checkbox" name="living_room" value=""> Ruang Tamu
+                                <input type="checkbox" name="living_room" value="">Ruang Tamu
                               </label>
                             </div>
                           </div>
@@ -126,7 +124,7 @@ include "views/frontend/components/header.php";
                           <div class="col-md-12">
                             <div class="checkbox">
                               <label>
-                                <input type="checkbox" name="bike_parking" value=""> Parkir Motor
+                                <input type="checkbox" name="bike_parking" value="">Parkir Motor
                               </label>
                             </div>
                           </div>
@@ -135,7 +133,7 @@ include "views/frontend/components/header.php";
                           <div class="col-md-12">
                             <div class="checkbox">
                               <label>
-                                <input type="checkbox" name="car_parking" value=""> Parkir Mobil
+                                <input type="checkbox" name="car_parking" value="">Parkir Mobil
                               </label>
                             </div>
                           </div>
@@ -182,7 +180,7 @@ include "views/frontend/components/header.php";
     <section id="kost">
       <div class="container">
         <h2> INFORMASI KOSAN</h2>
-        <p class="information"> E-Kosan menyediakan informasi kosan di wilayah Bandung lengkap dengan fasilitasnya. <br> Kami berharap Anda dapat menemukan kosan yang sesuai dengan keinginan Anda.</p>
+        <p class="information">E-Kosan menyediakan informasi kosan di wilayah Bandung lengkap dengan fasilitasnya.<br>Kami berharap Anda dapat menemukan kosan yang sesuai dengan keinginan Anda.</p>
         <br>
         <div class="row">
           <div class="col-md-6">
@@ -202,13 +200,13 @@ include "views/frontend/components/header.php";
                       </div>
                       <div class="col-md-6">
                         <p> Jl. Tubagus Ismail No. 83 Bandung</p>
-                        <span><b> Deskripsi</b></span>
+                        <span><b>Deskripsi</b></span>
                         <br><span> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                         quis nostrud exercitation.</span>
                         <p></p>
                         <p>
-                          <a href="views/frontend/detail_kosan.php" class="btn btn-success btn-flat"> Lihat</a>
+                          <a href="views/frontend/detail_kosan.php" class="btn bg-maroon btn-flat">Lihat</a>
                         </p>
                       </div>
                     </div>
@@ -218,10 +216,10 @@ include "views/frontend/components/header.php";
                 <div class="facilities">
                   <table class="table table-bordered text-center">
                     <tr>
-                      <td class="items"><i class="fa fa-bed"> Tempat Tidur</i></td>
-                      <td class="items"><i class="fa fa-tint"> Kamar Mandi Dalam</td>
-                      <td class="items"><i class="fa fa-motorcycle"> Parkir Motor</i></td>
-                      <td class="items"><i class="fa fa-car"> Parkir Mobil</i></td>
+                      <td class="items"><i class="fa fa-bed">Tempat Tidur</i></td>
+                      <td class="items"><i class="fa fa-tint">Kamar Mandi Dalam</td>
+                      <td class="items"><i class="fa fa-motorcycle">Parkir Motor</i></td>
+                      <td class="items"><i class="fa fa-car">Parkir Mobil</i></td>
                     </tr>
                   </table>
                 </div>
@@ -234,7 +232,7 @@ include "views/frontend/components/header.php";
               <div class="box box-solid">
                 <div class="box-header with-border">
                   <span class="box-title">Kosan Bapak Didi</span>
-                  <h3 class="box-title navbar-right label label-danger"> Rp 650.000/Bulan</h3>
+                  <h3 class="box-title navbar-right label label-danger">Rp 650.000/Bulan</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <div class="item">
@@ -245,14 +243,14 @@ include "views/frontend/components/header.php";
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <p> Jl. Sekeloa Tengah No. 175 Bandung</p>
+                        <p>Jl. Sekeloa Tengah No. 175 Bandung</p>
                         <span><b> Deskripsi</b></span>
-                        <br><span> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        <br><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                         quis nostrud exercitation.</span>
                         <p></p>
                         <p>
-                          <a href="detail_kosan.php" class="btn btn-success btn-flat"> Lihat</a>
+                          <a href="detail_kosan.php" class="btn bg-maroon btn-flat"> Lihat</a>
                         </p>
                       </div>
                     </div>
@@ -261,10 +259,10 @@ include "views/frontend/components/header.php";
                 <div class="facilities">
                   <table class="table table-bordered text-center">
                     <tr>
-                      <td class="items"><i class="fa fa-bed"> Tempat Tidur</i></td>
-                      <td class="items"><i class="fa fa-tint"> Kamar Mandi Dalam</td>
-                      <td class="items"><i class="fa fa-motorcycle"> Parkir Motor</i></td>
-                      <td class="items"><i class="fa fa-car"> Parkir Mobil</i></td>
+                      <td class="items"><i class="fa fa-bed">Tempat Tidur</i></td>
+                      <td class="items"><i class="fa fa-tint">Kamar Mandi Dalam</td>
+                      <td class="items"><i class="fa fa-motorcycle">Parkir Motor</i></td>
+                      <td class="items"><i class="fa fa-car">Parkir Mobil</i></td>
                     </tr>
                   </table>
                 </div>
@@ -279,7 +277,7 @@ include "views/frontend/components/header.php";
               <div class="box box-solid">
                 <div class="box-header with-border">
                   <span class="box-title">Kosan Ibu Ani</span>
-                  <h3 class="box-title navbar-right label label-danger"> Rp 550.000/Bulan</h3>
+                  <h3 class="box-title navbar-right label label-danger">Rp 550.000/Bulan</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <div class="item">
@@ -290,14 +288,14 @@ include "views/frontend/components/header.php";
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <p> Jl. Tubagus Ismail No. 83 Bandung</p>
-                        <span><b> Deskripsi</b></span>
-                        <br><span> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        <p>Jl. Tubagus Ismail No. 83 Bandung</p>
+                        <span><b>Deskripsi</b></span>
+                        <br><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                         quis nostrud exercitation.</span>
                         <p></p>
                         <p>
-                          <a href="detail_kosan.php" class="btn btn-success btn-flat"> Lihat</a>
+                          <a href="detail_kosan.php" class="btn bg-maroon btn-flat">Lihat</a>
                         </p>
                       </div>
                     </div>
@@ -307,10 +305,10 @@ include "views/frontend/components/header.php";
                 <div class="facilities">
                   <table class="table table-bordered text-center">
                     <tr>
-                      <td class="items"><i class="fa fa-bed"> Tempat Tidur</i></td>
-                      <td class="items"><i class="fa fa-tint"> Kamar Mandi Dalam</td>
-                      <td class="items"><i class="fa fa-motorcycle"> Parkir Motor</i></td>
-                      <td class="items"><i class="fa fa-car"> Parkir Mobil</i></td>
+                      <td class="items"><i class="fa fa-bed">Tempat Tidur</i></td>
+                      <td class="items"><i class="fa fa-tint">Kamar Mandi Dalam</td>
+                      <td class="items"><i class="fa fa-motorcycle">Parkir Motor</i></td>
+                      <td class="items"><i class="fa fa-car">Parkir Mobil</i></td>
                     </tr>
                   </table>
                 </div>
@@ -323,7 +321,7 @@ include "views/frontend/components/header.php";
               <div class="box box-solid">
                 <div class="box-header with-border">
                   <span class="box-title">Kosan Bapak Didi</span>
-                  <h3 class="box-title navbar-right label label-danger"> Rp 650.000/Bulan</h3>
+                  <h3 class="box-title navbar-right label label-danger">Rp 650.000/Bulan</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <div class="item">
@@ -334,14 +332,14 @@ include "views/frontend/components/header.php";
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <p> Jl. Sekeloa Tengah No. 175 Bandung</p>
+                        <p>Jl. Sekeloa Tengah No. 175 Bandung</p>
                         <span><b> Deskripsi</b></span>
-                        <br><span> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        <br><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                         quis nostrud exercitation.</span>
                         <p></p>
                         <p>
-                          <a href="detail_kosan.php" class="btn btn-success btn-flat"> Lihat</a>
+                          <a href="detail_kosan.php" class="btn bg-maroon btn-flat">Lihat</a>
                         </p>
                       </div>
                     </div>
@@ -350,9 +348,9 @@ include "views/frontend/components/header.php";
                 <div class="facilities">
                   <table class="table table-bordered text-center">
                     <tr>
-                      <td class="items"><i class="fa fa-bed"> Tempat Tidur</i></td>
-                      <td class="items"><i class="fa fa-tint"> Kamar Mandi Dalam</td>
-                      <td class="items"><i class="fa fa-motorcycle"> Parkir Motor</i></td>
+                      <td class="items"><i class="fa fa-bed">Tempat Tidur</i></td>
+                      <td class="items"><i class="fa fa-tint">Kamar Mandi Dalam</td>
+                      <td class="items"><i class="fa fa-motorcycle">Parkir Motor</i></td>
                     </tr>
                   </table>
                 </div>

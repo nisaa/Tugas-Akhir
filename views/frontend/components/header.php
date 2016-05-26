@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,15 +18,16 @@
 
     <link rel="stylesheet" href="<?php echo $siteUrl .  "resources/css/style.css"; ?>">
 
-    <?php include "views/frontend/login.php" ?>
+    <?php include "views/frontend/masuk.php" ?>
+    <?php include "views/frontend/daftar.php" ?>
 
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <script src="//www.oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//www.oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
-</head>
+  </head>
 
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <header class="navbar navbar-default navbar-fixed-top">
     <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -37,27 +38,25 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="">
-        <img src="<?php echo $siteUrl . "resources/images/logo.png"; ?>" alt="Logo E-kosan" width="60" height="55">
+        <img src="<?php echo $siteUrl . "resources/images/logo.png";?>" alt="Logo E-kosan">
       </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="main-nav">
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Cari alamat kosan">
+        </div>
+        <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+      </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a data-toggle="modal" href="#modalLogin">Masuk</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Daftar<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Pemilik Kos</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Pencari Kos</a></li>
-          </ul>
-        </li>
+        <li><a href="#">Beranda</a></li>
+        <li><a data-toggle="modal" href="#modalMasuk">Masuk</a></li>
+        <li><a data-toggle="modal" href="#modalDaftar">Daftar</a></li>
         <li><a data-scroll href="#beginning" rel="beginning" data-placement="bottom" title="Kembali Ke Atas"><i class="fa fa-angle-double-up"></i></a></li>
       </ul>
-    </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
-  </nav>
+  </header>
 
   <!-- Modal Masuk>
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

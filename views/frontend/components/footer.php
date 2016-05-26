@@ -3,6 +3,13 @@
     <script src="<?php echo $siteUrl . "resources/js/smooth-scroll.min.js"; ?>"></script>
     <script src="<?php echo $siteUrl . "resources/js/script.js"; ?>"></script>
 
-<section class="footer">
-    <p class="container">&copy; 2016 e-kosan.com</p>
-</section>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-2"><a href="#">Tentang E-Kosan</a></div>
+            <div class="col-xs-1"><a href="#">FAQ</a></div>
+            <div class="col-xs-7"><a href="#">Kontak</a></div>
+            <div class="col-xs-2">&copy; 2016 e-kosan.com</div>
+        </div>
+    </div>
+</footer>
