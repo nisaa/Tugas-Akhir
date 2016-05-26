@@ -20,13 +20,13 @@
 
     <?php include "views/frontend/masuk.php" ?>
     <?php include "views/frontend/daftar.php" ?>
+    <?php unset($_SESSION['error']); ?>
 
     <!--[if lt IE 9]>
       <script src="//www.oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="//www.oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
   </head>
-
   <header class="navbar navbar-default navbar-fixed-top">
     <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -51,8 +51,12 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Beranda</a></li>
-        <li><a data-toggle="modal" href="#modalMasuk">Masuk</a></li>
-        <li><a data-toggle="modal" href="#modalDaftar">Daftar</a></li>
+        <?php if (isset($_SESSION['logged_in_user'])) { ?>
+          <li><a data-toggle="modal" href="<?= $siteUrl ?>logout.php">Keluar</a></li>
+        <?php } else { ?>
+          <li><a data-toggle="modal" href="#modalMasuk">Masuk</a></li>
+          <li><a data-toggle="modal" href="#modalDaftar">Daftar</a></li>
+        <?php } ?>
         <li><a data-scroll href="#beginning" rel="beginning" data-placement="bottom" title="Kembali Ke Atas"><i class="fa fa-angle-double-up"></i></a></li>
       </ul>
     </div><!-- /.container -->

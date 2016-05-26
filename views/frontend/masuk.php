@@ -7,7 +7,7 @@
         <h4 class="modal-title" id="myModalLabel">Masuk</h4>
       </div>
       <div class="modal-body">
-        <form action="" method="post">
+        <form action="auth.php?action=login" method="post">
           <div class="form-group">
             <label for="username">Username</label>
             <input type="text" class="form-control" name="username" id="username" required autofocus>
@@ -15,6 +15,21 @@
           <div class="form-group">
               <label for="password">Password</label>
               <input type="password" class="form-control" name="password" id="password" required>
+          </div>
+          <div class="form-group">
+            <label for="status">Status</label>
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="radio-inline">
+                    <input type="radio" name="status" id="pencari_kos" value="pencari_kos" checked required> Pencari Kosan
+                  </label>
+                </div>
+                <div class="col-md-6">
+                  <label class="radio-inline">
+                    <input type="radio" name="status" id="pemilik_kos" value="pemilik_kos" required> Pemilik Kosan
+                  </label>
+                </div>
+              </div>
           </div>
           <div class="row">
             <div class="col-xs-4">
@@ -29,3 +44,4 @@
     </div>
   </div>
 </div>
+

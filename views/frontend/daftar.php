@@ -7,14 +7,14 @@
         <h4 class="modal-title" id="myModalLabel">Daftar</h4>
       </div>
       <div class="modal-body">
-        <form action="" method="post">
+        <form action="auth.php?action=register" method="post">
           <div class="form-group">
             <label for="fullname">Nama Lengkap</label>
             <input type="text" class="form-control" name="fullname" id="fullname" required autofocus>
           </div>
           <div class="form-group">
               <label for="e-mail">E-mail</label>
-              <input type="text" class="form-control" name="e-mail" id="e-mail" required>
+              <input type="email" class="form-control" name="email" id="e-mail" required>
           </div>
           <div class="form-group">
               <label for="username">Username</label>
@@ -22,16 +22,20 @@
           </div>
           <div class="form-group">
               <label for="password">Password</label>
-              <input type="text" class="form-control" name="password" id="password" required>
+              <input type="password" class="form-control" name="password" id="password" required>
           </div>
           <div class="form-group">
             <label for="status">Status</label>
               <div class="row">
                 <div class="col-md-6">
-                  <input type="radio" name="pencari_kos" id="pencari_kos" value="1" required> Pencari Kosan
+                  <label class="radio-inline">
+                    <input type="radio" name="status" id="pencari_kos" value="pencari_kos" checked required> Pencari Kosan
+                  </label>
                 </div>
                 <div class="col-md-6">
-                  <input type="radio" name="pemilik_kos" id="pemilik_kos" value="2" required> Pemilik Kosan
+                  <label class="radio-inline">
+                    <input type="radio" name="status" id="pemilik_kos" value="pemilik_kos" required> Pemilik Kosan
+                  </label>
                 </div>
               </div>
           </div>
