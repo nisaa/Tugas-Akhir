@@ -11,21 +11,21 @@ if ($action != null) {
 
     // validasi input username, password, & status
     if (empty($_POST['username'])) {
-        $_SESSION['error']['username'] = "Username tidak boleh kosong!";
+        $_SESSION['error'][$action][] = "Username tidak boleh kosong!";
     } else {
         $username = $_POST['username'];
     }
 
     if (! empty($_POST['password']) && strlen($_POST['password']) < 4) {
-        $_SESSION['error']['password'] = "Kata sandi harus lebih dari 4 karakter!";
+        $_SESSION['error'][$action][] = "Kata sandi harus lebih dari 4 karakter!";
     } else if (empty($_POST['password'])) {
-        $_SESSION['error']['password'] = "Kata sandi tidak boleh kosong!";
+        $_SESSION['error'][$action][] = "Kata sandi tidak boleh kosong!";
     } else {
         $password = $_POST['password'];
     }
 
     if (! in_array($_POST['status'], array('pencari_kos', 'pemilik_kos'))) {
-        $_SESSION['error']['fullname'] = "Status Anda tidak sesuai!";
+        $_SESSION['error'][$action][] = "Status Anda tidak sesuai!";
     } else {
         $status = $_POST['status'];
     }
@@ -37,20 +37,22 @@ if ($action != null) {
 
             if ($loggedInUser != null) {
                 $_SESSION['logged_in_user'] = $loggedInUser;
+            } else {
+                $_SESSION['error'][$action][] = "Username atau password tidak sesuai!";
             }
         }
     } else if ($action == "register") {
         // validasi input email & nama lengkap
         if (! filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) && !empty($_POST['email'])) {
-            $_SESSION['error']['email'] = "E-mail tidak sesuai!";
+            $_SESSION['error'][$action][] = "E-mail tidak sesuai!";
         } else if (empty($_POST['email'])) {
-            $_SESSION['error']['email'] = "E-mail tidak boleh kosong!";
+            $_SESSION['error'][$action][] = "E-mail tidak boleh kosong!";
         } else {
             $email = $_POST['email'];
         }
 
         if (empty($_POST['fullname'])) {
-            $_SESSION['error']['fullname'] = "Nama lengkap tidak boleh kosong!";
+            $_SESSION['error'][$action][] = "Nama lengkap tidak boleh kosong!";
         } else {
             $fullname = $_POST['fullname'];
         }

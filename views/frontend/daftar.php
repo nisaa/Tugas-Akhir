@@ -8,6 +8,17 @@
       </div>
       <div class="modal-body">
         <form action="auth.php?action=register" method="post">
+          <?php if (isset($_SESSION['error']['register'])) {?>
+            <div class="alert alert-danger">
+              <ul class="list-unstyled">
+                <?php
+                foreach ($_SESSION['error']['register'] as $value) {
+                  echo "<li>" . $value . "</li>";
+                } ?>
+                <li></li>
+              </ul>
+            </div>
+          <?php } ?>
           <div class="form-group">
             <label for="fullname">Nama Lengkap</label>
             <input type="text" class="form-control" name="fullname" id="fullname" required autofocus>

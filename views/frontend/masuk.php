@@ -8,6 +8,17 @@
       </div>
       <div class="modal-body">
         <form action="auth.php?action=login" method="post">
+          <?php if (isset($_SESSION['error']['login'])) { ?>
+            <div class="alert alert-danger">
+              <ul class="list-unstyled">
+                <?php
+                foreach ($_SESSION['error']['login'] as $value) {
+                  echo "<li>" . $value . "</li>";
+                } ?>
+                <li></li>
+              </ul>
+            </div>
+          <?php } ?>
           <div class="form-group">
             <label for="username">Username</label>
             <input type="text" class="form-control" name="username" id="username" required autofocus>
