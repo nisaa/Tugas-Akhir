@@ -5,4 +5,4 @@ include "vendor/autoload.php";
 include "config/app.php";
 include "config/database.php";
 
-include "views/frontend/home.php";
+include "views/frontend/index.php";
