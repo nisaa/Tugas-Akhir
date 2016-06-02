@@ -17,91 +17,59 @@ include "views/frontend/components/header.php";
               <div class="panel-body">
                 <form class="form-inline">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-xs-6">
                       <div class="form-group">
                         <label class="label-searching">Fasilitas Kamar</label>
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="checkbox">
-                              <label class="label-searching">
-                                <input type="checkbox" name="bathroom">Kamar Mandi Dalam
-                                </label>
-                            </div>
-                          </div><!-- /.col -->
-                        </div><!-- /.row -->
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="checkbox">
-                              <label class="label-searching">
-                                <input type="checkbox" name="bed">Tempat Tidur
+                          <div class="checkbox">
+                            <label class="label-searching">
+                              <input type="checkbox" name="bathroom">Kamar Mandi Dalam
                               </label>
-                            </div>
                           </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="checkbox">
-                              <label class="label-searching">
-                                <input type="checkbox" name="cupboard">Lemari
-                              </label>
-                            </div>
+                          <div class="checkbox">
+                            <label class="label-searching">
+                              <input type="checkbox" name="bed">Tempat Tidur
+                            </label>
                           </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="checkbox">
-                              <label class="label-searching">
-                                <input type="checkbox" name="table">Meja
-                              </label>
-                            </div>
+                          <div class="checkbox">
+                            <label class="label-searching">
+                              <input type="checkbox" name="cupboard">Lemari
+                            </label>
                           </div>
-                        </div>
+                          <div class="checkbox">
+                            <label class="label-searching">
+                              <input type="checkbox" name="table">Meja
+                            </label>
+                          </div>
                       </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-xs-6">
                       <div class="form-group">
                         <label class="label-searching">Fasilitas Umum</label>
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="checkbox">
-                              <label class="label-searching">
-                                <input type="checkbox" name="kitchen" value="">Dapur
-                              </label>
-                            </div>
+                          <div class="checkbox">
+                            <label class="label-searching">
+                              <input type="checkbox" name="kitchen" value="">Dapur
+                            </label>
                           </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="checkbox">
-                              <label class="label-searching">
-                                <input type="checkbox" name="living_room" value="">Ruang Tamu
-                              </label>
-                            </div>
+                          <div class="checkbox">
+                            <label class="label-searching">
+                              <input type="checkbox" name="living_room" value="">Ruang Tamu
+                            </label>
                           </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="checkbox">
-                              <label class="label-searching">
-                                <input type="checkbox" name="bike_parking" value="">Parkir Motor
-                              </label>
-                            </div>
+                          <div class="checkbox">
+                            <label class="label-searching">
+                              <input type="checkbox" name="bike_parking" value="">Parkir Motor
+                            </label>
                           </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="checkbox">
-                              <label class="label-searching">
-                                <input type="checkbox" name="car_parking" value="">Parkir Mobil
-                              </label>
-                            </div>
+                          <div class="checkbox">
+                            <label class="label-searching">
+                              <input type="checkbox" name="car_parking" value="">Parkir Mobil
+                            </label>
                           </div>
-                        </div>
                       </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-xs-12">
                       <div class="form-group">
                         <label class="label-searching">Lokasi Kampus Terdekat</label>
                         <select name="location" id="" class="form-control">
@@ -123,7 +91,7 @@ include "views/frontend/components/header.php";
                       </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-xs-12">
                       <div class="button-direction">
                         <button type="submit" class="btn bg-maroon btn-flat">Cari</button>
                       </div>

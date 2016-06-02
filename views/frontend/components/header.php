@@ -61,7 +61,7 @@
             <li><a href="index.php">Beranda</a></li>
             <?php if (isset($_SESSION['logged_in_user'])) { ?>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Hai, <?php $_SESSION['logged_in_user']['fullname'] ?><span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Hai, <?= $_SESSION['logged_in_user']['full_name'] ?><span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Profil</a></li>
                   <li role="separator" class="divider"></li>

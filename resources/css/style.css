@@ -46,32 +46,6 @@ h6 {
     font-weight: bold;
 }
 
-/* For media 768px and larger */
-@media (min-width: 768px) {
-    .navbar-right {
-        float: right;
-        margin-right: 20px;
-    }
-
-    .form-inline .input-group {
-        display: inline-table;
-        vertical-align: middle;
-        padding-top: 30px;
-    }
-}
-
-/* Lebar kurang dari 992, height & widthnya 100% */
-@media (min-width: 992px) {
-    .item .image img {
-        height: 100%;
-        width: 100%;
-    }
-
-    .button-direction {
-        padding: 10px 0 0 0;
-    }
-}
-
 #beginning {
     height: 768px;
 }
@@ -199,6 +173,50 @@ label {
     padding-top: 20px;
     position: relative;
     width: 100%;
+}
+
+.navbar-default .navbar-toggle {
+    margin: 20px 15px 8px 0;
+}
+
+
+/* For media 768px and larger */
+@media (min-width: 768px) {
+    .navbar-right {
+        float: right;
+        margin-right: 20px;
+    }
+
+    .form-inline .input-group {
+        display: inline-table;
+        vertical-align: middle;
+        padding-top: 30px;
+    }
+}
+
+/* Lebar kurang dari 992, height & widthnya 100% */
+@media (min-width: 992px) {
+    .item .image img {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 992px) {
+    .button-direction {
+        text-align: center;
+        padding: 10px 0 0 0;
+    }
+
+    .intro-description {
+        padding-top: 180px;
+    }
+}
+// <= 767px
+@media (max-width: 767px) {
+    #beginning {
+        height: auto;
+    }
 }
 
 
