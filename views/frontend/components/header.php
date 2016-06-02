@@ -33,13 +33,13 @@
       <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="">
+        <a class="navbar-brand" href="index.php">
           <img src="<?php echo $siteUrl . "resources/images/logo.png";?>" alt="Logo E-kosan">
         </a>
       </div>
@@ -55,16 +55,27 @@
               </div>
           </div>
         </form>
-        <ul class="nav navbar-nav navbar-left">
-          <li><a href="#">Beranda</a></li>
-          <?php if (isset($_SESSION['logged_in_user'])) { ?>
-            <li><a data-toggle="modal" href="<?= $siteUrl ?>logout.php">Keluar</a></li>
-          <?php } else { ?>
-            <li><a data-toggle="modal" href="#modalMasuk">Masuk</a></li>
-            <li><a data-toggle="modal" href="#modalDaftar">Daftar</a></li>
-          <?php } ?>
-          <li><a data-scroll href="#beginning" rel="beginning" data-placement="bottom" title="Kembali Ke Atas"><i class="fa fa-angle-double-up"></i></a></li>
-        </ul>
+
+        <div class="collapse navbar-collapse" id="main-nav">
+          <ul class="nav navbar-nav navbar-left">
+            <li><a href="index.php">Beranda</a></li>
+            <?php if (isset($_SESSION['logged_in_user'])) { ?>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Hai, <?php $_SESSION['logged_in_user']['fullname'] ?><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Profil</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a data-toggle="modal" href="<?= $siteUrl ?>logout.php">Keluar</a></li>
+                </ul>
+              </li>
+
+            <?php } else { ?>
+              <li><a data-toggle="modal" href="#modalMasuk">Masuk</a></li>
+              <li><a data-toggle="modal" href="#modalDaftar">Daftar</a></li>
+            <?php } ?>
+            <li><a data-scroll href="#beginning" rel="beginning" data-placement="bottom" title="Kembali Ke Atas"><i class="fa fa-angle-double-up"></i></a></li>
+          </ul>
+        </div><!-- /.collapse -->
       </div><!-- /.container -->
     </header>
 

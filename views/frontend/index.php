@@ -7,23 +7,23 @@ include "views/frontend/components/header.php";
     <section id="beginning">
       <div class="intro-picture">
         <img src="resources/images/bg-home.jpg" alt="intro gambar">
-          hfjshaj
+
         <form action="" method="post">
         <div class="container">
-        <h2>TEMUKAN KOSAN ANDA</h2>
+        <h2 class="intro-description">TEMUKAN KOSAN ANDA</h2>
         <div class="row">
           <div class="col-md-12">
-            <div class="box">
+            <div class="box-searching">
               <div class="panel-body">
                 <form class="form-inline">
                   <div class="row">
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label>Fasilitas Kamar</label>
+                        <label class="label-searching">Fasilitas Kamar</label>
                         <div class="row">
                           <div class="col-md-12">
                             <div class="checkbox">
-                              <label>
+                              <label class="label-searching">
                                 <input type="checkbox" name="bathroom">Kamar Mandi Dalam
                                 </label>
                             </div>
@@ -32,7 +32,7 @@ include "views/frontend/components/header.php";
                         <div class="row">
                           <div class="col-md-12">
                             <div class="checkbox">
-                              <label>
+                              <label class="label-searching">
                                 <input type="checkbox" name="bed">Tempat Tidur
                               </label>
                             </div>
@@ -41,7 +41,7 @@ include "views/frontend/components/header.php";
                         <div class="row">
                           <div class="col-md-12">
                             <div class="checkbox">
-                              <label>
+                              <label class="label-searching">
                                 <input type="checkbox" name="cupboard">Lemari
                               </label>
                             </div>
@@ -50,7 +50,7 @@ include "views/frontend/components/header.php";
                         <div class="row">
                           <div class="col-md-12">
                             <div class="checkbox">
-                              <label>
+                              <label class="label-searching">
                                 <input type="checkbox" name="table">Meja
                               </label>
                             </div>
@@ -61,11 +61,11 @@ include "views/frontend/components/header.php";
 
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label>Fasilitas Umum</label>
+                        <label class="label-searching">Fasilitas Umum</label>
                         <div class="row">
                           <div class="col-md-12">
                             <div class="checkbox">
-                              <label>
+                              <label class="label-searching">
                                 <input type="checkbox" name="kitchen" value="">Dapur
                               </label>
                             </div>
@@ -74,7 +74,7 @@ include "views/frontend/components/header.php";
                         <div class="row">
                           <div class="col-md-12">
                             <div class="checkbox">
-                              <label>
+                              <label class="label-searching">
                                 <input type="checkbox" name="living_room" value="">Ruang Tamu
                               </label>
                             </div>
@@ -83,7 +83,7 @@ include "views/frontend/components/header.php";
                         <div class="row">
                           <div class="col-md-12">
                             <div class="checkbox">
-                              <label>
+                              <label class="label-searching">
                                 <input type="checkbox" name="bike_parking" value="">Parkir Motor
                               </label>
                             </div>
@@ -92,7 +92,7 @@ include "views/frontend/components/header.php";
                         <div class="row">
                           <div class="col-md-12">
                             <div class="checkbox">
-                              <label>
+                              <label class="label-searching">
                                 <input type="checkbox" name="car_parking" value="">Parkir Mobil
                               </label>
                             </div>
@@ -103,7 +103,7 @@ include "views/frontend/components/header.php";
 
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label>Lokasi Kampus Terdekat</label>
+                        <label class="label-searching">Lokasi Kampus Terdekat</label>
                         <select name="location" id="" class="form-control">
                           <option>UNIKOM, ITHB, UNPAD, ITB</option>
                           <option>UNISBA, UNPAS</option>
@@ -113,7 +113,7 @@ include "views/frontend/components/header.php";
                         </select>
                       </div>
                       <div class="form-group">
-                        <label>Harga</label>
+                        <label class="label-searching">Harga</label>
                         <select name="price" id="" class="form-control">
                           <option> &lt;Rp 500.000/bln </option>
                           <option> Rp 500.000 - Rp 1.000.000/bln</option>
@@ -132,9 +132,9 @@ include "views/frontend/components/header.php";
                 </form>
               </div><!-- /.panel-body -->
             </div><!-- /.box -->
-          </div><!-- ./col -->
-        </div><!-- ./row -->
-        </div><!-- ./container -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+        </div><!-- /.container -->
       </form>
     </section>
 

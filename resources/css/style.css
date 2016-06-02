@@ -46,14 +46,13 @@ h6 {
     font-weight: bold;
 }
 
+/* For media 768px and larger */
 @media (min-width: 768px) {
     .navbar-right {
         float: right;
         margin-right: 20px;
     }
-}
 
-@media (min-width: 768px) {
     .form-inline .input-group {
         display: inline-table;
         vertical-align: middle;
@@ -61,9 +60,25 @@ h6 {
     }
 }
 
+/* Lebar kurang dari 992, height & widthnya 100% */
+@media (min-width: 992px) {
+    .item .image img {
+        height: 100%;
+        width: 100%;
+    }
+
+    .button-direction {
+        padding: 10px 0 0 0;
+    }
+}
+
+#beginning {
+    height: 768px;
+}
+
 .intro-picture img {
-    width: 1349px;
-    height: 670px;
+    width: 100%;
+    height: 100%;
     opacity: .7;
     overflow-x: hidden;
     margin-top: 60px;
@@ -71,10 +86,21 @@ h6 {
     z-index: -1;
 }
 
-@media (min-width: 768px) {
-    .intro-picture img {
+.intro-description {
+    padding-top: 250px;
+}
 
-    }
+.box-searching {
+    background: #000;
+    opacity: .8;
+}
+
+label {
+    padding-top: 10px;
+}
+
+.label-searching {
+    color: #fff;
 }
 
 .checkbox {
@@ -106,18 +132,15 @@ h6 {
 }
 
 .button-direction {
-    padding-left: 80px;
-    padding-top: 40px;
+    padding: 80px 0 0 80px;
 }
 
 .box {
-    margin-top: 10px;
-    margin-bottom: 30px;
+    margin: 10px 0 30px 0;
 }
 
 .container h2 {
     text-align: center;
-    padding-top: 100px;
 }
 
 .information {
