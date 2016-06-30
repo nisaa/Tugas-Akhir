@@ -1,6 +1,7 @@
 <?php
 
 include "views/frontend/components/header.php";
+include "vendor/autoload.php";
 
 ?>
 
@@ -113,6 +114,10 @@ include "views/frontend/components/header.php";
         <br>
 
         <h4>Kosan Favorit</h4>
+        <?php
+          $kost = new Kost;
+          $kost->fetch();
+        ?>
         <div class="row">
           <div class="col-md-6">
             <div class="box box-danger">
