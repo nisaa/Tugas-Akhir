@@ -193,7 +193,7 @@ class Kost
 
     public function fetch()
     {
-        $sql = "SELECT * FROM kosan";
+        $sql = "SELECT * FROM kosan LIMIT 4";
         $statement = $this->getDb()->prepare($sql);
         $statement->execute();
 

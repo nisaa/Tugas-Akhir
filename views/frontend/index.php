@@ -1,7 +1,6 @@
 <?php
 
 include "views/frontend/components/header.php";
-include "vendor/autoload.php";
 
 ?>
 
@@ -115,221 +114,100 @@ include "vendor/autoload.php";
 
         <h4>Kosan Favorit</h4>
         <?php
-          $kost = new Kost;
-          $kost->fetch();
-        ?>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="box box-danger">
-              <div class="box box-solid">
-                <div class="box-header with-border">
-                  <span class="box-title">Kosan Ibu Ani</span>
-                  <h3 class="box-title navbar-right label label-danger"> Rp 550.000/Bulan</h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <div class="item">
-                    <div class="row">
-                      <div class="col-md-5">
-                        <div class="image">
-                          <img src="resources/images/kosan.jpg">
+          $kost = new App\Kost;
+          $kosts = $kost->fetch();
+
+          if (count($kosts) == 0) {
+
+            ?>
+          <div>
+            Tidak ada data yang ditampilkan
+          </div>
+          <?php } else {
+            foreach ($kosts as $kos) {
+
+              ?>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="box box-danger">
+                  <div class="box box-solid">
+                    <div class="box-header with-border">
+                      <span class="box-title"><?= $kos['nama_kosan'] ?></span>
+                      <h3 class="box-title navbar-right label label-danger"> <?= $kos['harga_sewa2'] ?></h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                      <div class="item">
+                        <div class="row">
+                          <div class="col-md-5">
+                            <div class="image">
+                              <img src="resources/images/<?= $kos['gambar_kosan'] ?>">
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <p><?= $kos['alamat_kosan'] ?></p>
+                            <span><b>Deskripsi</b></span>
+                            <br><span> <?= $kos['keterangan'] ?></span>
+                            <p></p>
+                            <p>
+                              <a href="views/frontend/detail_kosan.php" class="btn bg-maroon btn-flat">Lihat</a>
+                            </p>
+                          </div>
                         </div>
                       </div>
-                      <div class="col-md-6">
-                        <p> Jl. Tubagus Ismail No. 83 Bandung</p>
-                        <span><b>Deskripsi</b></span>
-                        <br><span> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation.</span>
-                        <p></p>
-                        <p>
-                          <a href="views/frontend/detail_kosan.php" class="btn bg-maroon btn-flat">Lihat</a>
-                        </p>
-                      </div>
+                    </div>
+
+                    <div class="facilities">
+                      <table class="table table-bordered text-center">
+                        <tr>
+                          <td class="items"><i class="fa fa-bed">Tempat Tidur</i></td>
+                          <td class="items"><i class="fa fa-tint">Kamar Mandi Dalam</td>
+                          <td class="items"><i class="fa fa-motorcycle">Parkir Motor</i></td>
+                          <td class="items"><i class="fa fa-car">Parkir Mobil</i></td>
+                        </tr>
+                      </table>
                     </div>
                   </div>
                 </div>
-
-                <div class="facilities">
-                  <table class="table table-bordered text-center">
-                    <tr>
-                      <td class="items"><i class="fa fa-bed">Tempat Tidur</i></td>
-                      <td class="items"><i class="fa fa-tint">Kamar Mandi Dalam</td>
-                      <td class="items"><i class="fa fa-motorcycle">Parkir Motor</i></td>
-                      <td class="items"><i class="fa fa-car">Parkir Mobil</i></td>
-                    </tr>
-                  </table>
-                </div>
               </div>
+              <?php }
+            } ?>
             </div>
-          </div>
 
-          <div class="col-md-6">
-            <div class="box box-danger">
-              <div class="box box-solid">
-                <div class="box-header with-border">
-                  <span class="box-title">Kosan Bapak Didi</span>
-                  <h3 class="box-title navbar-right label label-danger">Rp 650.000/Bulan</h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <div class="item">
-                    <div class="row">
-                      <div class="col-md-5">
-                        <div class="image">
-                          <img src="resources/images/kos4.jpg">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <p>Jl. Sekeloa Tengah No. 175 Bandung</p>
-                        <span><b> Deskripsi</b></span>
-                        <br><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation.</span>
-                        <p></p>
-                        <p>
-                          <a href="detail_kosan.php" class="btn bg-maroon btn-flat"> Lihat</a>
-                        </p>
-                      </div>
-                    </div>
+            <h4>Kosan Baru</h4>
+            <div class="row">
+              <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                  <img src="resources/images/kos1.jpg" alt="kos1">
+                <div class="caption">
+                    <h4>Thumbnail label</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, quis saepe. Necessitatibus, eum,</p>
+                    <p><a href="#" class="btn bg-maroon btn-flat" role="button">Lihat</a></p>
                   </div>
                 </div>
-                <div class="facilities">
-                  <table class="table table-bordered text-center">
-                    <tr>
-                      <td class="items"><i class="fa fa-bed">Tempat Tidur</i></td>
-                      <td class="items"><i class="fa fa-tint">Kamar Mandi Dalam</td>
-                      <td class="items"><i class="fa fa-motorcycle">Parkir Motor</i></td>
-                      <td class="items"><i class="fa fa-car">Parkir Mobil</i></td>
-                    </tr>
-                  </table>
-                </div>
               </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="row">
-          <div class="col-md-6">
-            <div class="box box-danger">
-              <div class="box box-solid">
-                <div class="box-header with-border">
-                  <span class="box-title">Kosan Ibu Mimih</span>
-                  <h3 class="box-title navbar-right label label-danger">Rp 650.000/Bulan</h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <div class="item">
-                    <div class="row">
-                      <div class="col-md-5">
-                        <div class="image">
-                          <img src="resources/images/kos5.jpg">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <p>Jl. Ir. H. Djuanda BLK 220 Bandung</p>
-                        <span><b>Deskripsi</b></span>
-                        <br><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation.</span>
-                        <p></p>
-                        <p>
-                          <a href="detail_kosan.php" class="btn bg-maroon btn-flat">Lihat</a>
-                        </p>
-                      </div>
-                    </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                  <img src="resources/images/kos2.jpg" alt="kos2">
+                  <div class="caption">
+                    <h4>Thumbnail label</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, quis saepe. Necessitatibus, eum,</p>
+                    <p><a href="#" class="btn bg-maroon btn-flat" role="button">Lihat</a></p>
                   </div>
                 </div>
-
-                <div class="facilities">
-                  <table class="table table-bordered text-center">
-                    <tr>
-                      <td class="items"><i class="fa fa-bed">Tempat Tidur</i></td>
-                      <td class="items"><i class="fa fa-tint">Kamar Mandi Dalam</td>
-                      <td class="items"><i class="fa fa-motorcycle">Parkir Motor</i></td>
-                      <td class="items"><i class="fa fa-car">Parkir Mobil</i></td>
-                    </tr>
-                  </table>
-                </div>
               </div>
-            </div>
-          </div>
 
-          <div class="col-md-6">
-            <div class="box box-danger">
-              <div class="box box-solid">
-                <div class="box-header with-border">
-                  <span class="box-title">Kosan Ibu Cici</span>
-                  <h3 class="box-title navbar-right label label-danger">Rp 750.000/Bulan</h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <div class="item">
-                    <div class="row">
-                      <div class="col-md-5">
-                        <div class="image">
-                          <img src="resources/images/kos6.jpg">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <p>Jl. Cisitu Lama No. 118 Bandung</p>
-                        <span><b> Deskripsi</b></span>
-                        <br><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation.</span>
-                        <p></p>
-                        <p>
-                          <a href="detail_kosan.php" class="btn bg-maroon btn-flat">Lihat</a>
-                        </p>
-                      </div>
-                    </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                  <img src="resources/images/kos3.jpg" alt="kos3">
+                  <div class="caption">
+                    <h4>Thumbnail label</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, quis saepe. Necessitatibus, eum,</p>
+                    <p><a href="#" class="btn bg-maroon btn-flat" role="button">Lihat</a></p>
                   </div>
                 </div>
-                <div class="facilities">
-                  <table class="table table-bordered text-center">
-                    <tr>
-                      <td class="items"><i class="fa fa-bed">Tempat Tidur</i></td>
-                      <td class="items"><i class="fa fa-tint">Kamar Mandi Dalam</td>
-                      <td class="items"><i class="fa fa-motorcycle">Parkir Motor</i></td>
-                    </tr>
-                  </table>
-                </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <h4>Kosan Baru</h4>
-        <div class="row">
-          <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-              <img src="resources/images/kos1.jpg" alt="kos1">
-            <div class="caption">
-                <h4>Thumbnail label</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, quis saepe. Necessitatibus, eum,</p>
-                <p><a href="#" class="btn bg-maroon btn-flat" role="button">Lihat</a></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-              <img src="resources/images/kos2.jpg" alt="kos2">
-              <div class="caption">
-                <h4>Thumbnail label</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, quis saepe. Necessitatibus, eum,</p>
-                <p><a href="#" class="btn bg-maroon btn-flat" role="button">Lihat</a></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-              <img src="resources/images/kos3.jpg" alt="kos3">
-              <div class="caption">
-                <h4>Thumbnail label</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, quis saepe. Necessitatibus, eum,</p>
-                <p><a href="#" class="btn bg-maroon btn-flat" role="button">Lihat</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
