@@ -1,8 +1,5 @@
 <?php
 
-include "../../config/app.php";
-include "../../config/database.php";
-
 include "components/header.php";
 
 ?>
@@ -135,37 +132,50 @@ include "components/header.php";
               </div>
           </div>
 
+          <?php
+            $kost = new App\Kost;
+            $kosts = $kost->fetch();
+
+            foreach ($kosts as $kos) {
+          ?>
+
           <div class="col-md-9">
             <div class="box box-danger">
               <div class="box box-solid">
                 <div class="box-header with-border">
-                  <span class="box-title">Kosan Ibu Ani</span>
-                  <h3 class="box-title navbar-right label label-danger"> Rp 550.000/Bulan</h3>
+                  <span class="box-title"><?= $kos['nama_kosan'] ?></span>
+                  <h3 class="box-title navbar-right label label-danger"><?= $kos['harga_sewa2'] ?></h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <div class="item">
                     <div class="row">
                       <div class="col-md-8">
                         <div class="detail-image">
-                          <img src="<?php echo $siteUrl . "resources/images/kosan.jpg"; ?>"/>
+                          <img src="<?php echo $siteUrl . "resources/images/" . $kos['gambar_kosan'] ?>"/>
                         </div>
                       </div>
                       <div class="col-md-4">
                         <span><b> Alamat</b></span>
-                        <p> Jl. Tubagus Ismail No. 83 Bandung</p>
+                        <p><?= $kos['alamat_kosan'] ?></p>
                         <span><b> Deskripsi</b></span>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation.</p>
+                        <p><?= $kos['keterangan'] ?></p>
                         <span><b> Penghuni</b></span>
-                        <p> Wanita</p>
+                        <p><?= $kos['jenis_hunian'] ?></p>
                         <span><b> Kontak</b></span>
-                        <p> Hubungi Ibu Ani:
-                            <br><i class="fa fa-phone"></i> 0857-5372-8493
+                        <p> Hubungi <?= $kos['nama_pemilik'] ?>:
+                            <br><i class="fa fa-phone"></i> <?= $kos['nomor_tlp'] . " / " . $kos['nomor_tlp2']; ?>
                         </p>
                       </div>
                     </div>
                     <p></p>
+                    <?php
+                      $fasilitas = new App\RoomFacility;
+                      foreach ($fasilitas as $fasilitas) {
+                        if ($fasilitas['kamar_mandi_dalam'] == 'yes') {
+                          echo "";
+                        }
+                      }
+                    ?>
                     <div class="facilities">
                       <table class="table table-bordered text-center">
                         <tr>
@@ -227,6 +237,7 @@ include "components/header.php";
               </div>
             </div>
           </div>
+          <?php } ?>
         </div>
     </div>
 </section>

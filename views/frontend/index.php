@@ -114,6 +114,8 @@ include "views/frontend/components/header.php";
 
         <h4>Kosan Favorit</h4>
         <?php
+          (isset($_GET['id'])) ? $id = $_GET['id'] : $id = 0;
+
           $kost = new App\Kost;
           $kosts = $kost->fetch();
 
@@ -149,7 +151,7 @@ include "views/frontend/components/header.php";
                         <br><span> <?= $kos['keterangan'] ?></span>
                         <p></p>
                         <p>
-                          <a href="detail_kosan.php?lihat&amp;id=<?= $kos['kode_kosan']?>" class="btn bg-maroon btn-flat">Lihat</a>
+                          <a href="detail_kosan.php?id=<?= $kos['kode_kosan']?>" class="btn bg-maroon btn-flat">Lihat</a>
                         </p>
                       </div>
                     </div>
