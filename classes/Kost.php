@@ -191,10 +191,27 @@ class Kost
         return true;
     }*/
 
-    public function fetch()
+    public function fetch($limit = 4)
     {
-        $sql = "SELECT * FROM kosan LIMIT 4";
+        $sql = "SELECT * FROM kosan ORDER BY kode_kosan LIMIT :limit";
+
         $statement = $this->getDb()->prepare($sql);
+        $statement->bindParam(':limit', $limit, PDO::PARAM_INT);
+
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    public function fetch_detail($id)
+    {
+        $sql = "SELECT * FROM kosan WHERE kode_kosan = :id";
+
+        $statement = $this->getDb()->prepare($sql);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+
         $statement->execute();
 
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);

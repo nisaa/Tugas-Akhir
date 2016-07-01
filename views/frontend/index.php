@@ -119,59 +119,59 @@ include "views/frontend/components/header.php";
 
           if (count($kosts) == 0) {
 
-            ?>
-          <div>
-            Tidak ada data yang ditampilkan
-          </div>
-          <?php } else {
-            foreach ($kosts as $kos) {
+        ?>
+        <div>
+          Tidak ada data yang ditampilkan
+        </div>
+        <?php } else {
+          foreach ($kosts as $kos) {
 
-              ?>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="box box-danger">
-                  <div class="box box-solid">
-                    <div class="box-header with-border">
-                      <span class="box-title"><?= $kos['nama_kosan'] ?></span>
-                      <h3 class="box-title navbar-right label label-danger"> <?= $kos['harga_sewa2'] ?></h3>
-                    </div><!-- /.box-header -->
-                    <div class="box-body">
-                      <div class="item">
-                        <div class="row">
-                          <div class="col-md-5">
-                            <div class="image">
-                              <img src="resources/images/<?= $kos['gambar_kosan'] ?>">
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <p><?= $kos['alamat_kosan'] ?></p>
-                            <span><b>Deskripsi</b></span>
-                            <br><span> <?= $kos['keterangan'] ?></span>
-                            <p></p>
-                            <p>
-                              <a href="views/frontend/detail_kosan.php" class="btn bg-maroon btn-flat">Lihat</a>
-                            </p>
-                          </div>
+        ?>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="box box-danger">
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <span class="box-title"><?= $kos['nama_kosan'] ?></span>
+                  <h3 class="box-title navbar-right label label-danger"> <?= $kos['harga_sewa2'] ?></h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="item">
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="image">
+                          <img src="resources/images/<?= $kos['gambar_kosan'] ?>">
                         </div>
                       </div>
-                    </div>
-
-                    <div class="facilities">
-                      <table class="table table-bordered text-center">
-                        <tr>
-                          <td class="items"><i class="fa fa-bed">Tempat Tidur</i></td>
-                          <td class="items"><i class="fa fa-tint">Kamar Mandi Dalam</td>
-                          <td class="items"><i class="fa fa-motorcycle">Parkir Motor</i></td>
-                          <td class="items"><i class="fa fa-car">Parkir Mobil</i></td>
-                        </tr>
-                      </table>
+                      <div class="col-md-6">
+                        <p><?= $kos['alamat_kosan'] ?></p>
+                        <span><b>Deskripsi</b></span>
+                        <br><span> <?= $kos['keterangan'] ?></span>
+                        <p></p>
+                        <p>
+                          <a href="detail_kosan.php?lihat&amp;id=<?= $kos['kode_kosan']?>" class="btn bg-maroon btn-flat">Lihat</a>
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
+
+                <div class="facilities">
+                  <table class="table table-bordered text-center">
+                    <tr>
+                      <td class="items"><i class="fa fa-bed">Tempat Tidur</i></td>
+                      <td class="items"><i class="fa fa-tint">Kamar Mandi Dalam</td>
+                      <td class="items"><i class="fa fa-motorcycle">Parkir Motor</i></td>
+                      <td class="items"><i class="fa fa-car">Parkir Mobil</i></td>
+                    </tr>
+                  </table>
+                </div>
               </div>
-              <?php }
-            } ?>
             </div>
+          </div>
+          <?php }
+        } ?>
+        </div>
 
             <h4>Kosan Baru</h4>
             <div class="row">
