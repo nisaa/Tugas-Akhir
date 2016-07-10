@@ -46,6 +46,15 @@ h6 {
     font-weight: bold;
 }
 
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-bottom: 2px solid #e21414;
+}
+
+.navbar-default .navbar-toggle {
+    margin: 20px 15px 8px 0;
+}
+
+/* COMMON ELEMENTS */
 #beginning {
     height: 768px;
 }
@@ -100,7 +109,7 @@ label {
 }
 
 #map {
-    width: 820px;
+    width: 100%;
     height: 330px;
     margin-bottom: 10px;
 }
@@ -159,6 +168,133 @@ label {
     color: #fff;
 }
 
+#forget-password {
+    padding-bottom: 29px;
+}
+
+.login-box {
+    margin-top: 150px;
+    -webkit-box-shadow: 0px 0px 2px rgba(0,0,0,.1);
+    box-shadow: 0px 0px 2px rgba(0,0,0,.1);
+}
+
+.login-box-header {
+    padding: 15px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    background: #f3f3f3;
+}
+
+#profile {
+    padding-bottom: 15px;
+}
+
+/* ABOUT */
+#about, #visi-misi, #address {
+    background-color: #fff;
+    font-size: 15px;
+    padding-bottom: 50px;
+}
+
+.ekosan-picture {
+    text-align: center;
+    color: #000;
+}
+
+.vision {
+    background-color: #e21414;
+    color: #fff;
+    height: 200px;
+    padding: 15px;
+}
+
+.mission {
+    background-color: #fa6900;
+    color: #fff;
+    height: 200px;
+    padding: 15px;
+}
+
+.vision h3, .mission h3 {
+    text-align: center;
+}
+
+.fa-map-marker {
+    font-size: 25px;
+    color: #e21;
+}
+
+.ekosan-map {
+    width: 100%;
+}
+
+/* FAQ */
+.faq {
+    background-color: #f6f6f6;
+    font-size: 15px;
+    color: #000;
+}
+
+.faqs {
+    padding-top: 100px;
+    color: #000;
+}
+
+.operational-hour {
+    padding-top: 20px;
+    color: #000;
+}
+
+.operational-hour a:hover {
+    color: #e21414;
+}
+
+/* CONTACT */
+#contact {
+    padding-top: 100px;
+    padding-bottom: 30px;
+    background-color: #f6f6f6;
+}
+
+.title {
+    color: #000;
+    font-size: 15px;
+    text-align: center;
+}
+
+.contact, .address {
+    color: #000;
+}
+
+.info {
+    padding-top: 10px;
+    text-align: left;
+}
+
+.btn-contact {
+  background: transparent;
+  border: 2px solid #d81b60;
+  color: #d81b60;
+  text-transform: uppercase;
+}
+.btn-contact:active,
+.btn-contact:focus,
+.btn-contact:hover {
+  background: #d81b60;
+  color: #fff;
+}
+
+/* PROFILE */
+#profile {
+    padding-top: 100px;
+}
+
+.pannel {
+    margin-top: 10px;
+}
+
+/* FOOTER */
 .footer a {
     color: #fff;
 }
@@ -179,10 +315,6 @@ label {
     width: 100%;
 }
 
-.navbar-default .navbar-toggle {
-    margin: 20px 15px 8px 0;
-}
-
 
 /* For media 768px and larger */
 @media (min-width: 768px) {
@@ -198,7 +330,13 @@ label {
     }
 }
 
-/* Lebar kurang dari 992, height & widthnya 100% */
+/* Width < 992, height & widthnya 100% */
+@media (max-width: 767px) {
+    #beginning {
+        height: auto;
+    }
+}
+
 @media (min-width: 992px) {
     .item .image img {
         height: 100%;
@@ -221,11 +359,18 @@ label {
         height: 100px;
     }
 }
-// <= 767px
-@media (max-width: 767px) {
-    #beginning {
-        height: auto;
+
+@media (min-width: 992px) {
+    .col-md-offset-3 {
+        margin-left: 5%;
     }
 }
+
+@media (min-width: 1200px) {
+    .col-lg-offset-3 {
+        margin-left: 5%;
+    }
+}
+
 
 

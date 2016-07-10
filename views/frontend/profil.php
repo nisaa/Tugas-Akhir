@@ -4,10 +4,10 @@ include "components/header.php";
 
 ?>
 
-<section id="kost-detail">
+<section id="profile">
     <div class="container">
         <div class="row">
-          <div class="col-md-3">
+            <div class="col-md-3">
               <div class="box">
                   <div class="box-body">
                     <form action="">
@@ -130,132 +130,135 @@ include "components/header.php";
                     </form>
                   </div>
               </div>
-          </div>
+            </div>
 
-          <?php
-            // ambil id
-            (isset($_GET['id'])) ? $id = $_GET['id'] : $id = 0;
+            <?php
 
-            $kost = new App\Kost;
+              $user = new App\User;
+              $users = $user->fetch($status);
 
-            // ambil data berdasarkan idnya
-            $kostDetail = $kost->fetchDetail($id);
+            ?>
 
-          ?>
-
-          <div class="col-md-9">
-            <div class="box box-danger">
-              <div class="box box-solid">
-                <div class="box-header with-border">
-                  <span class="box-title"><?= $kostDetail->nama_kosan; ?></span>
-                  <h3 class="box-title navbar-right label label-danger"><?= $kostDetail->harga_sewa2; ?></h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <div class="item">
-                    <div class="row">
-                      <div class="col-md-8">
-                        <div class="detail-image">
-                          <img src="<?php echo $siteUrl . "resources/images/" . $kostDetail->gambar_kosan; ?>"/>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <span><b> Alamat</b></span>
-                        <p><?= $kostDetail->alamat_kosan ?></p>
-                        <span><b> Deskripsi</b></span>
-                        <p><?= $kostDetail->keterangan ?></p>
-                        <span><b> Penghuni</b></span>
-                        <p><?= $kostDetail->jenis_hunian ?></p>
-                        <span><b> Kontak</b></span>
-                        <p> Hubungi <?= $kostDetail->nama_pemilik ?>:
-                            <br><i class="fa fa-phone"></i> <?= $kostDetail->nomor_tlp . " / " . $kostDetail->nomor_tlp2; ?>
-                        </p>
-                      </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title"><?= $_SESSION['logged_in_user']['full_name'] ?></h3>
                     </div>
-                    <p></p>
-
-                    <div class="facilities">
-                      <table class="table table-bordered text-center">
-                        <tr>
-                        <?php
-                          $fasilitas = new App\RoomFacility;
-                          // ambil fasilitas berdasarkan kosan
-                          $room_facility = $fasilitas->fetchDetail($id);
-                          // cek semua fasilitas
-                          if ($room_facility->kamar_mandi_dalam == 'yes') {
-                            echo "<td class=\"items\"><i class=\"fa fa-bed\"> Tempat Tidur</i></td>";
-                          }
-
-                          if ($room_facility->tempat_tidur == 'yes') {
-                            echo "<td class=\"items\"><i class=\"fa fa-tint\"> Kamar Mandi Dalam</td>";
-                          }
-
-                          if ($room_facility->lemari == 'yes') {
-                            echo "<td class=\"items\"><i class=\"fa fa-box\"> Lemari</td>";
-                          }
-
-                          var_dump($room_facility);
-                        ?>
-                        </tr>
-                      </table>
-                    </div>
-
-                    <hr>
-                    <div class="additional">
-                        <span><h4> Fasilitas Tambahan</h4></span>
-                        <ul>
-                            <li> Ruang Tamu</li>
-                            <li> Kulkas Bersama</li>
-                            <li> Meja</li>
-                            <li> Lemari</li>
-                        </ul>
-                    </div>
-
-                    <hr>
-                    <h4> Map Kosan</h4>
-                    <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBm3VfroAQ3A8G48t2bHaELoKC_7MG3mmg"></script>
-                    <div id="map"></div>
-
-                    <script type="text/javascript">
-                        // Menentukan koordinat titik tengah peta
-                        var myLatlng = new google.maps.LatLng(-6.176587,106.827115);
-
-                        // Pengaturan zoom dan titik tengah peta
-                        var myOptions = {
-                            zoom: 13,
-                            center: myLatlng
-                        };
-
-                        // Menampilkan output pada element
-                        var map = new google.maps.Map(document.getElementById("map"), myOptions);
-
-                        // Menambahkan marker
-                        var marker = new google.maps.Marker({
-                            position: myLatlng,
-                            map: map,
-                            title:"Monas"
-                        });
-                    </script>
-
-                    <div class="share">
+                    <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-6">
-                                <p><b> Bagikan</b></p>
-                                <i class="fa fa-facebook-square fa-2x"></i>
-                                <i class="fa fa-twitter-square fa-2x"></i>
-                                <i class="fa fa-google-plus-square fa-2x"></i>
+                            <div class="col-md-3 col-lg-3" align="center">
+                                <img alt="User Pic" src="<?php echo $siteUrl . "resources/images/" . $users->gambar; ?>" class="img-circle img-responsive">
+                            </div>
+                            <div class=" col-md-9 col-lg-9 ">
+                              <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td>Alamat</td>
+                                        <td><?= $users->alamat; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td><?= $users->email; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>No. Telp</td>
+                                        <td><?= $users->telp; ?></td>
+                                    </tr>
+                                </tbody>
+                              </table>
                             </div>
                         </div>
                     </div>
-                  </div>
+
+                    <div class="panel-footer">
+                        <a data-toggle="modal" href="#modalKirimPesan" type="button" class="btn btn-sm btn-primary btn-flat"><i class="fa fa-envelope"></i> Kirim Pesan ke Admin</a>
+                        <a data-toggle="modal" href="#modalEditProfil" type="button" class="btn btn-sm btn-warning btn-flat"><i class="fa fa-edit"></i> Edit Profil</a>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
     </div>
 </section>
 
+<!-- Modal Kirim Pesan -->
+<div class="modal fade" id="modalKirimPesan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Kirim Pesan ke Admin</h4>
+      </div>
+      <div class="modal-body">
+        <form action="" method="post">
+          <div class="form-group">
+            <label for="subjek">Subjek</label>
+            <input type="text" class="form-control" name="subjek" id="subjek" required autofocus>
+          </div>
+          <div class="form-group">
+              <label for="pertanyaan">Pertanyaan</label>
+              <textarea id="desc" cols="10" rows="5" class="form-control" required></textarea>
+          </div>
+          <div class="row">
+            <div class="col-xs-4">
+              <button type="submit" class="btn bg-maroon btn-flat">Kirim</button>
+              <button type="reset" class="btn btn-flat">Reset</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Edit Profil -->
+<div class="modal fade" id="modalEditProfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Profil</h4>
+      </div>
+      <div class="modal-body">
+        <form action="" method="post">
+          <div class="form-group">
+            <label for="image">Foto Profil</label>
+            <input type="file" name="image" value="" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="fullname">Nama Lengkap</label>
+            <input type="text" class="form-control" name="fullname" id="fullname" required autofocus>
+          </div>
+          <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" name="password" id="password">
+              Hanya isi kolom ini jika ingin merubah password
+          </div>
+          <div class="form-group">
+            <label for="alamat">Alamat</label>
+            <input type="text" class="form-control" name="alamat" id="alamat" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" id="email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">No. Telp</label>
+            <input type="text" class="form-control" name="phone" id="phone" required>
+          </div>
+          <div class="row">
+            <div class="col-xs-8">
+              <button type="submit" class="btn bg-maroon btn-flat">Simpan</button>
+              <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Batal</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <?php
 
 include "components/footer.php";
+
+?>

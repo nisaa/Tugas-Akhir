@@ -205,7 +205,7 @@ class Kost
         return $result;
     }
 
-    public function fetch_detail($id)
+    public function fetchDetail($id)
     {
         $sql = "SELECT * FROM kosan WHERE kode_kosan = :id";
 
@@ -214,7 +214,7 @@ class Kost
 
         $statement->execute();
 
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $result = $statement->fetch(PDO::FETCH_OBJ);
 
         return $result;
     }

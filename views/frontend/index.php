@@ -114,7 +114,6 @@ include "views/frontend/components/header.php";
 
         <h4>Kosan Favorit</h4>
         <?php
-          (isset($_GET['id'])) ? $id = $_GET['id'] : $id = 0;
 
           $kost = new App\Kost;
           $kosts = $kost->fetch();
@@ -161,10 +160,23 @@ include "views/frontend/components/header.php";
                 <div class="facilities">
                   <table class="table table-bordered text-center">
                     <tr>
-                      <td class="items"><i class="fa fa-bed">Tempat Tidur</i></td>
-                      <td class="items"><i class="fa fa-tint">Kamar Mandi Dalam</td>
-                      <td class="items"><i class="fa fa-motorcycle">Parkir Motor</i></td>
-                      <td class="items"><i class="fa fa-car">Parkir Mobil</i></td>
+                    <?php
+                      $fasilitas = new App\RoomFacility;
+                      // ambil fasilitas berdasarkan kosan
+                      $room_facility = $fasilitas->fetchDetail($id);
+                      // cek semua fasilitas
+                      if ($room_facility->kamar_mandi_dalam == 'yes') {
+                        echo "<td class=\"items\"><i class=\"fa fa-bed\"> Tempat Tidur</i></td>";
+                      }
+
+                      if ($room_facility->tempat_tidur == 'yes') {
+                        echo "<td class=\"items\"><i class=\"fa fa-tint\"> Kamar Mandi Dalam</td>";
+                      }
+
+                      if ($room_facility->lemari == 'yes') {
+                        echo "<td class=\"items\"><i class=\"fa fa-box\"> Lemari</td>";
+                      }
+                    ?>
                     </tr>
                   </table>
                 </div>

@@ -61,7 +61,7 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Hai, <?= $_SESSION['logged_in_user']['full_name'] ?><span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Profil</a></li>
+                  <li><a href="profil.php">Profil</a></li>
                   <li role="separator" class="divider"></li>
                   <li><a data-toggle="modal" href="<?= $siteUrl ?>logout.php">Keluar</a></li>
                 </ul>
@@ -111,12 +111,12 @@
                   <div class="row">
                     <div class="col-md-6">
                       <label class="radio-inline">
-                        <input type="radio" name="status" id="pencari_kos" value="pencari_kos" checked required> Pencari Kosan
+                        <input type="radio" name="status" id="pencari_kos" value="pencari_kos" checked required> Pencari Kos
                       </label>
                     </div>
                     <div class="col-md-6">
                       <label class="radio-inline">
-                        <input type="radio" name="status" id="pemilik_kos" value="pemilik_kos" required> Pemilik Kosan
+                        <input type="radio" name="status" id="pemilik_kos" value="pemilik_kos" required> Pemilik Kos
                       </label>
                     </div>
                   </div>
@@ -129,7 +129,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <a href="#">Lupa Password</a>
+            <a href="lupa_password.php">Lupa Password</a>
           </div>
         </div>
       </div>
@@ -177,12 +177,12 @@
                   <div class="row">
                     <div class="col-md-6">
                       <label class="radio-inline">
-                        <input type="radio" name="status" id="pencari_kos" value="pencari_kos" checked required> Pencari Kosan
+                        <input type="radio" name="status" id="pencari_kos" value="pencari_kos" checked required> Pencari Kos
                       </label>
                     </div>
                     <div class="col-md-6">
                       <label class="radio-inline">
-                        <input type="radio" name="status" id="pemilik_kos" value="pemilik_kos" required> Pemilik Kosan
+                        <input type="radio" name="status" id="pemilik_kos" value="pemilik_kos" required> Pemilik Kos
                       </label>
                     </div>
                   </div>

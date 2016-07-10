@@ -27,9 +27,9 @@
     <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-xs-2"><a href="index.php?menu=tentang_e-kosan">Tentang E-Kosan</a></div>
-                <div class="col-xs-1"><a href="index.php?menu=faq">FAQ</a></div>
-                <div class="col-xs-6"><a href="index.php?menu=kontak">Kontak</a></div>
+                <div class="col-xs-2"><a href="tentang.php">Tentang E-Kosan</a></div>
+                <div class="col-xs-1"><a href="faq.php">FAQ</a></div>
+                <div class="col-xs-6"><a href="kontak.php">Kontak</a></div>
                 <div class="col-xs-3">&copy; 2016 e-kosan.com</div>
             </div>
         </div>
