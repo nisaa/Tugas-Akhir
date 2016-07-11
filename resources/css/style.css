@@ -187,7 +187,8 @@ label {
 }
 
 #profile {
-    padding-bottom: 15px;
+    padding-top: 30px;
+    padding-bottom: 20px;
 }
 
 /* ABOUT */
@@ -290,7 +291,7 @@ label {
     padding-top: 100px;
 }
 
-.pannel {
+.panel {
     margin-top: 10px;
 }
 

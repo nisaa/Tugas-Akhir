@@ -235,24 +235,4 @@ class User
 
         return $result['exist'];
     }
-
-    public function fetch($status)
-    {
-        if($status == "pencari_kos") {
-            $sql = "SELECT * FROM members";
-        } else if ($status == "pemilik_kos") {
-            $sql = "SELECT * FROM pemilik_kos";
-        }
-
-        $sql .= " WHERE username=:username";
-
-        $statement = $this->getDb()->prepare($sql);
-        $statement->bindParam(":username", $this->username, PDO::PARAM_STR);
-
-        $statement->execute();
-
-        $result = $statement->fetch(PDO::FETCH_OBJ);
-
-        return $result;
-    }
 }

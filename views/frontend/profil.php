@@ -132,13 +132,6 @@ include "components/header.php";
               </div>
             </div>
 
-            <?php
-
-              $user = new App\User;
-              $users = $user->fetch($status);
-
-            ?>
-
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -147,22 +140,23 @@ include "components/header.php";
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-3 col-lg-3" align="center">
-                                <img alt="User Pic" src="<?php echo $siteUrl . "resources/images/" . $users->gambar; ?>" class="img-circle img-responsive">
+                                <img alt="User Pic" src="<?php echo $siteUrl . "resources/images/" . $_SESSION['logged_in_user']
+                                ['gambar'] ?>" class="img-circle img-responsive">
                             </div>
                             <div class=" col-md-9 col-lg-9 ">
                               <table class="table table-user-information">
                                 <tbody>
                                     <tr>
                                         <td>Alamat</td>
-                                        <td><?= $users->alamat; ?></td>
+                                        <td><?= $_SESSION['logged_in_user']['alamat'] ?></td>
                                     </tr>
                                     <tr>
                                         <td>Email</td>
-                                        <td><?= $users->email; ?></td>
+                                        <td><?= $_SESSION['logged_in_user']['email'] ?></td>
                                     </tr>
                                     <tr>
                                         <td>No. Telp</td>
-                                        <td><?= $users->telp; ?></td>
+                                        <td><?= $_SESSION['logged_in_user']['telp'] ?></td>
                                     </tr>
                                 </tbody>
                               </table>

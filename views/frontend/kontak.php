@@ -12,28 +12,43 @@ include "components/header.php";
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <form action="/" method="post">
+                <form action="" method="post">
+
+                <?php
+
+                    if (isset($_POST['submit'])) {
+                      $name = $_POST['name'];
+                      $email = $_POST['email'];
+                      $subject = $_POST['subject'];
+                      $message = $_POST['message'];
+
+                      $kontak = new App\Contact;
+
+                      $kontak->sendEmail();
+                    }
+                ?>
+
                   <div class="form-group">
                     <div class="row">
                       <div class="col-lg-6">
                         <label for="nama">Nama*</label>
-                        <input type="text" class="form-control" id="nama" required>
+                        <input type="text" class="form-control" name="name" id="name" required>
                       </div>
                       <div class="col-lg-6">
                         <label for="email">E-Mail*</label>
-                        <input type="text" class="form-control" id="email" required>
+                        <input type="text" class="form-control" name="email" id="email" required>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="subjek">Subjek*</label>
-                    <input type="text" class="form-control" id="subjek" required>
+                    <input type="text" class="form-control" name="subject" id="subject" required>
                   </div>
                   <div class="form-group">
-                    <label for="desc">Deskripsi*</label>
-                    <textarea id="desc" cols="30" rows="10" class="form-control"></textarea>
+                    <label for="pesan">Pesan*</label>
+                    <textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
                   </div>
-                  <button type="submit" class="btn btn-contact btn-flat">Kirim</button>
+                  <button type="submit" name="submit" class="btn btn-contact btn-flat">Kirim</button>
                 </form>
             </div>
 
