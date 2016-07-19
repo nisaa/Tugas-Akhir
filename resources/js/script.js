@@ -10,3 +10,11 @@ $(document).ready(function() {
     });
 
 });
+
+$(window).scroll(function() {
+    if ($(".navbar").offset().top > 50) {
+        $(".navbar-fixed-top").addClass("attached");
+    } else {
+        $(".navbar-fixed-top").removeClass("attached");
+    }
+});

@@ -7,7 +7,7 @@ include "components/header.php";
 <section id="beginning">
     <section id="about">
         <div class="container">
-            <h3>Tentang E-Kosan</h3>
+            <h3 class="about-ekosan">Tentang E-Kosan</h3>
             <hr>
             <div class="ekosan-picture">
                 <img src="resources/images/about-ekosan.png" alt="about-ekosan">
@@ -41,8 +41,9 @@ include "components/header.php";
 
     <section id="address">
         <div class="container">
-            <h3>E-Kosan</h3>
-            <i class="fa fa-map-marker"></i> Kantor <br> Jl. Sekeloa No. 62 Bandung
+            <h2>E-Kosan</h2>
+            <i class="fa fa-map-marker"></i>
+            <p class="add-location"> Jl. Sekeloa No. 62 Bandung</p>
         </div>
     </section>
 
