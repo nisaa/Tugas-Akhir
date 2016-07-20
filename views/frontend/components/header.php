@@ -24,6 +24,11 @@
       <script src="//www.oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="//www.oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
+
+    <script src="<?php echo $siteUrl . "resources/js/jquery-1.11.3.js"; ?>"></script>
+    <script src="<?php echo $siteUrl . "resources/js/bootstrap.min.js"; ?>"></script>
+    <script src="<?php echo $siteUrl . "resources/js/smooth-scroll.min.js"; ?>"></script>
+    <script src="<?php echo $siteUrl . "resources/js/script.js"; ?>"></script>
   </head>
   <body>
 

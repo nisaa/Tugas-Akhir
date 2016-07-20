@@ -133,24 +133,24 @@ include "views/frontend/components/header.php";
             <div class="box box-danger">
               <div class="box box-solid">
                 <div class="box-header with-border">
-                  <span class="box-title"><?= $kos['nama_kosan'] ?></span>
-                  <h3 class="box-title navbar-right label label-danger"> <?= $kos['harga_sewa2'] ?></h3>
+                  <span class="box-title"><?= $kos->nama_kosan ?></span>
+                  <h3 class="box-title navbar-right label label-danger"> <?= $kos->harga_sewa2 ?></h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <div class="item">
                     <div class="row">
                       <div class="col-md-5">
                         <div class="image">
-                          <img src="resources/images/<?= $kos['gambar_kosan'] ?>">
+                          <img src="resources/images/<?= $kos->gambar_kosan ?>">
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <p><?= $kos['alamat_kosan'] ?></p>
+                        <p><?= $kos->alamat_kosan ?></p>
                         <span><b>Deskripsi</b></span>
-                        <br><span> <?= $kos['keterangan'] ?></span>
+                        <br><span> <?= $kos->keterangan ?></span>
                         <p></p>
                         <p>
-                          <a href="detail_kosan.php?id=<?= $kos['kode_kosan']?>" class="btn bg-maroon btn-flat">Lihat</a>
+                          <a href="detail_kosan.php?id=<?= $kos->kode_kosan?>" class="btn bg-maroon btn-flat">Lihat</a>
                         </p>
                       </div>
                     </div>

@@ -4,22 +4,21 @@ namespace App;
 use PDO;
 use Exception;
 
-class RoomFacility
+class NearbyFacility
 {
-    private $bathroom;
-    private $bedroom;
-    private $cupboard;
-    private $table;
-    private $ac;
-    private $tv;
-    private $cable_tv;
-    private $fan;
-    private $water_heater;
-    private $phone;
-    private $wastafel;
-    private $internet;
-    private $refrigerator;
-    private $book_rack;
+    private $internet_cafe;
+    private $canteen;
+    private $clinic;
+    private $mosque;
+    private $church;
+    private $bank;
+    private $indomaret;
+    private $alfamart;
+    private $circle_k;
+    private $mall;
+    private $supermarket;
+    private $hospital;
+    private $transportation_access;
 
     private $kost;
     private $db;
@@ -55,7 +54,7 @@ class RoomFacility
 
     public function fetch($limit = 4)
     {
-        $sql = "SELECT * FROM fasilitas_kamar LIMIT :limit";
+        $sql = "SELECT * FROM fasilitas_terdekat LIMIT :limit";
 
         $statement = $this->getDb()->prepare($sql);
         $statement->bindParam(':limit', $limit, PDO::PARAM_INT);
@@ -67,7 +66,7 @@ class RoomFacility
 
     public function fetchDetail($id)
     {
-        $sql = "SELECT * FROM fasilitas_kamar WHERE kode_kosan = :id";
+        $sql = "SELECT * FROM fasilitas_terdekat WHERE kode_kosan = :id";
 
         $statement = $this->getDb()->prepare($sql);
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
@@ -80,7 +79,7 @@ class RoomFacility
     }
 
     public function insert($fasilitas) {
-        $sql = "INSERT INTO fasilitas_kamar(kode_kosan, kamar_mandi_dalam, tempat_tidur, lemari, meja, ac, tv, tv_kabel, kipas_angin, air_panas, telepon, wastafel, internet, kulkas, rak_buku) VALUES(:kode_kosan, :kamar_mandi_dalam, :tempat_tidur, :lemari, :meja, :ac, :tv, :tv_kabel, :kipas_angin, :air_panas, :telepon, :wastafel, :internet, :kulkas, :rak_buku)";
+        $sql = "INSERT INTO fasilitas_terdekat(kode_kosan, warnet, warteg, balai_kesehatan, masjid, gereja, bank, indomaret, alfamart, circle_k, mall, supermarket, rumah_sakit, akses_transportasi) VALUES (:kode_kosan, :warnet, :warteg, :balai_kesehatan, :masjid, :gereja, :bank, :indomaret, :alfamart, :circle_k, :mall, :supermarket, :rumah_sakit, :akses_transportasi)";
 
         $statement = $this->getDb()->prepare($sql);
         $statement->bindParam(':kode_kosan', $this->kost->getId(), PDO::PARAM_STR);
