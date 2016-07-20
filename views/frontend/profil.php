@@ -165,6 +165,7 @@ include "components/header.php";
                     </div>
 
                     <div class="panel-footer">
+                        <a href="tambah_kosan.php" type="button" class="btn btn-sm btn-success btn-flat"><i class="fa fa-plus"></i> Tambah Kosan</a>
                         <a data-toggle="modal" href="#modalKirimPesan" type="button" class="btn btn-sm btn-primary btn-flat"><i class="fa fa-envelope"></i> Kirim Pesan ke Admin</a>
                         <a data-toggle="modal" href="#modalEditProfil" type="button" class="btn btn-sm btn-warning btn-flat"><i class="fa fa-edit"></i> Edit Profil</a>
                     </div>
@@ -214,10 +215,8 @@ include "components/header.php";
       </div>
       <div class="modal-body">
         <form action="" method="post">
-          <div class="form-group">
-            <label for="image">Foto Profil</label>
-            <input type="file" name="image" value="" placeholder="">
-          </div>
+          <label for="image">Foto Profil</label>
+          <input type="file" name="image" value="" placeholder="">
           <div class="form-group">
             <label for="fullname">Nama Lengkap</label>
             <input type="text" class="form-control" name="fullname" id="fullname" required autofocus>
