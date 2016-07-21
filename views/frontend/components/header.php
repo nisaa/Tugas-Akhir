@@ -83,12 +83,12 @@
     </header>
 
     <!-- Modal Masuk -->
-    <div class="modal fade" id="modalMasuk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="modalMasuk" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Masuk</h4>
+            <h4 class="modal-title">Masuk</h4>
           </div>
           <div class="modal-body">
             <form action="auth.php?action=login" method="post">
@@ -105,23 +105,23 @@
               <?php } ?>
               <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" name="username" id="username" required autofocus>
+                <input type="text" class="form-control" name="username" autofocus>
               </div>
               <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control" name="password" id="password" required>
+                  <input type="password" class="form-control" name="password">
               </div>
               <div class="form-group">
                 <label for="status">Status</label>
                   <div class="row">
                     <div class="col-md-6">
                       <label class="radio-inline">
-                        <input type="radio" name="status" id="pencari_kos" value="pencari_kos" checked required> Pencari Kos
+                        <input type="radio" name="status" id="pencari_kos" value="pencari_kos" checked> Pencari Kos
                       </label>
                     </div>
                     <div class="col-md-6">
                       <label class="radio-inline">
-                        <input type="radio" name="status" id="pemilik_kos" value="pemilik_kos" required> Pemilik Kos
+                        <input type="radio" name="status" id="pemilik_kos" value="pemilik_kos"> Pemilik Kos
                       </label>
                     </div>
                   </div>
@@ -141,12 +141,12 @@
     </div>
 
     <!-- Modal Daftar -->
-    <div class="modal fade" id="modalDaftar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="modalDaftar" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Daftar</h4>
+            <h4 class="modal-title">Daftar</h4>
           </div>
           <div class="modal-body">
             <form action="auth.php?action=register" method="post">
@@ -163,31 +163,31 @@
               <?php } ?>
               <div class="form-group">
                 <label for="fullname">Nama Lengkap</label>
-                <input type="text" class="form-control" name="fullname" id="fullname" required autofocus>
+                <input type="text" class="form-control" name="fullname" autofocus>
               </div>
               <div class="form-group">
                   <label for="e-mail">E-mail</label>
-                  <input type="email" class="form-control" name="email" id="e-mail" required>
+                  <input type="email" class="form-control" name="email">
               </div>
               <div class="form-group">
                   <label for="username">Username</label>
-                  <input type="text" class="form-control" name="username" id="username" required>
+                  <input type="text" class="form-control" name="username">
               </div>
               <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control" name="password" id="password" required>
+                  <input type="password" class="form-control" name="password">
               </div>
               <div class="form-group">
                 <label for="status">Status</label>
                   <div class="row">
                     <div class="col-md-6">
                       <label class="radio-inline">
-                        <input type="radio" name="status" id="pencari_kos" value="pencari_kos" checked required> Pencari Kos
+                        <input type="radio" name="status" id="pencari_kos" value="pencari_kos" checked> Pencari Kos
                       </label>
                     </div>
                     <div class="col-md-6">
                       <label class="radio-inline">
-                        <input type="radio" name="status" id="pemilik_kos" value="pemilik_kos" required> Pemilik Kos
+                        <input type="radio" name="status" id="pemilik_kos" value="pemilik_kos"> Pemilik Kos
                       </label>
                     </div>
                   </div>

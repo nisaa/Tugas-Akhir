@@ -19,14 +19,14 @@ include "components/header.php";
                                       <div class="col-md-8">
                                         <div class="checkbox">
                                           <label>
-                                            <input type="checkbox" name="bathroom"> Kamar Mandi Dalam
+                                            <input type="checkbox" name="kamar_mandi_dalam"> Kamar Mandi Dalam
                                             </label>
                                         </div>
                                       </div><!-- /.col -->
                                       <div class="col-md-4">
                                         <div class="checkbox">
                                           <label>
-                                            <input type="checkbox" name="cupboard"> Lemari
+                                            <input type="checkbox" name="lemari"> Lemari
                                           </label>
                                         </div>
                                       </div>
@@ -35,14 +35,14 @@ include "components/header.php";
                                       <div class="col-md-8">
                                         <div class="checkbox">
                                           <label>
-                                            <input type="checkbox" name="bed"> Tempat Tidur
+                                            <input type="checkbox" name="tempat_tidur"> Tempat Tidur
                                           </label>
                                         </div>
                                       </div>
                                       <div class="col-md-4">
                                         <div class="checkbox">
                                           <label>
-                                            <input type="checkbox" name="table"> Meja
+                                            <input type="checkbox" name="meja"> Meja
                                           </label>
                                         </div>
                                       </div>
@@ -59,14 +59,14 @@ include "components/header.php";
                                         <div class="col-md-6">
                                             <div class="checkbox">
                                               <label>
-                                                <input type="checkbox" name="car_parking" value=""> Parkir Mobil
+                                                <input type="checkbox" name="parkir_mobil" value=""> Parkir Mobil
                                               </label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                         <div class="checkbox">
                                           <label>
-                                            <input type="checkbox" name="living_room" value=""> Ruang Tamu
+                                            <input type="checkbox" name="ruangan_tamu" value=""> Ruang Tamu
                                           </label>
                                         </div>
                                       </div>
@@ -75,14 +75,14 @@ include "components/header.php";
                                         <div class="col-md-6">
                                             <div class="checkbox">
                                               <label>
-                                                <input type="checkbox" name="bike_parking" value=""> Parkir Motor
+                                                <input type="checkbox" name="parkir_motor" value=""> Parkir Motor
                                               </label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkbox">
                                               <label>
-                                                <input type="checkbox" name="kitchen" value=""> Dapur
+                                                <input type="checkbox" name="dapur_bersama" value=""> Dapur
                                               </label>
                                             </div>
                                         </div>
@@ -95,7 +95,7 @@ include "components/header.php";
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Lokasi Kampus Terdekat</label>
-                                    <select name="location" id="" class="form-control">
+                                    <select name="kategori_kampus" class="form-control">
                                       <option>UNIKOM, ITHB, UNPAD, ITB</option>
                                       <option>UNISBA, UNPAS</option>
                                       <option>ITENAS, WIDYATAMA, LP3I</option>
@@ -110,7 +110,7 @@ include "components/header.php";
                             <div class="col-md-12">
                                 <div class="form-group">
                                 <label>Harga</label>
-                                <select name="price" id="" class="form-control">
+                                <select name="harga_kosan" class="form-control">
                                   <option> &lt;Rp 500.000/bln </option>
                                   <option> Rp 500.000 - Rp 1.000.000/bln</option>
                                   <option> &gt;Rp 1.000.000/bln</option>
@@ -176,22 +176,22 @@ include "components/header.php";
 </section>
 
 <!-- Modal Kirim Pesan -->
-<div class="modal fade" id="modalKirimPesan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="modalKirimPesan" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-md" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Kirim Pesan ke Admin</h4>
+        <h4 class="modal-title">Kirim Pesan ke Admin</h4>
       </div>
       <div class="modal-body">
         <form action="" method="post">
           <div class="form-group">
             <label for="subjek">Subjek</label>
-            <input type="text" class="form-control" name="subjek" id="subjek" required autofocus>
+            <input type="text" class="form-control" name="judul" autofocus>
           </div>
           <div class="form-group">
               <label for="pertanyaan">Pertanyaan</label>
-              <textarea id="desc" cols="10" rows="5" class="form-control" required></textarea>
+              <textarea name="pertanyaan" cols="10" rows="5" class="form-control"></textarea>
           </div>
           <div class="row">
             <div class="col-xs-4">
@@ -206,37 +206,37 @@ include "components/header.php";
 </div>
 
 <!-- Modal Edit Profil -->
-<div class="modal fade" id="modalEditProfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="modalEditProfil" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Edit Profil</h4>
+        <h4 class="modal-title">Edit Profil</h4>
       </div>
       <div class="modal-body">
-        <form action="" method="post">
-          <label for="image">Foto Profil</label>
-          <input type="file" name="image" value="" placeholder="">
+        <form action="" method="post" enctype="multipart/form-data">
+          <label for="gambar">Foto Profil</label>
+          <input type="file" name="gambar" value="" placeholder="">
           <div class="form-group">
             <label for="fullname">Nama Lengkap</label>
-            <input type="text" class="form-control" name="fullname" id="fullname" required autofocus>
+            <input type="text" class="form-control" name="username" autofocus>
           </div>
           <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" class="form-control" name="password" id="password">
+              <input type="password" class="form-control" name="password">
               Hanya isi kolom ini jika ingin merubah password
           </div>
           <div class="form-group">
             <label for="alamat">Alamat</label>
-            <input type="text" class="form-control" name="alamat" id="alamat" required>
+            <input type="text" class="form-control" name="alamat">
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" class="form-control" name="email" id="email" required>
+            <input type="text" class="form-control" name="email">
           </div>
           <div class="form-group">
-            <label for="phone">No. Telp</label>
-            <input type="text" class="form-control" name="phone" id="phone" required>
+            <label for="telp">No. Telp</label>
+            <input type="text" class="form-control" name="telp">
           </div>
           <div class="row">
             <div class="col-xs-8">

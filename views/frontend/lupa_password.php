@@ -16,19 +16,19 @@ include "components/header.php";
                 <form action="" method="post">
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" class="form-control" name="email" id="email" required autofocus>
+                        <input type="text" class="form-control" name="email" autofocus>
                     </div>
                     <div class="form-group">
                     <label for="status">Status</label>
                       <div class="row">
                         <div class="col-md-6">
                           <label class="radio-inline">
-                            <input type="radio" name="status" id="pencari_kos" value="pencari_kos" checked required> Pencari Kos
+                            <input type="radio" name="status" id="pencari_kos" value="pencari_kos" checked> Pencari Kos
                           </label>
                         </div>
                         <div class="col-md-6">
                           <label class="radio-inline">
-                            <input type="radio" name="status" id="pemilik_kos" value="pemilik_kos" required> Pemilik Kos
+                            <input type="radio" name="status" id="pemilik_kos" value="pemilik_kos"> Pemilik Kos
                           </label>
                         </div>
                       </div>

@@ -22,22 +22,22 @@ include "views/frontend/components/header.php";
                         <label class="label-searching">Fasilitas Kamar</label>
                           <div class="checkbox">
                             <label class="label-searching">
-                              <input type="checkbox" name="bathroom">Kamar Mandi Dalam
-                              </label>
-                          </div>
-                          <div class="checkbox">
-                            <label class="label-searching">
-                              <input type="checkbox" name="bed">Tempat Tidur
+                              <input type="checkbox" name="kamar_mandi_dalam">Kamar Mandi Dalam
                             </label>
                           </div>
                           <div class="checkbox">
                             <label class="label-searching">
-                              <input type="checkbox" name="cupboard">Lemari
+                              <input type="checkbox" name="tempat_tidur">Tempat Tidur
                             </label>
                           </div>
                           <div class="checkbox">
                             <label class="label-searching">
-                              <input type="checkbox" name="table">Meja
+                              <input type="checkbox" name="lemari">Lemari
+                            </label>
+                          </div>
+                          <div class="checkbox">
+                            <label class="label-searching">
+                              <input type="checkbox" name="meja">Meja
                             </label>
                           </div>
                       </div>
@@ -48,22 +48,22 @@ include "views/frontend/components/header.php";
                         <label class="label-searching">Fasilitas Umum</label>
                           <div class="checkbox">
                             <label class="label-searching">
-                              <input type="checkbox" name="kitchen" value="">Dapur
+                              <input type="checkbox" name="dapur_bersama" value="">Dapur
                             </label>
                           </div>
                           <div class="checkbox">
                             <label class="label-searching">
-                              <input type="checkbox" name="living_room" value="">Ruang Tamu
+                              <input type="checkbox" name="ruangan_tamu" value="">Ruang Tamu
                             </label>
                           </div>
                           <div class="checkbox">
                             <label class="label-searching">
-                              <input type="checkbox" name="bike_parking" value="">Parkir Motor
+                              <input type="checkbox" name="parkir_motor" value="">Parkir Motor
                             </label>
                           </div>
                           <div class="checkbox">
                             <label class="label-searching">
-                              <input type="checkbox" name="car_parking" value="">Parkir Mobil
+                              <input type="checkbox" name="parkir_mobil" value="">Parkir Mobil
                             </label>
                           </div>
                       </div>
@@ -72,7 +72,7 @@ include "views/frontend/components/header.php";
                     <div class="col-md-3 col-xs-12">
                       <div class="form-group">
                         <label class="label-searching">Lokasi Kampus Terdekat</label>
-                        <select name="location" id="" class="form-control">
+                        <select name="kategori_kampus" class="form-control">
                           <option>UNIKOM, ITHB, UNPAD, ITB</option>
                           <option>UNISBA, UNPAS</option>
                           <option>ITENAS, WIDYATAMA, LP3I</option>
@@ -82,7 +82,7 @@ include "views/frontend/components/header.php";
                       </div>
                       <div class="form-group">
                         <label class="label-searching">Harga</label>
-                        <select name="price" id="" class="form-control">
+                        <select name="harga_kosan" class="form-control">
                           <option> &lt;Rp 500.000/bln </option>
                           <option> Rp 500.000 - Rp 1.000.000/bln</option>
                           <option> &gt;Rp 1.000.000/bln</option>
@@ -161,20 +161,28 @@ include "views/frontend/components/header.php";
                   <table class="table table-bordered text-center">
                     <tr>
                     <?php
-                      $fasilitas = new App\RoomFacility;
+                      $fasilitasKamar = new App\RoomFacility;
                       // ambil fasilitas berdasarkan kosan
-                      $room_facility = $fasilitas->fetchDetail($id);
+                      $roomFacility = $fasilitasKamar->fetchDetail($id);
                       // cek semua fasilitas
-                      if ($room_facility->kamar_mandi_dalam == 'yes') {
+                      if ($roomFacility->kamar_mandi_dalam == 'yes') {
                         echo "<td class=\"items\"><i class=\"fa fa-bed\"> Tempat Tidur</i></td>";
                       }
 
-                      if ($room_facility->tempat_tidur == 'yes') {
+                      if ($roomFacility->tempat_tidur == 'yes') {
                         echo "<td class=\"items\"><i class=\"fa fa-tint\"> Kamar Mandi Dalam</td>";
                       }
 
-                      if ($room_facility->lemari == 'yes') {
-                        echo "<td class=\"items\"><i class=\"fa fa-box\"> Lemari</td>";
+                      $fasilitasUmum = new App\PublicFacility;
+                      // ambil fasilitas berdasarkan kosan
+                      $publicFacility = $fasilitasUmum->fetchDetail($id);
+                      // cek semua fasilitas
+                      if ($publicFacility->parkir_motor == 'yes') {
+                        echo "<td class=\"items\"><i class=\"fa fa-motorcycle\"> Parkir Motor</td>";
+                      }
+
+                      if ($publicFacility->parkir_mobil == 'yes') {
+                        echo "<td class=\"items\"><i class=\"fa fa-car\"> Parkir Mobil</td>";
                       }
                     ?>
                     </tr>

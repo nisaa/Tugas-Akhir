@@ -34,21 +34,21 @@ include "components/header.php";
                         <div class="row">
                           <div class="col-lg-6">
                             <label for="nama">Nama*</label>
-                            <input type="text" class="form-control" name="name" id="name" required>
+                            <input type="text" class="form-control" name="name" required>
                           </div>
                           <div class="col-lg-6">
                             <label for="email">E-Mail*</label>
-                            <input type="text" class="form-control" name="email" id="email" required>
+                            <input type="text" class="form-control" name="email" required>
                           </div>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="subjek">Subjek*</label>
-                        <input type="text" class="form-control" name="subject" id="subject" required>
+                        <label for="subject">Subjek*</label>
+                        <input type="text" class="form-control" name="subject" required>
                       </div>
                       <div class="form-group">
-                        <label for="pesan">Pesan*</label>
-                        <textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
+                        <label for="message">Pesan*</label>
+                        <textarea name="message" cols="30" rows="10" class="form-control"></textarea>
                       </div>
                       <button type="submit" name="submit" class="btn btn-contact btn-flat">Kirim</button>
                     </form>

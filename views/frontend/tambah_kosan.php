@@ -245,11 +245,11 @@ include "components/header.php";
                                                         <div class="col-md-8">
                                                             <div class="input-group">
                                                               <div class="input-group-addon">Rp</div>
-                                                              <input type="text" name="harga_sewa" class="form-control" id="exampleInputAmount" placeholder="Misal: 500000">
+                                                              <input type="text" name="harga_sewa" class="form-control" id="exampleInputAmount" placeholder="Misal: 750000">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <select name="type_kosan" id="" class="form-control">
+                                                            <select name="type_kosan" class="form-control">
                                                               <option>/Bln</option>
                                                               <option>/Thn</option>
                                                             </select>
@@ -284,7 +284,7 @@ include "components/header.php";
                                                     <textarea id="keterangan" name="keterangan" cols="10" rows="5" class="form-control"></textarea>
                                                 </div>
                                                 <div class="text-right">
-                                                    <button type="submit" name="submit" href="#step2" data-toggle="tab" class="btn btn-success btn-flat">Selanjutnya</button>
+                                                    <button type="submit" name="submit" href="#step2" data-toggle="tab" class="btn btn-success btn-flat next-step">Selanjutnya</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -572,8 +572,8 @@ include "components/header.php";
                                           </div>
 
                                           <div class="text-right">
-                                            <button type="submit" name="submit" href="#step1" data-toggle="tab" class="btn btn-warning btn-flat">Kembali</button>
-                                            <button type="submit" name="submit" href="#step3" data-toggle="tab" class="btn btn-success btn-flat">Selanjutnya</button>
+                                            <button type="submit" name="submit" href="#step1" data-toggle="tab" class="btn btn-warning btn-flat prev-step">Kembali</button>
+                                            <button type="submit" name="submit" href="#step3" data-toggle="tab" class="btn btn-success btn-flat next-step">Selanjutnya</button>
                                           </div>
                                         </div>
                                     </div>
@@ -644,7 +644,7 @@ include "components/header.php";
                                         </script>
 
                                         <div class="text-right">
-                                            <button type="submit" name="submit" href="#step2" class="btn btn-warning btn-flat" data-toggle="tab">Kembali</button>
+                                            <button type="submit" name="submit" href="#step2" class="btn btn-warning btn-flat prev-step" data-toggle="tab">Kembali</button>
                                             <button type="submit" name="submit" class="btn btn-success btn-flat">Simpan</button>
                                         </div>
                                     </div>
