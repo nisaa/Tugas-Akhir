@@ -34,15 +34,14 @@ function prevTab(active) {
     $(active).prev().find('a[data-toggle="tab"]').click();
 }
 
-// Wizard
 $(".next-step").click(function () {
-    var $active = $('.wizard .nav-tabs li.active');
+    var $active = $('.nav-tabs li.active');
 
     nextTab($active);
 });
 
 $(".prev-step").click(function () {
-    var $active = $('.wizard .nav-tabs li.active');
+    var $active = $('.nav-tabs li.active');
 
     prevTab($active);
 });

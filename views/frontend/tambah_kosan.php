@@ -284,7 +284,7 @@ include "components/header.php";
                                                     <textarea id="keterangan" name="keterangan" cols="10" rows="5" class="form-control"></textarea>
                                                 </div>
                                                 <div class="text-right">
-                                                    <button type="submit" name="submit" href="#step2" data-toggle="tab" class="btn btn-success btn-flat next-step">Selanjutnya</button>
+                                                    <button type="button" href="#step2" data-toggle="tab" class="btn btn-success btn-flat next-step">Selanjutnya</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -572,8 +572,8 @@ include "components/header.php";
                                           </div>
 
                                           <div class="text-right">
-                                            <button type="submit" name="submit" href="#step1" data-toggle="tab" class="btn btn-warning btn-flat prev-step">Kembali</button>
-                                            <button type="submit" name="submit" href="#step3" data-toggle="tab" class="btn btn-success btn-flat next-step">Selanjutnya</button>
+                                            <button type="button" href="#step1" data-toggle="tab" class="btn btn-warning btn-flat prev-step">Kembali</button>
+                                            <button type="button" href="#step3" data-toggle="tab" class="btn btn-success btn-flat next-step">Selanjutnya</button>
                                           </div>
                                         </div>
                                     </div>
@@ -589,7 +589,7 @@ include "components/header.php";
                                             var map = new google.maps.Map(document.getElementById('map'), {
                                             zoom: 12,
                                             // Nilai 5.381281, 95.954826 adalah Nilai Latitude dan Longitude titik kordinat Kota Sigli
-                                            center: new google.maps.LatLng(-6.914937110178531, 107.60548365380862),
+                                            center: new google.maps.LatLng(-6.874937110178531, 107.50548365380862),
                                             mapTypeId: google.maps.MapTypeId.ROADMAP
                                             });
                                             //posisi awal marker
@@ -629,22 +629,8 @@ include "components/header.php";
                                             </div>
                                         </div>
 
-                                        <script type="text/javascript">
-                                            function updateMarkerPosition(latLng) {
-                                            document.getElementById('latitude').value = [latLng.lat()]
-                                            document.getElementById('longitude').value = [latLng.lng()]
-                                            }
-
-                                            updateMarkerPosition(latLng);
-                                            google.maps.event.addListener(marker, 'drag', function() {
-                                            // ketika marker di drag, otomatis nilai latitude dan longitude
-                                            //menyesuaikan dengan posisi marker
-                                            updateMarkerPosition(marker.getPosition());
-                                            });
-                                        </script>
-
                                         <div class="text-right">
-                                            <button type="submit" name="submit" href="#step2" class="btn btn-warning btn-flat prev-step" data-toggle="tab">Kembali</button>
+                                            <button type="button" href="#step2" class="btn btn-warning btn-flat prev-step" data-toggle="tab">Kembali</button>
                                             <button type="submit" name="submit" class="btn btn-success btn-flat">Simpan</button>
                                         </div>
                                     </div>
@@ -656,6 +642,21 @@ include "components/header.php";
             </div>
         </div>
     </section>
+
+    <script type="text/javascript">
+        function updateMarkerPosition(latLng) {
+        document.getElementById('latitude').value = [latLng.lat()]
+        document.getElementById('longitude').value = [latLng.lng()]
+        }
+
+        updateMarkerPosition(latLng);
+        google.maps.event.addListener(marker, 'drag', function() {
+        // ketika marker di drag, otomatis nilai latitude dan longitude
+        //menyesuaikan dengan posisi marker
+        updateMarkerPosition(marker.getPosition());
+        });
+    </script>
+
 </body>
 </html>
 

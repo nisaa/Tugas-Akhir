@@ -76,7 +76,7 @@ $idUnik = sha1(uniqid(mt_rand(), true));
 $ekstensi = end((explode('.', $_FILES['gambar_kosan']['name'])));
 $namaFile = $_FILES['gambar_kosan']['name'];
 $foto = $namaFile;
-$gambarKosan = $_POST['nama_kosan'] . ' . ' . $ekstensi;
+$gambarKosan = $_POST['nama_kosan'] . '-' . $idUnik . '.' . $ekstensi;
 
 $move = move_uploaded_file($_FILES['gambar_kosan']['tmp_name'], 'resources/images/' . $gambarKosan);
 
@@ -136,7 +136,7 @@ $fasilitasUmum['tv_bersama'] = isset($_POST['tv_bersama']) ? 'yes' : 'no';
 $fasilitasUmum['cctv'] = isset($_POST['cctv']) ? 'yes' : 'no';
 $fasilitasUmum['ruangan_makan'] = isset($_POST['ruangan_makan']) ? 'yes' : 'no';
 $fasilitasUmum['dispenser'] = isset($_POST['dispenser']) ? 'yes' : 'no';
-var_dump(is_null($_POST['dispenser']));
+
 $publicFacilities = new App\PublicFacility($kost);
 $publicFacilities->insert($fasilitasUmum);
 

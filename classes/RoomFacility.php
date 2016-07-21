@@ -86,7 +86,7 @@ class RoomFacility
         $statement->bindParam(':kode_kosan', $this->kost->getId(), PDO::PARAM_STR);
 
         foreach ($fasilitas as $key => $value) {
-            $statement->bindParam(':' . $key, $value, PDO::PARAM_STR);
+            $statement->bindValue(':' . $key, $value, PDO::PARAM_STR);
         }
 
         $statement->execute();
