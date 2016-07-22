@@ -24,7 +24,8 @@ class RoomFacility
     private $kost;
     private $db;
 
-    public function __construct($kost = null) {
+    public function __construct($kost = null)
+    {
         if (!is_null($kost)) {
             $this->kost = $kost;
         }
@@ -70,7 +71,7 @@ class RoomFacility
         $sql = "SELECT * FROM fasilitas_kamar WHERE kode_kosan = :id";
 
         $statement = $this->getDb()->prepare($sql);
-        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->bindParam(':id', $id, PDO::PARAM_STR);
 
         $statement->execute();
 
@@ -79,7 +80,8 @@ class RoomFacility
         return $result;
     }
 
-    public function insert($fasilitas) {
+    public function insert($fasilitas)
+    {
         $sql = "INSERT INTO fasilitas_kamar(kode_kosan, kamar_mandi_dalam, tempat_tidur, lemari, meja, ac, tv, tv_kabel, kipas_angin, air_panas, telepon, wastafel, internet, kulkas, rak_buku) VALUES(:kode_kosan, :kamar_mandi_dalam, :tempat_tidur, :lemari, :meja, :ac, :tv, :tv_kabel, :kipas_angin, :air_panas, :telepon, :wastafel, :internet, :kulkas, :rak_buku)";
 
         $statement = $this->getDb()->prepare($sql);

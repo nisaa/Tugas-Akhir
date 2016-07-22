@@ -22,9 +22,11 @@ class PublicFacility
     private $dining_room;
     private $dispenser;
 
+    private $kost;
     private $db;
 
-    public function __construct($kost = null) {
+    public function __construct($kost = null)
+    {
         if (!is_null($kost)) {
             $this->kost = $kost;
         }
@@ -70,7 +72,7 @@ class PublicFacility
         $sql = "SELECT * FROM fasilitas_umum WHERE kode_kosan = :id";
 
         $statement = $this->getDb()->prepare($sql);
-        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->bindParam(':id', $id, PDO::PARAM_STR);
 
         $statement->execute();
 
@@ -79,7 +81,8 @@ class PublicFacility
         return $result;
     }
 
-    public function insert($fasilitas) {
+    public function insert($fasilitas)
+    {
         $sql = "INSERT INTO fasilitas_umum(kode_kosan, dapur_bersama, ruangan_tamu, parkir_motor, parkir_mobil, kamar_mandi_bersama, kulkas_bersama, kantin, mesin_cuci, wifi, pembantu, tv_bersama, cctv, ruangan_makan, dispenser) VALUES (:kode_kosan, :dapur_bersama, :ruangan_tamu, :parkir_motor, :parkir_mobil, :kamar_mandi_bersama, :kulkas_bersama, :kantin, :mesin_cuci, :wifi, :pembantu, :tv_bersama, :cctv, :ruangan_makan, :dispenser)";
 
         $statement = $this->getDb()->prepare($sql);

@@ -193,13 +193,27 @@ include "components/header.php";
                       </thead>
                       <tbody>
                         <?php
-                          $kost = new App\Kost;
-                          $kosts = $kost->fetch();
+                          $kos = new App\Kost;
 
-                          if (count($kosts) > 0) {
-                            foreach ($kosts as $kos) {
-                              ?>
+                          $dataKos = $kos->fetchDataKost($_SESSION['logged_in_user']['username']);
 
+                          if (count($dataKos) == 0) {
+                        ?>
+                        <tr>
+                          <td colspan="5" class="text-center warning"><span class="text-danger">Data tidak ditemukan</span></td>
+                        </tr>
+                        <?php } else { ?>
+                        <tr>
+                          <td class="display-picture"><img src="<?php echo $siteUrl . "resources/images/" . $dataKos->gambar_kosan ?>" /></td>
+                          <td><?= $dataKos->nama_kosan ?></td>
+                          <td><?= $dataKos->alamat_kosan ?></td>
+                          <td><?= $dataKos->harga_sewa2 ?></td>
+                          <td>
+                            <a href="" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" data-title="Edit"><i class="fa fa-edit fa-fw"></i>Edit</a>
+                            <button class="btn btn-danger btn-xs" onclick="" data-toggle="tooltip" data-placement="top" data-title="Hapus"><i class="fa fa-trash fa-fw"></i>Hapus</a>
+                          </td>
+                        </tr>
+                        <?php } ?>
                       </tbody>
                     </table>
                   </div>

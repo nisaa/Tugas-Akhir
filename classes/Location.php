@@ -43,6 +43,20 @@ class Location
         $this->db = $connection->db;
     }
 
+    public function fetch($id)
+    {
+        $sql = "SELECT * FROM lokasi WHERE kode_kosan = :id";
+
+        $statement = $this->getDb()->prepare($sql);
+        $statement->bindParam(':id', $id, PDO::PARAM_STR);
+
+        $statement->execute();
+
+        $result = $statement->fetch(PDO::FETCH_OBJ);
+
+        return $result;
+    }
+
     public function insert($lokasi) {
         $sql = "INSERT INTO lokasi(kode_kosan, nama, alamat, lat, lon) VALUES (:kode_kosan, :nama, :alamat, :lat, :lon)";
 

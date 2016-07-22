@@ -23,7 +23,8 @@ class NearbyFacility
     private $kost;
     private $db;
 
-    public function __construct($kost = null) {
+    public function __construct($kost = null)
+    {
         if (!is_null($kost)) {
             $this->kost = $kost;
         }
@@ -69,7 +70,7 @@ class NearbyFacility
         $sql = "SELECT * FROM fasilitas_terdekat WHERE kode_kosan = :id";
 
         $statement = $this->getDb()->prepare($sql);
-        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->bindParam(':id', $id, PDO::PARAM_STR);
 
         $statement->execute();
 
@@ -78,7 +79,8 @@ class NearbyFacility
         return $result;
     }
 
-    public function insert($fasilitas) {
+    public function insert($fasilitas)
+    {
         $sql = "INSERT INTO fasilitas_terdekat(kode_kosan, warnet, warteg, balai_kesehatan, masjid, gereja, bank, indomaret, alfamart, circle_k, mall, supermarket, rumah_sakit, akses_transportasi) VALUES (:kode_kosan, :warnet, :warteg, :balai_kesehatan, :masjid, :gereja, :bank, :indomaret, :alfamart, :circle_k, :mall, :supermarket, :rumah_sakit, :akses_transportasi)";
 
         $statement = $this->getDb()->prepare($sql);
