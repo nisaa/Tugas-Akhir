@@ -24,12 +24,6 @@ class PublicFacility
 
     private $db;
 
-    public function __construct($kost = null) {
-        if (!is_null($kost)) {
-            $this->kost = $kost;
-        }
-    }
-
     public function getDb()
     {
         if (is_null($this->db)) {
@@ -79,11 +73,11 @@ class PublicFacility
         return $result;
     }
 
-    public function insert($fasilitas) {
+    public function insert($kode_kosan, $fasilitas) {
         $sql = "INSERT INTO fasilitas_umum(kode_kosan, dapur_bersama, ruangan_tamu, parkir_motor, parkir_mobil, kamar_mandi_bersama, kulkas_bersama, kantin, mesin_cuci, wifi, pembantu, tv_bersama, cctv, ruangan_makan, dispenser) VALUES (:kode_kosan, :dapur_bersama, :ruangan_tamu, :parkir_motor, :parkir_mobil, :kamar_mandi_bersama, :kulkas_bersama, :kantin, :mesin_cuci, :wifi, :pembantu, :tv_bersama, :cctv, :ruangan_makan, :dispenser)";
 
         $statement = $this->getDb()->prepare($sql);
-        $statement->bindParam(':kode_kosan', $this->kost->getId(), PDO::PARAM_STR);
+        $statement->bindParam(':kode_kosan', $kode_kosan, PDO::PARAM_STR);
 
         foreach ($fasilitas as $key => $value) {
             $statement->bindValue(':' . $key, $value, PDO::PARAM_STR);

@@ -11,14 +11,7 @@ class Location
     private $lat;
     private $lon;
 
-    private $kost;
     private $db;
-
-    public function __construct($kost = null) {
-        if (!is_null($kost)) {
-            $this->kost = $kost;
-        }
-    }
 
     public function getDb()
     {
@@ -43,11 +36,25 @@ class Location
         $this->db = $connection->db;
     }
 
-    public function insert($lokasi) {
+    public function fetchDetail($id)
+    {
+        $sql = "SELECT * FROM lokasi WHERE kode_kosan = :id";
+
+        $statement = $this->getDb()->prepare($sql);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+
+        $statement->execute();
+
+        $result = $statement->fetch(PDO::FETCH_OBJ);
+
+        return $result;
+    }
+
+    public function insert($kode_kosan, $lokasi) {
         $sql = "INSERT INTO lokasi(kode_kosan, nama, alamat, lat, lon) VALUES (:kode_kosan, :nama, :alamat, :lat, :lon)";
 
         $statement = $this->getDb()->prepare($sql);
-        $statement->bindParam(':kode_kosan', $this->kost->getId(), PDO::PARAM_STR);
+        $statement->bindParam(':kode_kosan', $kode_kosan, PDO::PARAM_STR);
 
         foreach ($lokasi as $key => $value) {
             $statement->bindParam(':' . $key, $value, PDO::PARAM_STR);

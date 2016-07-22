@@ -20,14 +20,7 @@ class NearbyFacility
     private $hospital;
     private $transportation_access;
 
-    private $kost;
     private $db;
-
-    public function __construct($kost = null) {
-        if (!is_null($kost)) {
-            $this->kost = $kost;
-        }
-    }
 
     public function getDb()
     {
@@ -78,11 +71,11 @@ class NearbyFacility
         return $result;
     }
 
-    public function insert($fasilitas) {
+    public function insert($kode_kosan, $fasilitas) {
         $sql = "INSERT INTO fasilitas_terdekat(kode_kosan, warnet, warteg, balai_kesehatan, masjid, gereja, bank, indomaret, alfamart, circle_k, mall, supermarket, rumah_sakit, akses_transportasi) VALUES (:kode_kosan, :warnet, :warteg, :balai_kesehatan, :masjid, :gereja, :bank, :indomaret, :alfamart, :circle_k, :mall, :supermarket, :rumah_sakit, :akses_transportasi)";
 
         $statement = $this->getDb()->prepare($sql);
-        $statement->bindParam(':kode_kosan', $this->kost->getId(), PDO::PARAM_STR);
+        $statement->bindParam(':kode_kosan', $kode_kosan, PDO::PARAM_STR);
 
         foreach ($fasilitas as $key => $value) {
             $statement->bindValue(':' . $key, $value, PDO::PARAM_STR);

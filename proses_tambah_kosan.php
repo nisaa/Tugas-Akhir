@@ -100,8 +100,8 @@ $fasilitasKamar['internet'] = isset($_POST['internet']) ? 'yes' : 'no';
 $fasilitasKamar['kulkas'] = isset($_POST['kulkas']) ? 'yes' : 'no';
 $fasilitasKamar['rak_buku'] = isset($_POST['rak_buku']) ? 'yes' : 'no';
 
-$roomFacilities = new App\RoomFacility($kost);
-$roomFacilities->insert($fasilitasKamar);
+$roomFacilities = new App\RoomFacility;
+$roomFacilities->insert($kost->getId(), $fasilitasKamar);
 
 // insert fasilitas terdekat ke database
 $fasilitasTerdekat['warnet'] = isset($_POST['warnet']) ? 'yes' : 'no';
@@ -118,8 +118,8 @@ $fasilitasTerdekat['supermarket'] = isset($_POST['supermarket']) ? 'yes' : 'no';
 $fasilitasTerdekat['rumah_sakit'] = isset($_POST['rumah_sakit']) ? 'yes' : 'no';
 $fasilitasTerdekat['akses_transportasi'] = isset($_POST['akses_transportasi']) ? 'yes' : 'no';
 
-$nearbyFacilities = new App\NearbyFacility($kost);
-$nearbyFacilities->insert($fasilitasTerdekat);
+$nearbyFacilities = new App\NearbyFacility;
+$nearbyFacilities->insert($kost->getId(), $fasilitasTerdekat);
 
 // insert fasilitas umum ke database
 $fasilitasUmum['dapur_bersama'] = isset($_POST['dapur_bersama']) ? 'yes' : 'no';
@@ -137,8 +137,8 @@ $fasilitasUmum['cctv'] = isset($_POST['cctv']) ? 'yes' : 'no';
 $fasilitasUmum['ruangan_makan'] = isset($_POST['ruangan_makan']) ? 'yes' : 'no';
 $fasilitasUmum['dispenser'] = isset($_POST['dispenser']) ? 'yes' : 'no';
 
-$publicFacilities = new App\PublicFacility($kost);
-$publicFacilities->insert($fasilitasUmum);
+$publicFacilities = new App\PublicFacility;
+$publicFacilities->insert($kost->getId(), $fasilitasUmum);
 
 // insert mayoritas penghuni ke database
 $mayoritasPenghuni['pelajar'] = isset($_POST['pelajar']) ? 'yes' : 'no';
@@ -147,8 +147,8 @@ $mayoritasPenghuni['mahasiswa'] = isset($_POST['mahasiswa']) ? 'yes' : 'no';
 $mayoritasPenghuni['karyawan'] = isset($_POST['karyawan']) ? 'yes' : 'no';
 $mayoritasPenghuni['karyawati'] = isset($_POST['karyawati']) ? 'yes' : 'no';
 
-$dweller = new App\Dweller($kost);
-$dweller->insert($mayoritasPenghuni);
+$dweller = new App\Dweller;
+$dweller->insert($kost->getId(), $mayoritasPenghuni);
 
 // insert lokasi ke database
 $lokasi['nama'] = isset($_POST['nama_lokasi']) ? $_POST['nama_lokasi'] : '';
@@ -156,9 +156,9 @@ $lokasi['alamat'] = isset($_POST['alamat_lokasi']) ? $_POST['alamat_lokasi'] : '
 $lokasi['lat'] = isset($_POST['lat']) ? $_POST['lat'] : '';
 $lokasi['lon'] = isset($_POST['lon']) ? $_POST['lon'] : '';
 
-$location = new App\Location($kost);
-$location->insert($lokasi);
+$location = new App\Location;
+$location->insert($kost->getId(), $lokasi);
 
 $_SESSION['success_message'] = "Data kosan berhasil ditambahkan.";
 
-header('Location: ' . $siteUrl . 'profil.php');
+//header('Location: ' . $siteUrl . 'profil.php');

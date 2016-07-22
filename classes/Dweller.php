@@ -15,12 +15,6 @@ class Dweller
     private $kost;
     private $db;
 
-    public function __construct($kost = null) {
-        if (!is_null($kost)) {
-            $this->kost = $kost;
-        }
-    }
-
     public function getDb()
     {
         if (is_null($this->db)) {
@@ -44,11 +38,25 @@ class Dweller
         $this->db = $connection->db;
     }
 
-    public function insert($penghuni) {
+    public function fetchDetail($id)
+    {
+        $sql = "SELECT * FROM mayoritas_penghuni WHERE kode_kosan = :id";
+
+        $statement = $this->getDb()->prepare($sql);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+
+        $statement->execute();
+
+        $result = $statement->fetch(PDO::FETCH_OBJ);
+
+        return $result;
+    }
+
+    public function insert($kode_kosan, $penghuni) {
         $sql = "INSERT INTO mayoritas_penghuni(kode_kosan, pelajar, mahasiswa, mahasiswi, karyawati, karyawan) VALUES (:kode_kosan, :pelajar, :mahasiswa, :mahasiswi, :karyawati, :karyawan)";
 
         $statement = $this->getDb()->prepare($sql);
-        $statement->bindParam(':kode_kosan', $this->kost->getId(), PDO::PARAM_STR);
+        $statement->bindParam(':kode_kosan', $kode_kosan, PDO::PARAM_STR);
 
         foreach ($penghuni as $key => $value) {
             $statement->bindParam(':' . $key, $value, PDO::PARAM_STR);

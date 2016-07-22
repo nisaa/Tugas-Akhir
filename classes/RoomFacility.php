@@ -21,14 +21,7 @@ class RoomFacility
     private $refrigerator;
     private $book_rack;
 
-    private $kost;
     private $db;
-
-    public function __construct($kost = null) {
-        if (!is_null($kost)) {
-            $this->kost = $kost;
-        }
-    }
 
     public function getDb()
     {
@@ -79,11 +72,11 @@ class RoomFacility
         return $result;
     }
 
-    public function insert($fasilitas) {
+    public function insert($kode_kosan, $fasilitas) {
         $sql = "INSERT INTO fasilitas_kamar(kode_kosan, kamar_mandi_dalam, tempat_tidur, lemari, meja, ac, tv, tv_kabel, kipas_angin, air_panas, telepon, wastafel, internet, kulkas, rak_buku) VALUES(:kode_kosan, :kamar_mandi_dalam, :tempat_tidur, :lemari, :meja, :ac, :tv, :tv_kabel, :kipas_angin, :air_panas, :telepon, :wastafel, :internet, :kulkas, :rak_buku)";
 
         $statement = $this->getDb()->prepare($sql);
-        $statement->bindParam(':kode_kosan', $this->kost->getId(), PDO::PARAM_STR);
+        $statement->bindParam(':kode_kosan', $kode_kosan, PDO::PARAM_STR);
 
         foreach ($fasilitas as $key => $value) {
             $statement->bindValue(':' . $key, $value, PDO::PARAM_STR);
