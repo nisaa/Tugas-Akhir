@@ -169,7 +169,7 @@ include "components/header.php";
                         <a data-toggle="modal" href="#modalEditProfil" type="button" class="btn btn-sm btn-warning btn-flat"><i class="fa fa-edit"></i> Edit Profil</a>
 
                         <?php
-                          if ($_SESSION['logged_in_user'] == 'pemilik_kos') {
+                          if ($_SESSION['logged_in_user']['status'] == 'pemilik_kos') {
                         ?>
                         <span class="pull-right">
                           <a href="tambah_kosan.php" type="button" class="btn btn-sm btn-success btn-flat"><i class="fa fa-plus"></i> Tambah Kosan</a>
@@ -194,8 +194,6 @@ include "components/header.php";
                       <tbody>
                         <?php
                           $kos = new App\Kost;
-
-                          $dataKos = $kos->fetchDataKost($_SESSION['logged_in_user']['username']);
 
                           if (count($dataKos) == 0) {
                         ?>
@@ -301,5 +299,3 @@ include "components/header.php";
 <?php
 
 include "components/footer.php";
-
-?>

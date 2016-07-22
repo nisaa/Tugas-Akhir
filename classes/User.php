@@ -195,9 +195,11 @@ class User
 
         $statement->execute();
 
+        $loggedInUser = $this->login();
+
         $this->setId($this->db->lastInsertId());
 
-        return true;
+        return $loggedInUser;
     }
 
     private function checkEmailExist()
