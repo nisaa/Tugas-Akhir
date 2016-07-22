@@ -147,7 +147,7 @@ include "components/header.php";
                             <ul class="nav nav-tabs nav-justified" role="tablist">
                               <li role="presentation" class="active"><a href="#step1" aria-controls="step1" role="tab" data-toggle="tab">Informasi Utama</a></li>
                               <li role="presentation"><a href="#step2" aria-controls="step2" role="tab" data-toggle="tab">Fasilitas</a></li>
-                              <li role="presentation"><a href="#step3" aria-controls="step3" role="tab" data-toggle="tab">Lokasi</a></li>
+                              <li role="presentation"><a href="#step3" id="mapTab" aria-controls="step3" role="tab" data-toggle="tab">Lokasi</a></li>
                             </ul>
                         </div>
 
@@ -649,6 +649,10 @@ include "components/header.php";
           // ketika marker di drag, otomatis nilai latitude dan longitude
           //menyesuaikan dengan posisi marker
           updateMarkerPosition(marker.getPosition());
+          });
+
+          $("#mapTab").on('shown.bs.tab', function() {
+            google.maps.event.trigger(map, 'resize');
           });
         });
     </script>
