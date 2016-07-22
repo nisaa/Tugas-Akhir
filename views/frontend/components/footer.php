@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-</head>
-<body>
     <script>
     $(function () {
         <?php if (isset($_SESSION['error']['login'])) { ?>
@@ -29,6 +22,3 @@
             </div>
         </div>
     </footer>
-
-</body>
-</html>

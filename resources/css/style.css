@@ -310,8 +310,9 @@ label {
     color: #000;
 }
 
-.operational-hour a:hover {
+.text-danger {
     color: #e21414;
+    font-weight: bold;
 }
 
 /* CONTACT */

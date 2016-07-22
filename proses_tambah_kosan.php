@@ -161,4 +161,4 @@ $location->insert($lokasi);
 
 $_SESSION['success_message'] = "Data kosan berhasil ditambahkan.";
 
-//header('Location: ' . $siteUrl . 'profil.php');
+header('Location: ' . $siteUrl . 'profil.php');

@@ -14,27 +14,38 @@ include "components/header.php";
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <form action="" method="post">
 
                     <?php
 
-                        if (isset($_POST['submit'])) {
-                          $name = $_POST['name'];
-                          $email = $_POST['email'];
-                          $subject = $_POST['subject'];
-                          $message = $_POST['message'];
+                        $nama = $_POST['nama'];
+                        $email = $_POST['email'];
+                        $subjek = $_POST['subjek'];
+                        $pesan = $_POST['pesan'];
 
-                          $kontak = new App\Contact;
+                        $to = 'demo@localhost.com';
 
-                          $kontak->sendEmail();
+                        $pesan = "From: $nama <br/>" . $pesan;
+
+                        // Untuk mengirim email HTML, header tipe konten harus diatur
+                        $headers  = 'MIME-Version: 1.0' . "\r\n";
+                        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+                        // Tambahan headers
+                        $headers .= 'From: ' . $email . "\r\n";
+
+                        if (mail('demo@localhost.com', $subjek, $pesan, $headers)) {
+                            echo 'Pesan telah terkirim';
+                        } else {
+                            echo 'Server tidak dapat mengirim email';
                         }
                     ?>
 
+                    <form action="kontak.php" method="post">
                       <div class="form-group">
                         <div class="row">
                           <div class="col-lg-6">
                             <label for="nama">Nama*</label>
-                            <input type="text" class="form-control" name="name" required>
+                            <input type="text" class="form-control" name="nama" required>
                           </div>
                           <div class="col-lg-6">
                             <label for="email">E-Mail*</label>
@@ -43,12 +54,12 @@ include "components/header.php";
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="subject">Subjek*</label>
-                        <input type="text" class="form-control" name="subject" required>
+                        <label for="subjek">Subjek*</label>
+                        <input type="text" class="form-control" name="subjek" required>
                       </div>
                       <div class="form-group">
-                        <label for="message">Pesan*</label>
-                        <textarea name="message" cols="30" rows="10" class="form-control"></textarea>
+                        <label for="pesan">Pesan*</label>
+                        <textarea name="pesan" cols="30" rows="10" class="form-control"></textarea>
                       </div>
                       <button type="submit" name="submit" class="btn btn-contact btn-flat">Kirim</button>
                     </form>

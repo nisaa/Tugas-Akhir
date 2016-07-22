@@ -10,7 +10,7 @@ include "components/header.php";
             <h3 class="faqs">Frequently Asked Question (FAQ)</h3>
             <hr>
 
-            <?php
+            <!--?php
                 $faq = new App\Faq;
                 $faqs = $faq->fetch();
 
@@ -21,7 +21,7 @@ include "components/header.php";
                     Tidak ada data yang ditampilkan
                 </div>
 
-                <?php } else {
+                <!--?php } else {
                     foreach ($faqs as $faq) {
                 ?>
                 <div class="list-faq">
@@ -29,13 +29,30 @@ include "components/header.php";
                     <p><?= $faq['jawaban'] ?></p>
                 </div>
 
-                <?php }
-            } ?>
+                <!--?php }
+            } ?-->
+
+            <div class="list-faq">
+                <b>Apa itu E-Kosan?</b>
+                <p>E-Kosan adalah sebuah website yang menyediakan informasi mengenai kosan yang ada di Bandung.</p>
+
+                <b>Apa tujuan E-Kosan?</b>
+                <p>E-Kosan bertujuan untuk membantu pencari kos dalam mencari kosan dan membantu pemilik kos untuk mempromosikan kosannya melalui internet.</p>
+
+                <b>Bagaimana cara mencari kosan yang saya inginkan?</b>
+                <p>Anda dapat mencari kosan yang Anda inginkan dengan menggunakan fitur pencarian kosan atau langsung menuliskan alamat kosan yang Anda cari di kotak pencarian.</p>
+
+                <b>Apakah saya bisa mendaftarkan kosan milik saya di E-Kosan?</b>
+                <p>Anda dapat mendaftarkan kosan milik Anda secara langsung dengan terlebih dahulu mendaftar sebagai pemilik kos di website E-Kosan atau mendaftarkan kosan Anda kepada pihak E-Kosan yang beralamat di Jl. Sekeloa No. 62 Bandung.</p>
+
+                <b>Apa keuntungan yang saya dapat jika mendaftarkan kosan di E-Kosan?</b>
+                <p>Mendaftarkan kosan di E-Kosan dapat dilakukan dengan cepat, mudah, dan gratis. Selain itu informasi mengenai kosan Anda akan jauh lebih luas tersebar.</p>
+            </div>
 
             <div class="operational-hour">
                 <h3>Jam Operasional</h3>
                 <p>
-                    Senin s.d. Jumat pukul 08.00-16.00, Sabtu dan Minggu Tutup <br>Pendaftaran kosan akan dilayani saat jam operasional <br>Anda masih memiliki pertanyaan? <strong><a class="contact" href="kontak.php">Kontak</a></strong> E-Kosan
+                    Senin s.d. Jumat pukul 08.00-16.00, Sabtu dan Minggu Tutup <br>Pendaftaran kosan akan dilayani saat jam operasional <br>Anda masih memiliki pertanyaan? <a href="kontak.php"><span class="text-danger"> Kontak</span></a> E-Kosan
                 </p>
                 <table>
                     <tr>

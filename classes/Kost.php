@@ -240,5 +240,19 @@ class Kost
 
         return $result;
     }
+
+    public function fetchDataKost($kode_pembuat)
+    {
+        $sql = "SELECT * FROM kosan WHERE kode_pembuat = :kode_pembuat";
+
+        $statement = $this->getDb()->prepare($sql);
+        $statement->bindParam(':kode_pembuat', $kode_pembuat, PDO::PARAM_STR);
+
+        $statement->execute();
+
+        $result = $statement->fetch(PDO::FETCH_OBJ);
+
+        return $result;
+    }
 }
 

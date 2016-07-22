@@ -132,7 +132,7 @@ include "components/header.php";
               </div>
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
                 <div class="panel panel-default">
                     <div class="panel-heading">
                       <h3 class="panel-title"><?= $_SESSION['logged_in_user']['full_name'] ?></h3>
@@ -165,10 +165,44 @@ include "components/header.php";
                     </div>
 
                     <div class="panel-footer">
-                        <a href="tambah_kosan.php" type="button" class="btn btn-sm btn-success btn-flat"><i class="fa fa-plus"></i> Tambah Kosan</a>
                         <a data-toggle="modal" href="#modalKirimPesan" type="button" class="btn btn-sm btn-primary btn-flat"><i class="fa fa-envelope"></i> Kirim Pesan ke Admin</a>
                         <a data-toggle="modal" href="#modalEditProfil" type="button" class="btn btn-sm btn-warning btn-flat"><i class="fa fa-edit"></i> Edit Profil</a>
+
+                        <?php
+                          if ($_SESSION['logged_in_user'] == 'pemilik_kos') {
+                        ?>
+                        <span class="pull-right">
+                          <a href="tambah_kosan.php" type="button" class="btn btn-sm btn-success btn-flat"><i class="fa fa-plus"></i> Tambah Kosan</a>
+                        </span>
+                        <?php } ?>
                     </div>
+                </div>
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Data Kosan Anda</h3>
+                  </div>
+                  <div class="panel-body">
+                    <table class="table table-bordered table-hover">
+                      <thead>
+                          <th>Foto Kosan</th>
+                          <th>Nama Kosan</th>
+                          <th>Alamat Kosan</th>
+                          <th>Harga Sewa</th>
+                          <th>Aksi</th>
+                      </thead>
+                      <tbody>
+                        <?php
+                          $kost = new App\Kost;
+                          $kosts = $kost->fetch();
+
+                          if (count($kosts) > 0) {
+                            foreach ($kosts as $kos) {
+                              ?>
+
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
             </div>
         </div>

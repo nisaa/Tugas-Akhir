@@ -6,6 +6,7 @@ include "config/app.php";
 include "config/database.php";
 
 $action = isset($_GET['action']) ? $_GET['action'] : null;
+
 if ($action != null) {
     $_SESSION['error'] = array();
 
@@ -37,6 +38,7 @@ if ($action != null) {
 
             if ($loggedInUser != null) {
                 $_SESSION['logged_in_user'] = $loggedInUser;
+                $_SESSION['logged_in_user']['status'] = $status;
             } else {
                 $_SESSION['error'][$action][] = "Username atau password tidak sesuai!";
             }

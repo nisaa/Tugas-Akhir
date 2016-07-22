@@ -67,7 +67,7 @@ class Contact
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
         // Additional headers
-        $headers .= 'From ' . $this->name . $this->email . "\r\n";
+        $headers .= 'From: ' . $this->email . "\r\n";
 
         if (mail('demo@localhost.com', $this->subject, $this->message, $headers)) {
             return 'Pesan telah terkirim';

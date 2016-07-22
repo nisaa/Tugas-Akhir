@@ -19,7 +19,7 @@ include "components/header.php";
                 <div class="col-md-3">
                   <div class="box">
                       <div class="box-body">
-                        <form action="">
+                        <form action="" method="post">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -28,14 +28,14 @@ include "components/header.php";
                                           <div class="col-md-8">
                                             <div class="checkbox">
                                               <label>
-                                                <input type="checkbox" name="bathroom"> Kamar Mandi Dalam
+                                                <input type="checkbox" name="kamar_mandi_dalam"> Kamar Mandi Dalam
                                                 </label>
                                             </div>
                                           </div><!-- /.col -->
                                           <div class="col-md-4">
                                             <div class="checkbox">
                                               <label>
-                                                <input type="checkbox" name="cupboard"> Lemari
+                                                <input type="checkbox" name="lemari"> Lemari
                                               </label>
                                             </div>
                                           </div>
@@ -44,14 +44,14 @@ include "components/header.php";
                                           <div class="col-md-8">
                                             <div class="checkbox">
                                               <label>
-                                                <input type="checkbox" name="bed"> Tempat Tidur
+                                                <input type="checkbox" name="tempat_tidur"> Tempat Tidur
                                               </label>
                                             </div>
                                           </div>
                                           <div class="col-md-4">
                                             <div class="checkbox">
                                               <label>
-                                                <input type="checkbox" name="table"> Meja
+                                                <input type="checkbox" name="meja"> Meja
                                               </label>
                                             </div>
                                           </div>
@@ -68,14 +68,14 @@ include "components/header.php";
                                             <div class="col-md-6">
                                                 <div class="checkbox">
                                                   <label>
-                                                    <input type="checkbox" name="car_parking" value=""> Parkir Mobil
+                                                    <input type="checkbox" name="parkir_mobil" value=""> Parkir Mobil
                                                   </label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                             <div class="checkbox">
                                               <label>
-                                                <input type="checkbox" name="living_room" value=""> Ruang Tamu
+                                                <input type="checkbox" name="ruangan_tamu" value=""> Ruang Tamu
                                               </label>
                                             </div>
                                           </div>
@@ -84,14 +84,14 @@ include "components/header.php";
                                             <div class="col-md-6">
                                                 <div class="checkbox">
                                                   <label>
-                                                    <input type="checkbox" name="bike_parking" value=""> Parkir Motor
+                                                    <input type="checkbox" name="parkir_motor" value=""> Parkir Motor
                                                   </label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="checkbox">
                                                   <label>
-                                                    <input type="checkbox" name="kitchen" value=""> Dapur
+                                                    <input type="checkbox" name="dapur_bersama" value=""> Dapur
                                                   </label>
                                                 </div>
                                             </div>
@@ -104,7 +104,7 @@ include "components/header.php";
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Lokasi Kampus Terdekat</label>
-                                        <select name="location" id="" class="form-control">
+                                        <select name="kategori_kampus" class="form-control">
                                           <option>UNIKOM, ITHB, UNPAD, ITB</option>
                                           <option>UNISBA, UNPAS</option>
                                           <option>ITENAS, WIDYATAMA, LP3I</option>
@@ -119,7 +119,7 @@ include "components/header.php";
                                 <div class="col-md-12">
                                     <div class="form-group">
                                     <label>Harga</label>
-                                    <select name="price" id="" class="form-control">
+                                    <select name="harga_kosan" class="form-control">
                                       <option> &lt;Rp 500.000/bln </option>
                                       <option> Rp 500.000 - Rp 1.000.000/bln</option>
                                       <option> &gt;Rp 1.000.000/bln</option>
@@ -170,28 +170,28 @@ include "components/header.php";
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="nama_kosan">Nama Kosan</label>
-                                                    <input type="text" class="form-control" name="nama_kosan" id="nama_kosan" autofocus>
+                                                    <input type="text" class="form-control" name="nama_kosan" autofocus>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="alamat_kosan">Alamat Kosan</label>
-                                                    <input type="text" class="form-control" name="alamat_kosan" id="alamat_kosan">
+                                                    <input type="text" class="form-control" name="alamat_kosan">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="jenis_hunian">Peruntukan Penghuni</label>
                                                       <div class="row">
                                                         <div class="col-md-4">
                                                           <label class="radio-inline">
-                                                            <input type="radio" name="jenis_hunian" id="pria" value="pria"> Pria
+                                                            <input type="radio" name="jenis_hunian" id="pria" value="Pria"> Pria
                                                           </label>
                                                         </div>
                                                         <div class="col-md-4">
                                                           <label class="radio-inline">
-                                                            <input type="radio" name="jenis_hunian" id="wanita" value="wanita"> Wanita
+                                                            <input type="radio" name="jenis_hunian" id="wanita" value="Wanita"> Wanita
                                                           </label>
                                                         </div>
                                                         <div class="col-md-4">
                                                           <label class="radio-inline">
-                                                            <input type="radio" name="jenis_hunian" id="pw" value="pw"> Pria &amp; Wanita
+                                                            <input type="radio" name="jenis_hunian" id="pw" value="Pria &amp; Wanita"> Pria &amp; Wanita
                                                           </label>
                                                         </div>
                                                       </div>
@@ -245,7 +245,7 @@ include "components/header.php";
                                                         <div class="col-md-8">
                                                             <div class="input-group">
                                                               <div class="input-group-addon">Rp</div>
-                                                              <input type="text" name="harga_sewa" class="form-control" id="exampleInputAmount" placeholder="Misal: 750000">
+                                                              <input type="text" name="harga_sewa" class="form-control" placeholder="Misal: 750000">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
@@ -258,30 +258,30 @@ include "components/header.php";
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="harga_sewa2">Keterangan Harga Sewa</label>
-                                                    <input type="text" class="form-control" name="harga_sewa2" id="harga_sewa2" placeholder="Misal: Rp 750.000/Bln">
+                                                    <input type="text" class="form-control" name="harga_sewa2" placeholder="Misal: Rp 750.000/Bln">
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="nama_pemilik">Nama Pemilik</label>
-                                                    <input type="text" class="form-control" name="nama_pemilik" id="nama_pemilik">
+                                                    <input type="text" class="form-control" name="nama_pemilik">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="nomor_tlp">Nomor Telepon Utama</label>
-                                                    <input type="text" class="form-control" name="nomor_tlp" id="nomor_tlp">
+                                                    <input type="text" class="form-control" name="nomor_tlp">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="nomor_tlp2">Nomor Telepon Kedua</label>
-                                                    <input type="text" class="form-control" name="nomor_tlp2" id="nomor_tlp2">
+                                                    <input type="text" class="form-control" name="nomor_tlp2">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="gambar_kosan">Foto Kos</label>
-                                                    <input type="file" name="gambar_kosan" id="gambar_kosan">
+                                                    <label for="gambar_kosan">Foto Kosan</label>
+                                                    <input type="file" name="gambar_kosan">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="keterangan">Deskripsi Kos</label>
-                                                    <textarea id="keterangan" name="keterangan" cols="10" rows="5" class="form-control"></textarea>
+                                                    <label for="keterangan">Deskripsi Kosan</label>
+                                                    <textarea name="keterangan" cols="10" rows="5" class="form-control"></textarea>
                                                 </div>
                                                 <div class="text-right">
                                                     <button type="button" href="#step2" data-toggle="tab" class="btn btn-success btn-flat next-step">Selanjutnya</button>
@@ -297,25 +297,12 @@ include "components/header.php";
                                           <div class="row">
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="kamar_mandi_dalam" id="kamar_mandi_dalam"> Kamar Mandi Dalam
+                                                <input type="checkbox" name="kamar_mandi_dalam"> Kamar Mandi Dalam
                                               </label>
                                             </div>
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="tempat_tidur" id="tempat_tidur"> Tempat Tidur
-                                              </label>
-                                            </div>
-                                          </div>
-
-                                          <div class="row">
-                                            <div class="col-md-4">
-                                              <label class="checkbox-inline">
-                                                <input type="checkbox" name="lemari" id="lemari"> Lemari
-                                              </label>
-                                            </div>
-                                            <div class="col-md-4">
-                                              <label class="checkbox-inline">
-                                                <input type="checkbox" name="meja" id="meja"> Meja
+                                                <input type="checkbox" name="tempat_tidur"> Tempat Tidur
                                               </label>
                                             </div>
                                           </div>
@@ -323,25 +310,12 @@ include "components/header.php";
                                           <div class="row">
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="ac" id="ac"> AC
+                                                <input type="checkbox" name="lemari"> Lemari
                                               </label>
                                             </div>
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="tv" id="tv"> TV
-                                              </label>
-                                            </div>
-                                          </div>
-
-                                          <div class="row">
-                                            <div class="col-md-4">
-                                              <label class="checkbox-inline">
-                                                <input type="checkbox" name="tv_kabel" id="tv_kabel"> TV Kabel
-                                              </label>
-                                            </div>
-                                            <div class="col-md-4">
-                                              <label class="checkbox-inline">
-                                                <input type="checkbox" name="kipas_angin" id="kipas_angin"> Kipas Angin
+                                                <input type="checkbox" name="meja"> Meja
                                               </label>
                                             </div>
                                           </div>
@@ -349,25 +323,12 @@ include "components/header.php";
                                           <div class="row">
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="air_panas" id="air_panas"> Air Panas
+                                                <input type="checkbox" name="ac"> AC
                                               </label>
                                             </div>
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="telepon" id="telepon"> Telepon
-                                              </label>
-                                            </div>
-                                          </div>
-
-                                          <div class="row">
-                                            <div class="col-md-4">
-                                              <label class="checkbox-inline">
-                                                <input type="checkbox" name="wastafel" id="wastafel"> Wastafel
-                                              </label>
-                                            </div>
-                                            <div class="col-md-4">
-                                              <label class="checkbox-inline">
-                                                <input type="checkbox" name="internet" id="internet"> Internet
+                                                <input type="checkbox" name="tv"> TV
                                               </label>
                                             </div>
                                           </div>
@@ -375,12 +336,51 @@ include "components/header.php";
                                           <div class="row">
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="kulkas" id="kulkas"> Kulkas
+                                                <input type="checkbox" name="tv_kabel"> TV Kabel
                                               </label>
                                             </div>
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="rak_buku" id="rak_buku"> Rak Buku
+                                                <input type="checkbox" name="kipas_angin"> Kipas Angin
+                                              </label>
+                                            </div>
+                                          </div>
+
+                                          <div class="row">
+                                            <div class="col-md-4">
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox" name="air_panas"> Air Panas
+                                              </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox" name="telepon"> Telepon
+                                              </label>
+                                            </div>
+                                          </div>
+
+                                          <div class="row">
+                                            <div class="col-md-4">
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox" name="wastafel"> Wastafel
+                                              </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox" name="internet"> Internet
+                                              </label>
+                                            </div>
+                                          </div>
+
+                                          <div class="row">
+                                            <div class="col-md-4">
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox" name="kulkas"> Kulkas
+                                              </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox" name="rak_buku"> Rak Buku
                                               </label>
                                             </div>
                                           </div>
@@ -392,25 +392,12 @@ include "components/header.php";
                                           <div class="row">
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="dapur_bersama" id="dapur_bersama"> Dapur Bersama
+                                                <input type="checkbox" name="dapur_bersama"> Dapur Bersama
                                               </label>
                                             </div>
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="ruangan_tamu" id="ruangan_tamu"> Ruangan Tamu
-                                              </label>
-                                            </div>
-                                          </div>
-
-                                          <div class="row">
-                                            <div class="col-md-4">
-                                              <label class="checkbox-inline">
-                                                <input type="checkbox" name="parkir_motor" id="parkir_motor"> Parkir Motor
-                                              </label>
-                                            </div>
-                                            <div class="col-md-4">
-                                              <label class="checkbox-inline">
-                                                <input type="checkbox" name="parkir_mobil" id="parkir_mobil"> Parkir Mobil
+                                                <input type="checkbox" name="ruangan_tamu"> Ruangan Tamu
                                               </label>
                                             </div>
                                           </div>
@@ -418,25 +405,12 @@ include "components/header.php";
                                           <div class="row">
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="kamar_mandi_bersama" id="kamar_mandi_bersama"> Kamar Mandi Bersama
+                                                <input type="checkbox" name="parkir_motor"> Parkir Motor
                                               </label>
                                             </div>
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="kulkas_bersama" id="kulkas_bersama"> Kulkas Bersama
-                                              </label>
-                                            </div>
-                                          </div>
-
-                                          <div class="row">
-                                            <div class="col-md-4">
-                                              <label class="checkbox-inline">
-                                                <input type="checkbox" name="kantin" id="kantin"> Kantin
-                                              </label>
-                                            </div>
-                                            <div class="col-md-4">
-                                              <label class="checkbox-inline">
-                                                <input type="checkbox" name="mesin_cuci" id="mesin_cuci"> Mesin Cuci
+                                                <input type="checkbox" name="parkir_mobil"> Parkir Mobil
                                               </label>
                                             </div>
                                           </div>
@@ -444,25 +418,12 @@ include "components/header.php";
                                           <div class="row">
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="wifi" id="wifi"> Wifi
+                                                <input type="checkbox" name="kamar_mandi_bersama"> Kamar Mandi Bersama
                                               </label>
                                             </div>
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="pembantu" id="pembantu"> Pembantu
-                                              </label>
-                                            </div>
-                                          </div>
-
-                                          <div class="row">
-                                            <div class="col-md-4">
-                                              <label class="checkbox-inline">
-                                                <input type="checkbox" name="tv_bersama" id="tv_bersama"> TV Bersama
-                                              </label>
-                                            </div>
-                                            <div class="col-md-4">
-                                              <label class="checkbox-inline">
-                                                <input type="checkbox" name="cctv" id="cctv"> CCTV
+                                                <input type="checkbox" name="kulkas_bersama"> Kulkas Bersama
                                               </label>
                                             </div>
                                           </div>
@@ -470,12 +431,51 @@ include "components/header.php";
                                           <div class="row">
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="ruangan_makan" id="ruangan_makan"> Ruangan Makan
+                                                <input type="checkbox" name="kantin"> Kantin
                                               </label>
                                             </div>
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="dispenser" id="Dispenser"> Dispenser
+                                                <input type="checkbox" name="mesin_cuci"> Mesin Cuci
+                                              </label>
+                                            </div>
+                                          </div>
+
+                                          <div class="row">
+                                            <div class="col-md-4">
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox" name="wifi"> Wifi
+                                              </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox" name="pembantu"> Pembantu
+                                              </label>
+                                            </div>
+                                          </div>
+
+                                          <div class="row">
+                                            <div class="col-md-4">
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox" name="tv_bersama"> TV Bersama
+                                              </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox" name="cctv"> CCTV
+                                              </label>
+                                            </div>
+                                          </div>
+
+                                          <div class="row">
+                                            <div class="col-md-4">
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox" name="ruangan_makan"> Ruangan Makan
+                                              </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox" name="dispenser"> Dispenser
                                               </label>
                                             </div>
                                           </div>
@@ -487,25 +487,12 @@ include "components/header.php";
                                           <div class="row">
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="warnet" id="warnet"> Warnet
+                                                <input type="checkbox" name="warnet"> Warnet
                                               </label>
                                             </div>
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="warteg" id="warteg"> Warteg
-                                              </label>
-                                            </div>
-                                          </div>
-
-                                          <div class="row">
-                                            <div class="col-md-4">
-                                              <label class="checkbox-inline">
-                                                <input type="checkbox" name="balai_kesehatan" id="balai_kesehatan"> Balai Kesehatan
-                                              </label>
-                                            </div>
-                                            <div class="col-md-4">
-                                              <label class="checkbox-inline">
-                                                <input type="checkbox" name="masjid" id="masjid"> Masjid
+                                                <input type="checkbox" name="warteg"> Warteg
                                               </label>
                                             </div>
                                           </div>
@@ -513,25 +500,12 @@ include "components/header.php";
                                           <div class="row">
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="gereja" id="gereja"> Gereja
+                                                <input type="checkbox" name="balai_kesehatan"> Balai Kesehatan
                                               </label>
                                             </div>
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="bank" id="bank"> Bank
-                                              </label>
-                                            </div>
-                                          </div>
-
-                                          <div class="row">
-                                            <div class="col-md-4">
-                                              <label class="checkbox-inline">
-                                                <input type="checkbox" name="indomaret" id="indomaret"> Indomaret
-                                              </label>
-                                            </div>
-                                            <div class="col-md-4">
-                                              <label class="checkbox-inline">
-                                                <input type="checkbox" name="alfamart" id="alfamart"> Alfamart
+                                                <input type="checkbox" name="masjid"> Masjid
                                               </label>
                                             </div>
                                           </div>
@@ -539,25 +513,12 @@ include "components/header.php";
                                           <div class="row">
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="circle_k" id="circle_k"> Circle K
+                                                <input type="checkbox" name="gereja"> Gereja
                                               </label>
                                             </div>
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="mall" id="mall"> Mall
-                                              </label>
-                                            </div>
-                                          </div>
-
-                                          <div class="row">
-                                            <div class="col-md-4">
-                                              <label class="checkbox-inline">
-                                                <input type="checkbox" name="supermarket" id="supermarket"> Supermarket
-                                              </label>
-                                            </div>
-                                            <div class="col-md-4">
-                                              <label class="checkbox-inline">
-                                                <input type="checkbox" name="rumah_sakit" id="rumah_sakit"> Rumah Sakit
+                                                <input type="checkbox" name="bank"> Bank
                                               </label>
                                             </div>
                                           </div>
@@ -565,8 +526,46 @@ include "components/header.php";
                                           <div class="row">
                                             <div class="col-md-4">
                                               <label class="checkbox-inline">
-                                                <input type="checkbox" name="akses_transportasi" id="akses_transportasi
-                                                "> Dekat Akses Kendaraan Umum
+                                                <input type="checkbox" name="indomaret"> Indomaret
+                                              </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox" name="alfamart"> Alfamart
+                                              </label>
+                                            </div>
+                                          </div>
+
+                                          <div class="row">
+                                            <div class="col-md-4">
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox" name="circle_k"> Circle K
+                                              </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox" name="mall"> Mall
+                                              </label>
+                                            </div>
+                                          </div>
+
+                                          <div class="row">
+                                            <div class="col-md-4">
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox" name="supermarket"> Supermarket
+                                              </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox" name="rumah_sakit"> Rumah Sakit
+                                              </label>
+                                            </div>
+                                          </div>
+
+                                          <div class="row">
+                                            <div class="col-md-4">
+                                              <label class="checkbox-inline">
+                                                <input type="checkbox" name="akses_transportasi"> Dekat Akses Kendaraan Umum
                                               </label>
                                             </div>
                                           </div>
@@ -588,7 +587,7 @@ include "components/header.php";
 
                                             var map = new google.maps.Map(document.getElementById('map'), {
                                             zoom: 12,
-                                            // Nilai 5.381281, 95.954826 adalah Nilai Latitude dan Longitude titik kordinat Kota Sigli
+
                                             center: new google.maps.LatLng(-6.874937110178531, 107.50548365380862),
                                             mapTypeId: google.maps.MapTypeId.ROADMAP
                                             });
@@ -612,19 +611,19 @@ include "components/header.php";
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="nama">Nama Kosan di Map</label>
-                                                    <input type="text" class="form-control" name="nama" id="nama" autofocus>
+                                                    <input type="text" class="form-control" name="nama" autofocus>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="alamat">Alamat Kosan di Map</label>
-                                                    <input type="text" class="form-control" name="alamat" id="alamat">
+                                                    <input type="text" class="form-control" name="alamat">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="lat">Latitude</label>
-                                                    <input type="text" id="latitude`" class="form-control" name="lat" id="lat">
+                                                    <input type="text" id="latitude`" class="form-control" name="lat">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="lon">Longitude</label>
-                                                    <input type="text" id="longitude" class="form-control" name="lon" id="lon" 21263">
+                                                    <input type="text" id="longitude" class="form-control" name="lon">
                                                 </div>
                                             </div>
                                         </div>
