@@ -581,30 +581,6 @@ include "components/header.php";
                                         <section id="map-canvas">
                                             <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBm3VfroAQ3A8G48t2bHaELoKC_7MG3mmg"></script>
                                             <div id="map"></div>
-                                            <script type="text/javascript">
-
-                                            //* Fungsi untuk mendapatkan nilai latitude longitude
-
-                                            var map = new google.maps.Map(document.getElementById('map'), {
-                                            zoom: 12,
-
-                                            center: new google.maps.LatLng(-6.874937110178531, 107.50548365380862),
-                                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                                            });
-                                            //posisi awal marker
-                                            var latLng = new google.maps.LatLng(-6.914937110178531, 107.60548365380862);
-
-                                            /* buat marker yang bisa di drag lalu
-                                            panggil fungsi updateMarkerPosition(latLng)
-                                            dan letakan posisi terakhir di id=latitude dan id=longitude
-                                            */
-                                            var marker = new google.maps.Marker({
-                                            position : latLng,
-                                            title : 'lokasi',
-                                            map : map,
-                                            draggable : true
-                                            });
-                                            </script>
                                         </section>
 
                                         <div class="row">
@@ -619,7 +595,7 @@ include "components/header.php";
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="lat">Latitude</label>
-                                                    <input type="text" id="latitude`" class="form-control" name="lat">
+                                                    <input type="text" id="latitude" class="form-control" name="lat">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="lon">Longitude</label>
@@ -644,20 +620,38 @@ include "components/header.php";
 
     <script type="text/javascript">
         function updateMarkerPosition(latLng) {
-        document.getElementById('latitude').value = [latLng.lat()]
-        document.getElementById('longitude').value = [latLng.lng()]
-        }
+          document.getElementById('latitude').value = [latLng.lat()]
+          document.getElementById('longitude').value = [latLng.lng()]
+          }
+        $(function() {
+          //* Fungsi untuk mendapatkan nilai latitude longitude
+          var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
 
-        updateMarkerPosition(latLng);
-        google.maps.event.addListener(marker, 'drag', function() {
-        // ketika marker di drag, otomatis nilai latitude dan longitude
-        //menyesuaikan dengan posisi marker
-        updateMarkerPosition(marker.getPosition());
+          center: new google.maps.LatLng(-6.874937110178531, 107.50548365380862),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+          });
+          //posisi awal marker
+          var latLng = new google.maps.LatLng(-6.914937110178531, 107.60548365380862);
+
+          /* buat marker yang bisa di drag lalu
+          panggil fungsi updateMarkerPosition(latLng)
+          dan letakan posisi terakhir di id=latitude dan id=longitude
+          */
+          var marker = new google.maps.Marker({
+          position : latLng,
+          title : 'lokasi',
+          map : map,
+          draggable : true
+          });
+          updateMarkerPosition(latLng);
+          google.maps.event.addListener(marker, 'drag', function() {
+          // ketika marker di drag, otomatis nilai latitude dan longitude
+          //menyesuaikan dengan posisi marker
+          updateMarkerPosition(marker.getPosition());
+          });
         });
     </script>
-
-</body>
-</html>
 
 <?php
 

@@ -65,6 +65,7 @@ if ($action != null) {
 
             if ($registeredUser != null) {
                 $_SESSION['logged_in_user'] = (array) $registeredUser;
+                $_SESSION['logged_in_user']['status'] = $status;
             }
         }
     }
