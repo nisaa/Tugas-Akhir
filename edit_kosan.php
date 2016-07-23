@@ -25,8 +25,4 @@ $lok = $lokasi->fetchDetail($kode_kosan);
 $mayoritas_penghuni = new App\Dweller;
 $m_penghuni = $mayoritas_penghuni->fetchDetail($kode_kosan);
 
-
-
 include "views/frontend/edit_kosan.php";
-
-var_dump($kos);

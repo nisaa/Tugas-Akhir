@@ -147,15 +147,15 @@ include "components/header.php";
             <div class="box box-danger">
               <div class="box box-solid">
                 <div class="box-header with-border">
-                  <span class="box-title"><?= $kostDetail->nama_kosan; ?></span>
-                  <h3 class="box-title navbar-right label label-danger"><?= $kostDetail->harga_sewa2; ?></h3>
+                  <span class="box-title"><?= $kostDetail->nama_kosan ?></span>
+                  <h3 class="box-title navbar-right label label-danger"><?= $kostDetail->harga_sewa2 ?></h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <div class="item">
                     <div class="row">
                       <div class="col-md-8">
                         <div class="detail-image">
-                          <img src="<?php echo $siteUrl . "resources/images/" . $kostDetail->gambar_kosan; ?>"/>
+                          <img src="<?php echo $siteUrl . "resources/images/" . $kostDetail->gambar_kosan ?>"/>
                         </div>
                       </div>
                       <div class="col-md-4">
@@ -167,7 +167,7 @@ include "components/header.php";
                         <p><?= $kostDetail->jenis_hunian ?></p>
                         <span><b> Kontak</b></span>
                         <p> Hubungi <?= $kostDetail->nama_pemilik ?>:
-                            <br><i class="fa fa-phone"></i> <?= $kostDetail->nomor_tlp . " / " . $kostDetail->nomor_tlp2; ?>
+                            <br><i class="fa fa-phone"></i> <?= $kostDetail->nomor_tlp . " / " . $kostDetail->nomor_tlp2 ?>
                         </p>
                       </div>
                     </div>
@@ -177,27 +177,27 @@ include "components/header.php";
                       <table class="table table-bordered text-center">
                         <tr>
                         <?php
-                          $fasilitasKamar = new App\RoomFacility;
+                          $fasilitas = new App\RoomFacility;
                           // ambil fasilitas berdasarkan kosan
-                          $roomFacility = $fasilitasKamar->fetchDetail($id);
-                          // cek semua fasilitas
-                          if ($roomFacility->kamar_mandi_dalam == 'yes') {
+                          $fasilitasKamar = $fasilitas->fetchDetail($id);
+                          // cek semua fasilitas kamar
+                          if ($fasilitasKamar->kamar_mandi_dalam == 'yes') {
                             echo "<td class=\"items\"><i class=\"fa fa-bed\"> Tempat Tidur</i></td>";
                           }
 
-                          if ($roomFacility->tempat_tidur == 'yes') {
+                          if ($fasilitasKamar->tempat_tidur == 'yes') {
                             echo "<td class=\"items\"><i class=\"fa fa-tint\"> Kamar Mandi Dalam</td>";
                           }
 
-                          $fasilitasUmum = new App\PublicFacility;
+                          $fasilitas = new App\PublicFacility;
                           // ambil fasilitas berdasarkan kosan
-                          $publicFacility = $fasilitasUmum->fetchDetail($id);
-                          // cek semua fasilitas
-                          if ($publicFacility->parkir_motor == 'yes') {
+                          $fasilitasUmum = $fasilitas->fetchDetail($id);
+                          // cek semua fasilitas umum
+                          if ($fasilitasUmum->parkir_motor == 'yes') {
                             echo "<td class=\"items\"><i class=\"fa fa-motorcycle\"> Parkir Motor</td>";
                           }
 
-                          if ($publicFacility->parkir_mobil == 'yes') {
+                          if ($fasilitasUmum->parkir_mobil == 'yes') {
                             echo "<td class=\"items\"><i class=\"fa fa-car\"> Parkir Mobil</td>";
                           }
                         ?>
@@ -206,28 +206,222 @@ include "components/header.php";
                     </div>
 
                     <hr>
+
                     <div class="additional">
-                        <span><h4> Fasilitas Tambahan</h4></span>
-                        <ul>
-                            <li> Ruang Tamu</li>
-                            <li> Kulkas Bersama</li>
-                            <li> Meja</li>
-                            <li> Lemari</li>
-                        </ul>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <ul class="nav nav-tabs nav-justified" role="tablist">
+                            <li role="presentation" class="active"><a href="#fasilitasKamar" aria-controls="fasilitasKamar" role="tab" data-toggle="tab">Fasilitas Kamar</a></li>
+                            <li role="presentation"><a href="#fasilitasUmum" aria-controls="fasilitasUmum" role="tab" data-toggle="tab">Fasilitas Umum</a></li>
+                            <li role="presentation"><a href="#fasilitasTerdekat" aria-controls="fasilitasTerdekat" role="tab" data-toggle="tab">Fasilitas Terdekat</a></li>
+                          </ul>
+                        </div>
+
+                        <div class="panel-body">
+                          <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade in active" id="fasilitasKamar">
+                              <ul class="list-unstyled">
+                                <?php
+                                  if ($fasilitasKamar->tempat_tidur == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Tempat Tidur</li>";
+                                  }
+
+                                  if ($fasilitasKamar->kamar_mandi_dalam == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Kamar Mandi Dalam</li>";
+                                  }
+
+                                  if ($fasilitasKamar->meja == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Meja</li>";
+                                  }
+
+                                  if ($fasilitasKamar->lemari == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Lemari</li>";
+                                  }
+
+                                  if ($fasilitasKamar->ac == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> AC</li>";
+                                  }
+
+                                  if ($fasilitasKamar->tv == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> TV</li>";
+                                  }
+
+                                  if ($fasilitasKamar->tv_kabel == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> TV Kabel</li>";
+                                  }
+
+                                  if ($fasilitasKamar->kipas_angin == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Kipas Angin</li>";
+                                  }
+
+                                  if ($fasilitasKamar->air_panas == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Air Panas</li>";
+                                  }
+
+                                  if ($fasilitasKamar->telepon == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Telepon</li>";
+                                  }
+
+                                  if ($fasilitasKamar->wastafel == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Wastafel</li>";
+                                  }
+
+                                  if ($fasilitasKamar->internet == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Internet</li>";
+                                  }
+
+                                  if ($fasilitasKamar->kulkas == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Kulkas</li>";
+                                  }
+
+                                  if ($fasilitasKamar->rak_buku == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Rak Buku</li>";
+                                  }
+                                ?>
+                              </ul>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane fade" id="fasilitasUmum">
+                              <ul class="list-unstyled">
+                                <?php
+                                  if ($fasilitasUmum->dapur_bersama == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Dapur</li>";
+                                  }
+
+                                  if ($fasilitasUmum->ruangan_tamu == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Ruang Tamu</li>";
+                                  }
+
+                                  if ($fasilitasUmum->parkir_motor == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Parkir Motor</li>";
+                                  }
+
+                                  if ($fasilitasUmum->parkir_mobil == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Parkir Mobil</li>";
+                                  }
+
+                                  if ($fasilitasUmum->kamar_mandi_bersama == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Kamar Mandi</li>";
+                                  }
+
+                                  if ($fasilitasUmum->kantin == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Kantin</li>";
+                                  }
+
+                                  if ($fasilitasUmum->mesin_cuci == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Mesin Cuci</li>";
+                                  }
+
+                                  if ($fasilitasUmum->wifi == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> WiFi</li>";
+                                  }
+
+                                  if ($fasilitasUmum->pembantu == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Pembantu</li>";
+                                  }
+
+                                  if ($fasilitasUmum->tv_bersama == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> TV Bersama</li>";
+                                  }
+
+                                  if ($fasilitasUmum->cctv == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> CCTV</li>";
+                                  }
+
+                                  if ($fasilitasUmum->ruangan_makan == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Ruang Makan</li>";
+                                  }
+
+                                  if ($fasilitasUmum->dispenser == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Dispenser</li>";
+                                  }
+                                ?>
+                              </ul>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane fade" id="fasilitasTerdekat">
+                              <ul class="list-unstyled">
+                                <?php
+
+                                  $fasilitas = new App\NearbyFacility;
+                                  // ambil fasilitas berdasarkan kosan
+                                  $fasilitasTerdekat = $fasilitas->fetchDetail($id);
+
+                                  if ($fasilitasTerdekat->warnet == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Warnet</li>";
+                                  }
+
+                                  if ($fasilitasTerdekat->warteg == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Warteg</li>";
+                                  }
+
+                                  if ($fasilitasTerdekat->balai_kesehatan == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Balai Kesehatan</li>";
+                                  }
+
+                                  if ($fasilitasTerdekat->masjid == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Masjid</li>";
+                                  }
+
+                                  if ($fasilitasTerdekat->gereja == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Gereja</li>";
+                                  }
+
+                                  if ($fasilitasTerdekat->bank == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Bank</li>";
+                                  }
+
+                                  if ($fasilitasTerdekat->indomaret == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Indomaret</li>";
+                                  }
+
+                                  if ($fasilitasTerdekat->alfamart == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Alfamart</li>";
+                                  }
+
+                                  if ($fasilitasTerdekat->circle_k == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Circle K</li>";
+                                  }
+
+                                  if ($fasilitasTerdekat->mall == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Mall</li>";
+                                  }
+
+                                  if ($fasilitasTerdekat->supermarket == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Supermarket</li>";
+                                  }
+
+                                  if ($fasilitasTerdekat->rumah_sakit == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Rumah Sakit</li>";
+                                  }
+
+                                  if ($fasilitasTerdekat->akses_transportasi == 'yes') {
+                                    echo "<li><i class=\"fa fa-angle-right\"></i> Akses Transportasi</li>";
+                                  }
+                                ?>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
                     <hr>
                     <h4> Map Kosan</h4>
+                    <?php
+                      $lokasi = new App\Location;
+                      $lokasiLatLon = $lokasi->fetch($id);
+                    ?>
                     <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBm3VfroAQ3A8G48t2bHaELoKC_7MG3mmg"></script>
                     <div id="map"></div>
 
                     <script type="text/javascript">
                         // Menentukan koordinat titik tengah peta
-                        var myLatlng = new google.maps.LatLng(-6.176587,106.827115);
+                        var myLatlng = new google.maps.LatLng(<?= $lokasiLatLon->lat ?>, <?= $lokasiLatLon->lon ?>);
 
                         // Pengaturan zoom dan titik tengah peta
                         var myOptions = {
-                            zoom: 13,
+                            zoom: 12,
                             center: myLatlng
                         };
 
@@ -238,7 +432,7 @@ include "components/header.php";
                         var marker = new google.maps.Marker({
                             position: myLatlng,
                             map: map,
-                            title:"Monas"
+                            title:"Lokasi Kos"
                         });
                     </script>
 

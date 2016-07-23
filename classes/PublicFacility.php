@@ -22,6 +22,7 @@ class PublicFacility
     private $dining_room;
     private $dispenser;
 
+    private $kost;
     private $db;
 
     public function getDb()
@@ -64,7 +65,7 @@ class PublicFacility
         $sql = "SELECT * FROM fasilitas_umum WHERE kode_kosan = :id";
 
         $statement = $this->getDb()->prepare($sql);
-        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->bindParam(':id', $id, PDO::PARAM_STR);
 
         $statement->execute();
 

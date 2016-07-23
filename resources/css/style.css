@@ -359,6 +359,11 @@ label {
     margin-top: 10px;
 }
 
+.display-picture img {
+    width: 80px;
+    height: 65px;
+}
+
 /* FOOTER */
 .footer a {
     color: #fff;

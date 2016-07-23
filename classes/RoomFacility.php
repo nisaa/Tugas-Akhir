@@ -63,7 +63,7 @@ class RoomFacility
         $sql = "SELECT * FROM fasilitas_kamar WHERE kode_kosan = :id";
 
         $statement = $this->getDb()->prepare($sql);
-        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->bindParam(':id', $id, PDO::PARAM_STR);
 
         $statement->execute();
 
