@@ -4,11 +4,11 @@ include "components/header.php";
 
 ?>
 
-<section id="profile">
+<section id="edit-profil">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-              <div class="box">
+                <div class="box">
                   <div class="box-body">
                     <form action="">
                         <div class="row">
@@ -129,135 +129,68 @@ include "components/header.php";
                         </div>
                     </form>
                   </div>
-              </div>
+                </div>
             </div>
 
-            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title"><?= $_SESSION['logged_in_user']['full_name'] ?></h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-3 col-lg-3" align="center">
-                            <img alt="User Pic" src="<?php echo $siteUrl . "resources/images/" . $_SESSION['logged_in_user']
-                            ['gambar'] ?>" class="img-circle img-responsive">
-                        </div>
-                        <div class=" col-md-9 col-lg-9 ">
-                          <table class="table table-user-information">
-                            <tbody>
-                                <tr>
-                                    <td>Alamat</td>
-                                    <td><?= $_SESSION['logged_in_user']['alamat'] ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Email</td>
-                                    <td><?= $_SESSION['logged_in_user']['email'] ?></td>
-                                </tr>
-                                <tr>
-                                    <td>No. Telp</td>
-                                    <td><?= $_SESSION['logged_in_user']['telp'] ?></td>
-                                </tr>
-                            </tbody>
-                          </table>
-                        </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Form Edit Profil</h3>
+                    </div>
+                    <div class="box-body">
+                        <?php
+                        if (!empty($_SESSION['error_message'])) {
+                            ?>
+                            <div class="alert alert-danger">
+                                <?= $_SESSION['error_message']; ?>
+                            </div>
+                            <?php
+
+                            unset($_SESSION['error_message']);
+                        }
+                        ?>
+                        <form action="proses_edit_profil.php?id=<?= $_SESSION['logged_in_user']['user_id'] ?>" method="post" enctype="multipart/form-data">
+                          <label for="gambar">Foto Profil</label>
+                          <input type="file" name="gambar" value="" placeholder="">
+                          <div class="form-group">
+                            <label for="fullname">Nama Lengkap</label>
+                            <input type="text" class="form-control" name="fullname" value="<?= $_SESSION['logged_in_user']['full_name'] ?>" autofocus>
+                          </div>
+                          <div class="form-group">
+                              <label for="password">Password</label>
+                              <input type="password" class="form-control" name="password">
+                              Hanya isi kolom ini jika ingin merubah password
+                          </div>
+                          <div class="form-group">
+                            <label for="alamat">Alamat</label>
+                            <input type="text" class="form-control" name="alamat" value="<?= $_SESSION['logged_in_user']['alamat'] ?>">
+                          </div>
+                          <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" name="email" value="<?= $_SESSION['logged_in_user']['email'] ?>">
+                          </div>
+                          <div class="form-group">
+                            <label for="telp">No. Telp</label>
+                            <input type="text" class="form-control" name="telp" value="<?= $_SESSION['logged_in_user']['telp'] ?>">
+                          </div>
+                          <div class="row">
+                            <div class="col-xs-8">
+                              <button type="submit" class="btn bg-maroon btn-flat">Simpan</button>
+                              <button type="button" class="btn btn-default btn-flat">Batal</button>
+                            </div>
+                          </div>
+                        </form>
                     </div>
                 </div>
-
-                <div class="panel-footer">
-                  <a data-toggle="modal" href="#modalKirimPesan" type="button" class="btn btn-sm btn-primary btn-flat"><i class="fa fa-envelope"></i> Kirim Pesan ke Admin</a>
-                  <a href="edit_profil.php?action=edit&amp;id=<?= $_SESSION['logged_in_user']['user_id'] ?>" type="button" class="btn btn-sm btn-warning btn-flat"><i class="fa fa-edit"></i> Edit Profil</a>
-
-                  <?php
-                    if ($_SESSION['logged_in_user']['status'] == 'pemilik_kos') {
-                  ?>
-                  <span class="pull-right">
-                    <a href="tambah_kosan.php" type="button" class="btn btn-sm btn-success btn-flat"><i class="fa fa-plus"></i> Tambah Kosan</a>
-                  </span>
-                </div>
-              </div>
-
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Data Kosan Anda</h3>
-                </div>
-                <div class="panel-body">
-                  <table class="table table-bordered table-hover">
-                    <thead>
-                        <th>Foto Kosan</th>
-                        <th>Nama Kosan</th>
-                        <th>Alamat Kosan</th>
-                        <th>Harga Sewa</th>
-                        <th>Aksi</th>
-                    </thead>
-                    <tbody>
-                      <?php
-                        $kos = new App\Kost;
-
-                        $dataKos = $kos->fetchDataKost($_SESSION['logged_in_user']['username']);
-                        var_dump(count($dataKos));
-
-                        if (count($dataKos) == 0) {
-                      ?>
-                      <tr>
-                        <td colspan="5" class="text-center warning"><span class="text-danger">Data tidak ditemukan</span></td>
-                      </tr>
-                      <?php } else {
-                        foreach ($dataKos as $kos) {
-                      ?>
-                      <tr>
-                        <td class="display-picture"><img src="<?php echo $siteUrl . "resources/images/" . $kos->gambar_kosan ?>" /></td>
-                        <td><?= $kos->nama_kosan ?></td>
-                        <td><?= $kos->alamat_kosan ?></td>
-                        <td><?= $kos->harga_sewa2 ?></td>
-                        <td>
-                          <a href="" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" data-title="Edit"><i class="fa fa-edit fa-fw"></i>Edit</a>
-                          <button class="btn btn-danger btn-xs" onclick="" data-toggle="tooltip" data-placement="top" data-title="Hapus"><i class="fa fa-trash fa-fw"></i>Hapus</a>
-                        </td>
-                      </tr>
-                      <?php
-                        }
-                      }
-                      ?>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <?php } ?>
             </div>
+
+
+
+
+
         </div>
     </div>
 </section>
-
-<!-- Modal Kirim Pesan -->
-<div class="modal fade" id="modalKirimPesan" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-md" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Kirim Pesan ke Admin</h4>
-      </div>
-      <div class="modal-body">
-        <form action="proses_pertanyaan.php" method="post">
-          <div class="form-group">
-            <label for="subjek">Subjek</label>
-            <input type="text" class="form-control" name="judul" autofocus>
-          </div>
-          <div class="form-group">
-              <label for="pertanyaan">Pertanyaan</label>
-              <textarea name="pertanyaan" cols="10" rows="5" class="form-control"></textarea>
-          </div>
-          <div class="row">
-            <div class="col-xs-4">
-              <button type="submit" class="btn bg-maroon btn-flat">Kirim</button>
-              <button type="reset" class="btn btn-flat">Reset</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 
 <?php
 

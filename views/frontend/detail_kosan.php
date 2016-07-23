@@ -410,7 +410,7 @@ include "components/header.php";
                     <h4> Map Kosan</h4>
                     <?php
                       $lokasi = new App\Location;
-                      $lokasiLatLon = $lokasi->fetch($id);
+                      $lokasiLatLon = $lokasi->fetchDetail($id);
                     ?>
                     <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBm3VfroAQ3A8G48t2bHaELoKC_7MG3mmg"></script>
                     <div id="map"></div>

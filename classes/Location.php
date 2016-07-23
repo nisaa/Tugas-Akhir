@@ -43,7 +43,7 @@ class Location
         $this->db = $connection->db;
     }
 
-    public function fetch($id)
+    public function fetchDetail($id)
     {
         $sql = "SELECT * FROM lokasi WHERE kode_kosan = :id";
 
