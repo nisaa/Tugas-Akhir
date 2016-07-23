@@ -3,16 +3,6 @@
 include "components/header.php";
 
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <link rel="stylesheet" href="">
-</head>
-<body>
     <section id="profile">
         <div class="container">
             <div class="row">
@@ -170,28 +160,28 @@ include "components/header.php";
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="nama_kosan">Nama Kosan</label>
-                                                    <input type="text" class="form-control" name="nama_kosan" autofocus>
+                                                    <input type="text" class="form-control" name="nama_kosan" value="<?= $kos->nama_kosan ?>" autofocus>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="alamat_kosan">Alamat Kosan</label>
-                                                    <input type="text" class="form-control" name="alamat_kosan">
+                                                    <input type="text" class="form-control" name="alamat_kosan" value="<?= $kos->alamat_kosan ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="jenis_hunian">Peruntukan Penghuni</label>
                                                       <div class="row">
                                                         <div class="col-md-4">
                                                           <label class="radio-inline">
-                                                            <input type="radio" name="jenis_hunian" id="pria" value="Pria"> Pria
+                                                            <input type="radio" name="jenis_hunian" id="pria" value="Pria" <?= ($kos->jenis_hunian == "Pria") ? "checked" : "" ?>> Pria
                                                           </label>
                                                         </div>
                                                         <div class="col-md-4">
                                                           <label class="radio-inline">
-                                                            <input type="radio" name="jenis_hunian" id="wanita" value="Wanita"> Wanita
+                                                            <input type="radio" name="jenis_hunian" id="wanita" value="Wanita" <?= ($kos->jenis_hunian == "Wanita") ? "checked" : "" ?>> Wanita
                                                           </label>
                                                         </div>
                                                         <div class="col-md-4">
                                                           <label class="radio-inline">
-                                                            <input type="radio" name="jenis_hunian" id="pw" value="Pria &amp; Wanita"> Pria &amp; Wanita
+                                                            <input type="radio" name="jenis_hunian" id="pw" value="Pria &amp; Wanita" <?= ($kos->jenis_hunian == "Pria & Wanita") ? "checked" : "" ?>> Pria &amp; Wanita
                                                           </label>
                                                         </div>
                                                       </div>

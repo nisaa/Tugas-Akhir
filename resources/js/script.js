@@ -1,6 +1,10 @@
 // Tooltip dan scroll
 $(function () {
   $('[data-toggle="tooltip"]').tooltip({container: 'body'})
+
+    $('.modal').on('shown.bs.modal', function () {
+        $(this).find('input[autofocus]').focus();
+    });
 })
 
 $(document).ready(function() {
@@ -22,10 +26,6 @@ $(window).scroll(function() {
 });
 
 // Autofocus ketika modal muncul
-$('.modal').on('shown.bs.modal', function () {
-    $(this).find('[autofocus]').focus();
-});
-
 function nextTab(active) {
     $(active).next().find('a[data-toggle="tab"]').click();
 }
