@@ -250,7 +250,7 @@ class Kost
 
         $statement->execute();
 
-        $result = $statement->fetch(PDO::FETCH_OBJ);
+        $result = $statement->fetchAll(PDO::FETCH_OBJ);
 
         return $result;
     }

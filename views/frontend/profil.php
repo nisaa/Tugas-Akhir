@@ -195,7 +195,6 @@ include "components/header.php";
                         $kos = new App\Kost;
 
                         $dataKos = $kos->fetchDataKost($_SESSION['logged_in_user']['username']);
-                        var_dump(count($dataKos));
 
                         if (count($dataKos) == 0) {
                       ?>
