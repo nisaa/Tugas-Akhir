@@ -16,6 +16,9 @@ class User
     private $picture;
     private $status;
 
+    private $title;
+    private $question;
+
     private $db;
 
     public function __construct($username = "", $password = "", $status = "", $email = "", $fullname = "")
@@ -119,6 +122,26 @@ class User
     public function setStatus($status)
     {
         $this->status = $status;
+    }
+
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+
+    public function setQuestion($question)
+    {
+        $this->question = $question;
     }
 
     public function getDb()
@@ -236,5 +259,26 @@ class User
         $result = $statement->fetch(PDO::FETCH_ASSOC);
 
         return $result['exist'];
+    }
+
+    public function update($id, $picture, $fullname, $password, $address, $email, $phone)
+    {
+        if ($this->status == "pencari_kos") {
+            $sql = "UPDATE members SET full_name = :fullname, password = :password, alamat = :alamat, email = :email, telp = :telp";
+        }
+    }
+
+    public function addQuestion()
+    {
+        $sql = "INSERT INTO pertanyaan (judul, pertanyaan) VALUES (:judul, :pertanyaan)";
+
+        $statement = $this->getDb()->prepare($sql);
+
+        $statement->bindParam(":judul", $this->title, PDO::PARAM_STR);
+        $statement->bindParam(":pertanyaan", $this->question, PDO::PARAM_STR);
+
+        $statement->execute();
+
+        return true;
     }
 }
