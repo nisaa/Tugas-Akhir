@@ -38,6 +38,7 @@ if ($action != null) {
 
             if ($loggedInUser != null) {
                 $_SESSION['logged_in_user'] = $loggedInUser;
+                unset($_SESSION['logged_in_user']['password']);
                 $_SESSION['logged_in_user']['status'] = $status;
             } else {
                 $_SESSION['error'][$action][] = "Username atau password tidak sesuai!";
@@ -65,6 +66,7 @@ if ($action != null) {
 
             if ($registeredUser != null) {
                 $_SESSION['logged_in_user'] = (array) $registeredUser;
+                unset($_SESSION['logged_in_user']['password']);
                 $_SESSION['logged_in_user']['status'] = $status;
             }
         }

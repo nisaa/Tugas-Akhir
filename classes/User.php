@@ -21,7 +21,7 @@ class User
 
     private $db;
 
-    public function __construct($username = "", $password = "", $fullname = "", $email = "", $address = "", $phone = "", $picture = "", $status = "")
+    public function __construct($username = "", $password = "", $status = "", $fullname = "", $email = "", $address = "", $phone = "", $picture = "")
     {
         $this->setUsername($username);
         $this->setPassword($password);
@@ -264,24 +264,37 @@ class User
         return $result['exist'];
     }
 
-    public function update($id = "", $picture = "", $fullname = "", $password = "", $address = "", $email = "", $phone = "")
+    public function update($id, $data)
     {
-        if ($this->status == "pencari_kos") {
-            $sql = "UPDATE members SET full_name = :fullname, password = :password, alamat = :alamat, email = :email, telp = :telp WHERE id = :id" ;
-        } else if ($this->status == "pemilik_kos") {
-            $sql = "UPDATE pemilik_kos SET full_name = :fullname, password = :password, alamat = :alamat, email = :email, telp = :telp WHERE id = :id";
+        if ($data['status'] == "pencari_kos") {
+            $sql = "UPDATE members SET gambar = :picture, full_name = :fullname, alamat = :address, email = :email, telp = :phone" ;
+        } else if ($data['status'] == "pemilik_kos") {
+            $sql = "UPDATE pemilik_kos SET gambar = :picture, full_name = :fullname, alamat = :address, email = :email, telp = :phone";
         }
 
+        if ($data['password'] != '') {
+            $sql .= ", password = :password";
+        }
+
+        $sql .= " WHERE user_id = :id";
+
         $statement = $this->getDb()->prepare($sql);
-        $statement->bindParam(":id", $this->id, PDO::PARAM_INT);
-        $statement->bindParam(":picture", $this->picture, PDO::PARAM_STR);
-        $statement->bindParam(":fullname", $this->fullname, PDO::PARAM_STR);
-        $statement->bindParam(":password", $this->password, PDO::PARAM_STR);
-        $statement->bindParam(":address", $this->address, PDO::PARAM_STR);
-        $statement->bindParam(":email", $this->email, PDO::PARAM_STR);
-        $statement->bindParam(":phone", $this->phone, PDO::PARAM_STR);
+
+        $statement->bindParam(":id", $id, PDO::PARAM_INT);
+        $statement->bindParam(":picture", $data['picture'], PDO::PARAM_STR);
+        $statement->bindParam(":fullname", $data['fullname'], PDO::PARAM_STR);
+
+        if ($data['password'] != '') {
+            $statement->bindParam(":password", $data['password'], PDO::PARAM_STR);
+        }
+
+        $statement->bindParam(":address", $data['address'], PDO::PARAM_STR);
+        $statement->bindParam(":email", $data['email'], PDO::PARAM_STR);
+        $statement->bindParam(":phone", $data['phone'], PDO::PARAM_STR);
+
         $statement->execute();
 
+        var_dump( $this->getDb()->errorInfo() );
         return true;
     }
 
