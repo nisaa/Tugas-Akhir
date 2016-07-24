@@ -273,13 +273,13 @@ class User
         }
 
         $statement = $this->getDb()->prepare($sql);
-        $statement->bindValue(":id", $this->id, PDO::PARAM_INT);
-        $statement->bindValue(":picture", $this->picture, PDO::PARAM_STR);
-        $statement->bindValue(":fullname", $this->fullname, PDO::PARAM_STR);
-        $statement->bindValue(":password", $this->password, PDO::PARAM_STR);
-        $statement->bindValue(":address", $this->address, PDO::PARAM_STR);
-        $statement->bindValue(":email", $this->email, PDO::PARAM_STR);
-        $statement->bindValue(":phone", $this->phone, PDO::PARAM_STR);
+        $statement->bindParam(":id", $this->id, PDO::PARAM_INT);
+        $statement->bindParam(":picture", $this->picture, PDO::PARAM_STR);
+        $statement->bindParam(":fullname", $this->fullname, PDO::PARAM_STR);
+        $statement->bindParam(":password", $this->password, PDO::PARAM_STR);
+        $statement->bindParam(":address", $this->address, PDO::PARAM_STR);
+        $statement->bindParam(":email", $this->email, PDO::PARAM_STR);
+        $statement->bindParam(":phone", $this->phone, PDO::PARAM_STR);
         $statement->execute();
 
         return true;
