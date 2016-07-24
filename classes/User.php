@@ -21,12 +21,15 @@ class User
 
     private $db;
 
-    public function __construct($username = "", $password = "", $status = "", $email = "", $fullname = "")
+    public function __construct($username = "", $password = "", $fullname = "", $email = "", $address = "", $phone = "", $picture = "", $status = "")
     {
         $this->setUsername($username);
         $this->setPassword($password);
         $this->setFullname($fullname);
         $this->setEmail($email);
+        $this->setAddress($address);
+        $this->setPhone($phone);
+        $this->setPicture($picture);
         $this->setStatus($status);
     }
 
@@ -261,11 +264,25 @@ class User
         return $result['exist'];
     }
 
-    public function update($id, $picture, $fullname, $password, $address, $email, $phone)
+    public function update($id = "", $picture = "", $fullname = "", $password = "", $address = "", $email = "", $phone = "")
     {
         if ($this->status == "pencari_kos") {
-            $sql = "UPDATE members SET full_name = :fullname, password = :password, alamat = :alamat, email = :email, telp = :telp";
+            $sql = "UPDATE members SET full_name = :fullname, password = :password, alamat = :alamat, email = :email, telp = :telp WHERE id = :id" ;
+        } else if ($this->status == "pemilik_kos") {
+            $sql = "UPDATE pemilik_kos SET full_name = :fullname, password = :password, alamat = :alamat, email = :email, telp = :telp WHERE id = :id";
         }
+
+        $statement = $this->getDb()->prepare($sql);
+        $statement->bindValue(":id", $this->id, PDO::PARAM_INT);
+        $statement->bindValue(":picture", $this->picture, PDO::PARAM_STR);
+        $statement->bindValue(":fullname", $this->fullname, PDO::PARAM_STR);
+        $statement->bindValue(":password", $this->password, PDO::PARAM_STR);
+        $statement->bindValue(":address", $this->address, PDO::PARAM_STR);
+        $statement->bindValue(":email", $this->email, PDO::PARAM_STR);
+        $statement->bindValue(":phone", $this->phone, PDO::PARAM_STR);
+        $statement->execute();
+
+        return true;
     }
 
     public function addQuestion()

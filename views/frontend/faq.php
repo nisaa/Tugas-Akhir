@@ -10,28 +10,6 @@ include "components/header.php";
             <h3 class="faqs">Frequently Asked Question (FAQ)</h3>
             <hr>
 
-            <!--?php
-                $faq = new App\Faq;
-                $faqs = $faq->fetch();
-
-                if (count($faqs) == 0) {
-
-                ?>
-                <div>
-                    Tidak ada data yang ditampilkan
-                </div>
-
-                <!--?php } else {
-                    foreach ($faqs as $faq) {
-                ?>
-                <div class="list-faq">
-                    <b><?= $faq['pertanyaan'] ?></b>
-                    <p><?= $faq['jawaban'] ?></p>
-                </div>
-
-                <!--?php }
-            } ?-->
-
             <div class="list-faq">
                 <b>Apa itu E-Kosan?</b>
                 <p>E-Kosan adalah sebuah website yang menyediakan informasi mengenai kosan yang ada di Bandung.</p>

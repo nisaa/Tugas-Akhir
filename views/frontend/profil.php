@@ -140,7 +140,7 @@ include "components/header.php";
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-3 col-lg-3" align="center">
-                            <img alt="User Pic" src="<?php echo $siteUrl . "resources/images/" . $_SESSION['logged_in_user']
+                            <img alt="User Pic" name="gambar" src="<?php echo $siteUrl . "resources/images/" . $_SESSION['logged_in_user']
                             ['gambar'] ?>" class="img-circle img-responsive">
                         </div>
                         <div class=" col-md-9 col-lg-9 ">
@@ -166,7 +166,7 @@ include "components/header.php";
 
                 <div class="panel-footer">
                   <a data-toggle="modal" href="#modalKirimPesan" type="button" class="btn btn-sm btn-primary btn-flat"><i class="fa fa-envelope"></i> Kirim Pesan ke Admin</a>
-                  <a href="edit_profil.php?action=edit&amp;id=<?= $_SESSION['logged_in_user']['user_id'] ?>" type="button" class="btn btn-sm btn-warning btn-flat"><i class="fa fa-edit"></i> Edit Profil</a>
+                  <a href="edit_profil.php?action=edit&amp;<?= $_SESSION['logged_in_user']['status'] ?>&amp;id=<?= $_SESSION['logged_in_user']['user_id'] ?>" type="button" class="btn btn-sm btn-warning btn-flat"><i class="fa fa-edit"></i> Edit Profil</a>
 
                   <?php
                     if ($_SESSION['logged_in_user']['status'] == 'pemilik_kos') {
@@ -210,8 +210,8 @@ include "components/header.php";
                         <td><?= $kos->alamat_kosan ?></td>
                         <td><?= $kos->harga_sewa2 ?></td>
                         <td>
-                          <a href="" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" data-title="Edit"><i class="fa fa-edit fa-fw"></i>Edit</a>
-                          <button class="btn btn-danger btn-xs" onclick="" data-toggle="tooltip" data-placement="top" data-title="Hapus"><i class="fa fa-trash fa-fw"></i>Hapus</a>
+                          <a href="edit_kosan.php" class="btn btn-default btn-xs"><i class="fa fa-edit fa-fw"></i>Edit</a>
+                          <button class="btn btn-danger btn-xs" onclick=""><i class="fa fa-trash fa-fw"></i>Hapus</a>
                         </td>
                       </tr>
                       <?php

@@ -71,7 +71,7 @@ class NearbyFacility
         return $result;
     }
 
-    public function insert($fasilitas)
+    public function insert($kode_kosan, $fasilitas)
     {
         $sql = "INSERT INTO fasilitas_terdekat(kode_kosan, warnet, warteg, balai_kesehatan, masjid, gereja, bank, indomaret, alfamart, circle_k, mall, supermarket, rumah_sakit, akses_transportasi) VALUES (:kode_kosan, :warnet, :warteg, :balai_kesehatan, :masjid, :gereja, :bank, :indomaret, :alfamart, :circle_k, :mall, :supermarket, :rumah_sakit, :akses_transportasi)";
 

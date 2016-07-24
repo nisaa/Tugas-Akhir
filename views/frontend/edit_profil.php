@@ -149,7 +149,7 @@ include "components/header.php";
                             unset($_SESSION['error_message']);
                         }
                         ?>
-                        <form action="proses_edit_profil.php?id=<?= $_SESSION['logged_in_user']['user_id'] ?>" method="post" enctype="multipart/form-data">
+                        <form action="proses_edit_profil.php?<?= $_SESSION['logged_in_user']['status'] ?>&amp;id=<?= $_SESSION['logged_in_user']['user_id'] ?>" method="post" enctype="multipart/form-data">
                           <label for="gambar">Foto Profil</label>
                           <input type="file" name="gambar" value="" placeholder="">
                           <div class="form-group">
@@ -166,7 +166,7 @@ include "components/header.php";
                             <input type="text" class="form-control" name="alamat" value="<?= $_SESSION['logged_in_user']['alamat'] ?>">
                           </div>
                           <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">E-mail</label>
                             <input type="text" class="form-control" name="email" value="<?= $_SESSION['logged_in_user']['email'] ?>">
                           </div>
                           <div class="form-group">
@@ -176,7 +176,7 @@ include "components/header.php";
                           <div class="row">
                             <div class="col-xs-8">
                               <button type="submit" class="btn bg-maroon btn-flat">Simpan</button>
-                              <button type="button" class="btn btn-default btn-flat">Batal</button>
+                              <a href="profil.php" type="button" class="btn btn-default btn-flat">Batal</a>
                             </div>
                           </div>
                         </form>

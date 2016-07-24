@@ -37,6 +37,12 @@ if (empty($_POST['harga_sewa'])) {
     $hargaSewa = $_POST['harga_sewa'];
 }
 
+if (empty($_POST['harga_sewa2'])) {
+    $_SESSION['error']['harga_sewa2'] = "Keterangan harga sewa tidak boleh kosong.";
+} else {
+    $hargaSewa = $_POST['harga_sewa2'];
+}
+
 if (empty($_POST['nomor_tlp'])) {
     $_SESSION['error']['nomor_tlp'] = "Nomor telepon utama tidak boleh kosong.";
 } else {

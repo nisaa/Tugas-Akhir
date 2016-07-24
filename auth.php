@@ -18,9 +18,9 @@ if ($action != null) {
     }
 
     if (! empty($_POST['password']) && strlen($_POST['password']) < 4) {
-        $_SESSION['error'][$action][] = "Kata sandi harus lebih dari 4 karakter!";
+        $_SESSION['error'][$action][] = "Password harus lebih dari 4 karakter!";
     } else if (empty($_POST['password'])) {
-        $_SESSION['error'][$action][] = "Kata sandi tidak boleh kosong!";
+        $_SESSION['error'][$action][] = "Password tidak boleh kosong!";
     } else {
         $password = $_POST['password'];
     }

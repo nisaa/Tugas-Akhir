@@ -2,6 +2,28 @@
 
 include "components/header.php";
 
+$nama = isset($_POST['nama']);
+$email = isset($_POST['email']);
+$subjek = isset($_POST['subjek']);
+$pesan = isset($_POST['pesan']);
+
+$to = 'demo@localhost.com';
+
+$pesan = "From: $nama <br/>" . $pesan;
+
+// Untuk mengirim email HTML, header tipe konten harus diatur
+$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+// Tambahan headers
+$headers .= 'From: ' . $email . "\r\n";
+
+if (mail('demo@localhost.com', $subjek, $pesan, $headers)) {
+    echo 'Pesan telah terkirim';
+} else {
+    echo 'Server tidak dapat mengirim email';
+}
+
 ?>
 
 <section id="beginning">
@@ -14,55 +36,29 @@ include "components/header.php";
             </div>
             <div class="row">
                 <div class="col-lg-6">
-
-                    <?php
-
-                        $nama = $_POST['nama'];
-                        $email = $_POST['email'];
-                        $subjek = $_POST['subjek'];
-                        $pesan = $_POST['pesan'];
-
-                        $to = 'demo@localhost.com';
-
-                        $pesan = "From: $nama <br/>" . $pesan;
-
-                        // Untuk mengirim email HTML, header tipe konten harus diatur
-                        $headers  = 'MIME-Version: 1.0' . "\r\n";
-                        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-
-                        // Tambahan headers
-                        $headers .= 'From: ' . $email . "\r\n";
-
-                        if (mail('demo@localhost.com', $subjek, $pesan, $headers)) {
-                            echo 'Pesan telah terkirim';
-                        } else {
-                            echo 'Server tidak dapat mengirim email';
-                        }
-                    ?>
-
-                    <form action="kontak.php" method="post">
-                      <div class="form-group">
-                        <div class="row">
-                          <div class="col-lg-6">
-                            <label for="nama">Nama*</label>
-                            <input type="text" class="form-control" name="nama" required>
-                          </div>
-                          <div class="col-lg-6">
-                            <label for="email">E-Mail*</label>
-                            <input type="text" class="form-control" name="email" required>
-                          </div>
+                  <form action="kontak.php" method="post">
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <label for="nama">Nama*</label>
+                          <input type="text" class="form-control" name="nama" required>
+                        </div>
+                        <div class="col-lg-6">
+                          <label for="email">E-Mail*</label>
+                          <input type="text" class="form-control" name="email" required>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label for="subjek">Subjek*</label>
-                        <input type="text" class="form-control" name="subjek" required>
-                      </div>
-                      <div class="form-group">
-                        <label for="pesan">Pesan*</label>
-                        <textarea name="pesan" cols="30" rows="10" class="form-control"></textarea>
-                      </div>
-                      <button type="submit" name="submit" class="btn btn-contact btn-flat">Kirim</button>
-                    </form>
+                    </div>
+                    <div class="form-group">
+                      <label for="subjek">Subjek*</label>
+                      <input type="text" class="form-control" name="subjek" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="pesan">Pesan*</label>
+                      <textarea name="pesan" cols="30" rows="10" class="form-control"></textarea>
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-contact btn-flat">Kirim</button>
+                  </form>
                 </div>
 
                 <div class="info">
