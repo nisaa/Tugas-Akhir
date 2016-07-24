@@ -138,7 +138,9 @@ include "components/header.php";
                         <h3 class="box-title">Form Edit Profil</h3>
                     </div>
                     <div class="box-body">
+
                         <?php
+                        var_dump($_SESSION['logged_in_user']);
                         if (!empty($_SESSION['error_message'])) {
                             ?>
                             <div class="alert alert-danger">
@@ -149,7 +151,7 @@ include "components/header.php";
                             unset($_SESSION['error_message']);
                         }
                         ?>
-                        <form action="proses_edit_profil.php?<?= $_SESSION['logged_in_user']['status'] ?>&amp;id=<?= $_SESSION['logged_in_user']['user_id'] ?>" method="post" enctype="multipart/form-data">
+                        <form action="proses_edit_profil.php?id=<?= $_SESSION['logged_in_user']['user_id'] ?>" method="post" enctype="multipart/form-data">
                           <label for="gambar">Foto Profil</label>
                           <input type="file" name="gambar" value="" placeholder="">
                           <div class="form-group">
@@ -163,7 +165,7 @@ include "components/header.php";
                           </div>
                           <div class="form-group">
                             <label for="alamat">Alamat</label>
-                            <input type="text" class="form-control" name="alamat" value="<?= $_SESSION['logged_in_user']['alamat'] ?>">
+                            <input type="text" class="form-control" name="address" value="<?= $_SESSION['logged_in_user']['alamat'] ?>">
                           </div>
                           <div class="form-group">
                             <label for="email">E-mail</label>
@@ -171,7 +173,7 @@ include "components/header.php";
                           </div>
                           <div class="form-group">
                             <label for="telp">No. Telp</label>
-                            <input type="text" class="form-control" name="telp" value="<?= $_SESSION['logged_in_user']['telp'] ?>">
+                            <input type="text" class="form-control" name="phone" value="<?= $_SESSION['logged_in_user']['telp'] ?>">
                           </div>
                           <div class="row">
                             <div class="col-xs-8">
