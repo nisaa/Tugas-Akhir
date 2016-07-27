@@ -287,6 +287,7 @@ class User
         $statement->bindParam(":address", $data['address'], PDO::PARAM_STR);
         $statement->bindParam(":email", $data['email'], PDO::PARAM_STR);
         $statement->bindParam(":phone", $data['phone'], PDO::PARAM_STR);
+
         $statement->execute();
 
         return true;
