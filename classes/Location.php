@@ -57,9 +57,20 @@ class Location
         $statement->bindParam(':kode_kosan', $kode_kosan, PDO::PARAM_STR);
 
         foreach ($lokasi as $key => $value) {
-            $statement->bindParam(':' . $key, $value, PDO::PARAM_STR);
+            $statement->bindValue(':' . $key, $value, PDO::PARAM_STR);
         }
 
         $statement->execute();
+    }
+
+    public function delete($id)
+    {
+        $sql = "DELETE FROM lokasi WHERE kode_kosan = :id";
+        $statement = $this->getDb()->prepare($sql);
+        $statement->bindParam(':id', $id, PDO::PARAM_STR);
+
+        $statement->execute();
+
+        return true;
     }
 }

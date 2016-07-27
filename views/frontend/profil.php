@@ -138,6 +138,23 @@ include "components/header.php";
                   <h3 class="panel-title"><?= $_SESSION['logged_in_user']['full_name'] ?></h3>
                 </div>
                 <div class="panel-body">
+                    <?php if(isset($_SESSION['success_message'])) { ?>
+                    <div class="col-12">
+                        <div class="alert alert-success">
+                            <?= $_SESSION['success_message']; ?>
+                        </div>
+                    </div>
+                    <?php } unset($_SESSION['success_message']); ?>
+                    <?php if(isset($_SESSION['error']) && count($_SESSION['error']) > 0) { ?>
+                    <div class="col-12">
+                        <div class="alert alert-danger">
+                            <?php foreach ($_SESSION['error'] as $value) {
+                                echo $value;
+                            } ?>
+                            <br>
+                        </div>
+                    </div>
+                    <?php } unset($_SESSION['error']); ?>
                     <div class="row">
                         <div class="col-md-3 col-lg-3" align="center">
                             <img alt="User Pic" name="gambar" src="<?php echo $siteUrl . "resources/images/" . $_SESSION['logged_in_user']
@@ -210,8 +227,8 @@ include "components/header.php";
                         <td><?= $kos->alamat_kosan ?></td>
                         <td><?= $kos->harga_sewa2 ?></td>
                         <td>
-                          <a href="edit_kosan.php" class="btn btn-default btn-xs"><i class="fa fa-edit fa-fw"></i>Edit</a>
-                          <button class="btn btn-danger btn-xs" onclick=""><i class="fa fa-trash fa-fw"></i>Hapus</a>
+                          <a href="edit_kosan.php?id=<?= $kos->kode_kosan ?>" class="btn btn-default btn-xs"><i class="fa fa-edit fa-fw"></i>Edit</a>
+                          <a href="proses_hapus_kosan.php?id=<?= $kos->kode_kosan ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash fa-fw"></i>Hapus</a>
                         </td>
                       </tr>
                       <?php
@@ -237,7 +254,7 @@ include "components/header.php";
         <h4 class="modal-title">Kirim Pesan ke Admin</h4>
       </div>
       <div class="modal-body">
-        <form action="proses_pertanyaan.php" method="post">
+        <form action="proses_tambah_pertanyaan.php" method="post">
           <div class="form-group">
             <label for="subjek">Subjek</label>
             <input type="text" class="form-control" name="judul" autofocus>

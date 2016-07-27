@@ -283,29 +283,10 @@ class User
         $statement->bindParam(":id", $id, PDO::PARAM_INT);
         $statement->bindParam(":picture", $data['picture'], PDO::PARAM_STR);
         $statement->bindParam(":fullname", $data['fullname'], PDO::PARAM_STR);
-
-        if ($data['password'] != '') {
-            $statement->bindParam(":password", $data['password'], PDO::PARAM_STR);
-        }
-
+        $statement->bindParam(":password", $data['password'], PDO::PARAM_STR);
         $statement->bindParam(":address", $data['address'], PDO::PARAM_STR);
         $statement->bindParam(":email", $data['email'], PDO::PARAM_STR);
         $statement->bindParam(":phone", $data['phone'], PDO::PARAM_STR);
-        $statement->execute();
-
-        var_dump( $this->getDb()->errorInfo() );
-        return true;
-    }
-
-    public function addQuestion()
-    {
-        $sql = "INSERT INTO pertanyaan (judul, pertanyaan) VALUES (:judul, :pertanyaan)";
-
-        $statement = $this->getDb()->prepare($sql);
-
-        $statement->bindParam(":judul", $this->title, PDO::PARAM_STR);
-        $statement->bindParam(":pertanyaan", $this->question, PDO::PARAM_STR);
-
         $statement->execute();
 
         return true;

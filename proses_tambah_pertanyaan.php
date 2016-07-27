@@ -22,16 +22,20 @@ if (empty($_POST['judul'])) {
 if (empty($_POST['pertanyaan'])) {
     $_SESSION['error']['pertanyaan'] = "Pertanyaan tidak boleh kosong.";
 } else {
-    $pertanyaan = $_POST['pertanyaan'];
+    $konten_pertanyaan = $_POST['pertanyaan'];
 }
 
 // buat objek
-$tanyaAdmin = new App\User;
-$tanyaAdmin->setTitle($title);
-$tanyaAdmin->setQuestion($question);
+$pertanyaan = new App\Question;
+$pertanyaan->setUserId($_SESSION['logged_in_user']['user_id']);
+$pertanyaan->setSubject($judul);
+$pertanyaan->setContent($konten_pertanyaan);
 
-$tanyaAdmin->addQuestion();
+if($pertanyaan->add()) {
+    $_SESSION['success_message'] = "Pesan ke admin berhasil dikirim.";
+} else {
+    $_SESSION['error']['general'] = "Pesan ke admin gagal dikirim, coba lagi.";
+}
 
-$_SESSION['success_message'] = "Pesan ke admin berhasil dikirim.";
 
 header('Location: ' . $siteUrl . 'profil.php');

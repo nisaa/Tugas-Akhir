@@ -7,6 +7,11 @@ include "config/database.php";
 
 $_SESSION['error'] = array();
 
+$kode_kosan = $_GET['id'];
+
+$kost = new App\Kost;
+$kost_lama = $kost->fetchDetail($kode_kosan);
+
 // jika user belum login, arahkan ke halaman lain
 if (empty($_SESSION['logged_in_user'])) {
     header('Location: ' . $siteUrl);
@@ -64,6 +69,7 @@ $nomorTelpon2 = $_POST['nomor_tlp2'];
 
 // buat objek kosan baru
 $kost = new App\Kost;
+$kost->setId($kode_kosan);
 $kost->setKostName($namaKosan);
 $kost->setAddress($alamatKosan);
 $kost->setType($tipeKosan);
@@ -78,17 +84,14 @@ $kost->setPhone($nomorTelpon);
 $kost->setPhone2($nomorTelpon2);
 
 // upload image
-$idUnik = sha1(uniqid(mt_rand(), true));
-$ekstensi = end((explode('.', $_FILES['gambar_kosan']['name'])));
-$namaFile = $_FILES['gambar_kosan']['name'];
-$foto = $namaFile;
-$gambarKosan = $_POST['nama_kosan'] . '-' . $idUnik . '.' . $ekstensi;
+if ($_FILES['gambar_kosan']['size'] > 0) {
+    $gambarKosan = $kost_lama->gambar_kosan;
+    unlink('resources/images/' . $gambar_kosan);
+    $move = move_uploaded_file($_FILES['gambar_kosan']['tmp_name'], 'resources/images/' . $gambarKosan);
+}
 
-$move = move_uploaded_file($_FILES['gambar_kosan']['tmp_name'], 'resources/images/' . $gambarKosan);
-
-$kost->setImage($gambarKosan);
-// insert kosan ke database
-$kost->add();
+// update kosan ke database
+$kost->update();
 
 // insert fasilitas kamar ke database
 $fasilitasKamar['kamar_mandi_dalam'] = isset($_POST['kamar_mandi_dalam']) ? 'yes' : 'no';
@@ -107,7 +110,8 @@ $fasilitasKamar['kulkas'] = isset($_POST['kulkas']) ? 'yes' : 'no';
 $fasilitasKamar['rak_buku'] = isset($_POST['rak_buku']) ? 'yes' : 'no';
 
 $roomFacilities = new App\RoomFacility;
-$roomFacilities->insert($kost->getId(), $fasilitasKamar);
+$roomFacilities->delete($kode_kosan);
+$roomFacilities->insert($kode_kosan, $fasilitasKamar);
 
 // insert fasilitas terdekat ke database
 $fasilitasTerdekat['warnet'] = isset($_POST['warnet']) ? 'yes' : 'no';
@@ -125,7 +129,8 @@ $fasilitasTerdekat['rumah_sakit'] = isset($_POST['rumah_sakit']) ? 'yes' : 'no';
 $fasilitasTerdekat['akses_transportasi'] = isset($_POST['akses_transportasi']) ? 'yes' : 'no';
 
 $nearbyFacilities = new App\NearbyFacility;
-$nearbyFacilities->insert($kost->getId(), $fasilitasTerdekat);
+$nearbyFacilities->delete($kode_kosan);
+$nearbyFacilities->insert($kode_kosan, $fasilitasTerdekat);
 
 // insert fasilitas umum ke database
 $fasilitasUmum['dapur_bersama'] = isset($_POST['dapur_bersama']) ? 'yes' : 'no';
@@ -144,7 +149,8 @@ $fasilitasUmum['ruangan_makan'] = isset($_POST['ruangan_makan']) ? 'yes' : 'no';
 $fasilitasUmum['dispenser'] = isset($_POST['dispenser']) ? 'yes' : 'no';
 
 $publicFacilities = new App\PublicFacility;
-$publicFacilities->insert($kost->getId(), $fasilitasUmum);
+$publicFacilities->delete($kode_kosan);
+$publicFacilities->insert($kode_kosan, $fasilitasUmum);
 
 // insert mayoritas penghuni ke database
 $mayoritasPenghuni['pelajar'] = isset($_POST['pelajar']) ? 'yes' : 'no';
@@ -154,7 +160,8 @@ $mayoritasPenghuni['karyawan'] = isset($_POST['karyawan']) ? 'yes' : 'no';
 $mayoritasPenghuni['karyawati'] = isset($_POST['karyawati']) ? 'yes' : 'no';
 
 $dweller = new App\Dweller;
-$dweller->insert($kost->getId(), $mayoritasPenghuni);
+$dweller->delete($kode_kosan);
+$dweller->insert($kode_kosan, $mayoritasPenghuni);
 
 // insert lokasi ke database
 $lokasi['nama'] = isset($_POST['nama_lokasi']) ? $_POST['nama_lokasi'] : '';
@@ -163,8 +170,9 @@ $lokasi['lat'] = isset($_POST['lat']) ? $_POST['lat'] : '';
 $lokasi['lon'] = isset($_POST['lon']) ? $_POST['lon'] : '';
 
 $location = new App\Location;
-$location->insert($kost->getId(), $lokasi);
+$location->delete($kode_kosan);
+$location->insert($kode_kosan, $lokasi);
 
-$_SESSION['success_message'] = "Data kosan berhasil ditambahkan.";
+$_SESSION['success_message'] = "Data kosan berhasil diperbaharui.";
 
 header('Location: ' . $siteUrl . 'profil.php');

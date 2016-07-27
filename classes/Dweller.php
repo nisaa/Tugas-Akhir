@@ -64,4 +64,15 @@ class Dweller
 
         $statement->execute();
     }
+
+    public function delete($id)
+    {
+        $sql = "DELETE FROM mayoritas_penghuni WHERE kode_kosan = :id";
+        $statement = $this->getDb()->prepare($sql);
+        $statement->bindParam(':id', $id, PDO::PARAM_STR);
+
+        $statement->execute();
+
+        return true;
+    }
 }

@@ -83,5 +83,18 @@ class NearbyFacility
         }
 
         $statement->execute();
+
+        return true;
+    }
+
+    public function delete($id)
+    {
+        $sql = "DELETE FROM fasilitas_terdekat WHERE kode_kosan = :id";
+        $statement = $this->getDb()->prepare($sql);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+
+        $statement->execute();
+
+        return true;
     }
 }
