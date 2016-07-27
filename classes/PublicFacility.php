@@ -86,5 +86,16 @@ class PublicFacility
 
         $statement->execute();
     }
+
+    public function delete($id)
+    {
+        $sql = "DELETE FROM fasilitas_umum WHERE kode_kosan = :id";
+        $statement = $this->getDb()->prepare($sql);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+
+        $statement->execute();
+
+        return true;
+    }
 }
 

@@ -140,7 +140,6 @@ include "components/header.php";
                     <div class="box-body">
 
                         <?php
-                        var_dump($_SESSION['logged_in_user']);
                         if (!empty($_SESSION['error_message'])) {
                             ?>
                             <div class="alert alert-danger">
@@ -153,7 +152,7 @@ include "components/header.php";
                         ?>
                         <form action="proses_edit_profil.php?id=<?= $_SESSION['logged_in_user']['user_id'] ?>" method="post" enctype="multipart/form-data">
                           <label for="gambar">Foto Profil</label>
-                          <input type="file" name="gambar" value="" placeholder="">
+                          <input type="file" name="gambar">
                           <div class="form-group">
                             <label for="fullname">Nama Lengkap</label>
                             <input type="text" class="form-control" name="fullname" value="<?= $_SESSION['logged_in_user']['full_name'] ?>" autofocus>

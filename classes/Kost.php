@@ -213,6 +213,44 @@ class Kost
         return true;
     }
 
+    public function update()
+    {
+        $sql = "UPDATE kosan SET nama_kosan = :name, alamat_kosan = :address, type_kosan = :type, jenis_hunian = :dweller, kategori_kampus = :campus_category, harga_kosan = :price, harga_sewa2 = :price2, keterangan = :description, gambar_kosan = :image, kode_pembuat = :creator_id, nama_pemilik = :owner_name, nomor_tlp = :phone, nomor_tlp2 = :phone2 WHERE kode_kosan = :id)";
+
+        $statement = $this->getDb()->prepare($sql);
+        $statement->bindParam(":id", $this->id, PDO::PARAM_INT);
+        $statement->bindParam(":name", $this->kost_name, PDO::PARAM_STR);
+        $statement->bindParam(":address", $this->address, PDO::PARAM_STR);
+        $statement->bindParam(":type", $this->type, PDO::PARAM_STR);
+        $statement->bindParam(":dweller", $this->dweller, PDO::PARAM_STR);
+        $statement->bindParam(":campus_category", $this->campus_category, PDO::PARAM_STR);
+        $statement->bindParam(":price", $this->price, PDO::PARAM_STR);
+        $statement->bindParam(":price2", $this->price2, PDO::PARAM_STR);
+        $statement->bindParam(":description", $this->description, PDO::PARAM_STR);
+        $statement->bindParam(":image", $this->image, PDO::PARAM_STR);
+        $statement->bindParam(":creator_id", $this->creator_id, PDO::PARAM_STR);
+        $statement->bindParam(":owner_name", $this->owner_name, PDO::PARAM_STR);
+        $statement->bindParam(":phone", $this->phone, PDO::PARAM_STR);
+        $statement->bindParam(":phone2", $this->phone2, PDO::PARAM_STR);
+
+        $statement->execute();
+
+        $this->id = $this->db->lastInsertId();
+
+        return true;
+    }
+
+    public function delete($id)
+    {
+        $sql = "DELETE FROM kosan WHERE kode_kosan = :id";
+
+        $statement = $this->getDb()->prepare($sql);
+        $statement->bindParam(":id", $id, PDO::PARAM_INT);
+        $statement->execute();
+
+        return true;
+    }
+
     public function fetch($limit = 4)
     {
         $sql = "SELECT * FROM kosan ORDER BY kode_kosan LIMIT :limit";

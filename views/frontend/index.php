@@ -163,8 +163,8 @@ include "views/frontend/components/header.php";
                     <?php
                       $fasilitas = new App\RoomFacility;
                       // ambil fasilitas berdasarkan kosan
-                      $fasilitasKamar = $fasilitas->fetchDetail($id);
-                      // cek semua fasilitas kamar
+                      $fasilitasKamar = $fasilitas->fetchDetail($kos->kode_kosan);
+                      // cek semua fasilitas
                       if ($fasilitasKamar->kamar_mandi_dalam == 'yes') {
                         echo "<td class=\"items\"><i class=\"fa fa-bed\"> Tempat Tidur</i></td>";
                       }
@@ -175,8 +175,8 @@ include "views/frontend/components/header.php";
 
                       $fasilitas = new App\PublicFacility;
                       // ambil fasilitas berdasarkan kosan
-                      $fasilitasUmum = $fasilitas->fetchDetail($id);
-                      // cek semua fasilitas umum
+                      $fasilitasUmum = $fasilitas->fetchDetail($kos->kode_kosan);
+                      // cek semua fasilitas
                       if ($fasilitasUmum->parkir_motor == 'yes') {
                         echo "<td class=\"items\"><i class=\"fa fa-motorcycle\"> Parkir Motor</td>";
                       }

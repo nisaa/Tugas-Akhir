@@ -136,8 +136,8 @@ include "components/header.php";
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <ul class="nav nav-tabs nav-justified" role="tablist">
-                          <li role="presentation" class="active"><a href="#step1" aria-controls="step1" role="tab" data-toggle="tab">Informasi Utama</a></li>
-                          <li role="presentation"><a href="#step2" aria-controls="step2" role="tab" data-toggle="tab">Fasilitas</a></li>
+                          <li role="presentation" class="active"><a href="#step1" id="generalTab" aria-controls="step1" role="tab" data-toggle="tab">Informasi Utama</a></li>
+                          <li role="presentation"><a href="#step2" id="facilityTab" aria-controls="step2" role="tab" data-toggle="tab">Fasilitas</a></li>
                           <li role="presentation"><a href="#step3" id="mapTab" aria-controls="step3" role="tab" data-toggle="tab">Lokasi</a></li>
                         </ul>
                     </div>
@@ -192,17 +192,17 @@ include "components/header.php";
                                                   <div class="row">
                                                     <div class="col-md-4">
                                                       <label class="checkbox-inline">
-                                                        <input type="checkbox" name="pelajar" id="pelajar" value="pelajar"> Pelajar
+                                                        <input type="checkbox" name="pelajar" id="pelajar"> Pelajar
                                                       </label>
                                                     </div>
                                                     <div class="col-md-4">
                                                       <label class="checkbox-inline">
-                                                        <input type="checkbox" name="mahasiswa" id="mahasiswa" value="mahasiswa"> Mahasiswa
+                                                        <input type="checkbox" name="mahasiswa" id="mahasiswa"> Mahasiswa
                                                       </label>
                                                     </div>
                                                     <div class="col-md-4">
                                                       <label class="checkbox-inline">
-                                                        <input type="checkbox" name="mahasiswi" id="mahasiswi" value="mahasiswi"> Mahasiswi
+                                                        <input type="checkbox" name="mahasiswi" id="mahasiswi"> Mahasiswi
                                                       </label>
                                                     </div>
                                                   </div>
@@ -210,12 +210,12 @@ include "components/header.php";
                                                   <div class="row">
                                                     <div class="col-md-4">
                                                       <label class="checkbox-inline">
-                                                        <input type="checkbox" name="karyawan" id="karyawan" value="karyawan"> Karyawan
+                                                        <input type="checkbox" name="karyawan" id="karyawan"> Karyawan
                                                       </label>
                                                     </div>
                                                     <div class="col-md-4">
                                                       <label class="checkbox-inline">
-                                                        <input type="checkbox" name="karyawati" id="karyawati" value="karyawati"> Karyawati
+                                                        <input type="checkbox" name="karyawati" id="karyawati"> Karyawati
                                                       </label>
                                                     </div>
                                                   </div>
@@ -278,7 +278,7 @@ include "components/header.php";
                                                 <textarea name="keterangan" cols="10" rows="5" class="form-control"></textarea>
                                             </div>
                                             <div class="text-right">
-                                                <a href="#step2" type="button" data-toggle="tab" class="btn btn-success btn-flat next-step">Selanjutnya</a>
+                                              <button type="button" href="#step2" data-toggle="tab" class="btn btn-success btn-flat next-step" id="buttonFacility">Selanjutnya</button>
                                             </div>
                                         </div>
                                     </div>
@@ -565,8 +565,8 @@ include "components/header.php";
                                       </div>
 
                                       <div class="text-right">
-                                        <a href="#step1" type="button" data-toggle="tab" class="btn btn-warning btn-flat prev-step">Kembali</a>
-                                        <a href="#step3" type="button" data-toggle="tab" class="btn btn-success btn-flat next-step">Selanjutnya</a>
+                                        <button type="button" href="#step1" data-toggle="tab" class="btn btn-warning btn-flat prev-step" id="buttonBackGeneral">Kembali</button>
+                                        <button type="button" href="#step3" data-toggle="tab" class="btn btn-success btn-flat next-step" id="buttonMapTab">Selanjutnya</button>
                                       </div>
                                     </div>
                                 </div>
@@ -585,11 +585,11 @@ include "components/header.php";
                                             </div>
                                             <div class="form-group">
                                                 <label for="nama">Nama Kosan di Map</label>
-                                                <input type="text" class="form-control" name="nama" autofocus>
+                                                <input type="text" class="form-control" name="nama_lokasi" autofocus>
                                             </div>
                                             <div class="form-group">
                                                 <label for="alamat">Alamat Kosan di Map</label>
-                                                <input type="text" class="form-control" name="alamat">
+                                                <input type="text" class="form-control" name="alamat_lokasi">
                                             </div>
                                             <div class="form-group">
                                                 <label for="lat">Latitude</label>
@@ -603,8 +603,8 @@ include "components/header.php";
                                     </div>
 
                                     <div class="text-right">
-                                        <button type="button" href="#step2" class="btn btn-warning btn-flat prev-step" data-toggle="tab">Kembali</button>
-                                        <button type="submit" name="submit" class="btn btn-success btn-flat">Simpan</button>
+                                      <button type="button" href="#step2" class="btn btn-warning btn-flat prev-step" data-toggle="tab" id="buttonBackFacility">Kembali</button>
+                                      <button type="submit" name="submit" class="btn btn-success btn-flat">Simpan</button>
                                     </div>
                                 </div>
                             </div>
@@ -652,6 +652,22 @@ include "components/header.php";
       $("#mapTab").on('shown.bs.tab', function() {
         google.maps.event.trigger(map, 'resize');
       });
+
+      $("#buttonBackFacility").on('click', function() {
+        $("#facilityTab").click();
+      });
+
+      $("#buttonBackGeneral").on('click', function() {
+        $("#generalTab").click();
+      });
+
+      $("#buttonFacility").on('click', function() {
+        $("#facilityTab").click();
+      });
+
+      $("#buttonMapTab").on('click', function() {
+        $("#mapTab").click();
+      })
     });
 </script>
 
