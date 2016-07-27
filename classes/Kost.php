@@ -254,5 +254,19 @@ class Kost
 
         return $result;
     }
+
+    public function fetchNewDataKost($limit = 3)
+    {
+        $sql = "SELECT * FROM kosan ORDER BY kode_kosan DESC LIMIT :limit";
+
+        $statement = $this->getDb()->prepare($sql);
+        $statement->bindParam(':limit', $limit, PDO::PARAM_INT);
+
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_OBJ);
+
+        return $result;
+    }
 }
 

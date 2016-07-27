@@ -436,7 +436,7 @@ include "components/header.php";
                         });
                     </script>
 
-                    <div class="share">
+                    <!--div class="share">
                         <div class="row">
                             <div class="col-md-6">
                                 <p><b> Bagikan</b></p>
@@ -445,7 +445,7 @@ include "components/header.php";
                                 <i class="fa fa-google-plus-square fa-2x"></i>
                             </div>
                         </div>
-                    </div>
+                    </div-->
                   </div>
                 </div>
               </div>

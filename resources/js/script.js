@@ -1,4 +1,4 @@
-// Tooltip dan scroll
+// Tooltip, autofocus, scroll
 $(function () {
   $('[data-toggle="tooltip"]').tooltip({container: 'body'})
 
@@ -25,7 +25,6 @@ $(window).scroll(function() {
     }
 });
 
-// Autofocus ketika modal muncul
 function nextTab(active) {
     $(active).next().find('a[data-toggle="tab"]').click();
 }

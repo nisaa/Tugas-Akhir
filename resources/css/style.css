@@ -407,13 +407,6 @@ label {
     }
 }
 
-@media (min-width: 992px) {
-    .item .image img {
-        height: 100%;
-        width: 100%;
-    }
-}
-
 @media (max-width: 992px) {
     .button-direction {
         text-align: center;

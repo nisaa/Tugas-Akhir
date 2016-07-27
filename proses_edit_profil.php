@@ -33,3 +33,5 @@ var_dump($data);
 echo $user->update($user_id, $data);
 
 $_SESSION['success_message'] = "Data profil berhasil diperbarui.";
+
+header('Location: ' . $siteUrl . 'profil.php');

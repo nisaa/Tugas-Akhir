@@ -311,4 +311,52 @@ class User
 
         return true;
     }
+
+    public function forgotPassword($data)
+    {
+        // password acak
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*_";
+        $password = substr(str_shuffle($chars),0,8);
+
+        // enkripsi password
+        $newPassword = password_hash($password);
+
+        //kirim email
+        $subjek = "Permintaan Password Baru";
+
+        $pesan = "From: informasikosan@gmail.com <br/>
+                  Kami telah mereset password milik [Nama panjang] dan Anda dapat masuk kembali ke website kami. <br/>
+                  DETAIL AKUN ANDA <br/>
+                  Username: [nama username] <br/>
+                  Password baru: [password]";
+
+        $to = $data['email']
+
+        // Untuk mengirim email HTML, header tipe konten harus diatur
+        $headers  = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+        $kirimEmail = mail($to, $pesan, $subjek, $headers);
+
+        if ($kirimEmail) {
+            if ($data['status'] == "pencari_kos") {
+                $sql = "UPDATE members SET password = $newPassword";
+            } else if ($data['status'] == "pemilik_kos") {
+                $sql = "UPDATE pemilik_kos SET password = $newPassword";
+            }
+            $sql .= " WHERE email = :email";
+
+            $statement = $this->getDb()->prepare($sql);
+
+            $statement->bindParam(":email", $data['email'], PDO::PARAM_STR);
+
+            $statement->execute();
+
+            echo 'Permintaan Password Baru Anda telah dikirim. Silakan cek email Anda';
+        } else {
+            echo 'Server tidak dapat mengirim email';
+        }
+
+        return true;
+    }
 }

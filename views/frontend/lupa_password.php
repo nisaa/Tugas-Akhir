@@ -2,6 +2,9 @@
 
 include "components/header.php";
 
+$lupaPassword = new App\User;
+$lupaPassword->forgotPassword();
+
 ?>
 
 <section id="forget-password">
@@ -13,7 +16,7 @@ include "components/header.php";
 
             <div class="login-box-body">
                 <div> Silakan masukkan email yang digunakan saat mendaftar ke E-Kosan. Kami akan mengirimkan email untuk mereset password Anda</div>
-                <form action="" method="post">
+                <form action="lupa_password.php" method="post">
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="text" class="form-control" name="email" autofocus>

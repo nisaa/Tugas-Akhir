@@ -278,7 +278,7 @@ include "components/header.php";
                                                 <textarea name="keterangan" cols="10" rows="5" class="form-control"></textarea>
                                             </div>
                                             <div class="text-right">
-                                                <button type="button" href="#step2" data-toggle="tab" class="btn btn-success btn-flat next-step">Selanjutnya</button>
+                                                <a href="#step2" type="button" data-toggle="tab" class="btn btn-success btn-flat next-step">Selanjutnya</a>
                                             </div>
                                         </div>
                                     </div>
@@ -565,8 +565,8 @@ include "components/header.php";
                                       </div>
 
                                       <div class="text-right">
-                                        <button type="button" href="#step1" data-toggle="tab" class="btn btn-warning btn-flat prev-step">Kembali</button>
-                                        <button type="button" href="#step3" data-toggle="tab" class="btn btn-success btn-flat next-step">Selanjutnya</button>
+                                        <a href="#step1" type="button" data-toggle="tab" class="btn btn-warning btn-flat prev-step">Kembali</a>
+                                        <a href="#step3" type="button" data-toggle="tab" class="btn btn-success btn-flat next-step">Selanjutnya</a>
                                       </div>
                                     </div>
                                 </div>

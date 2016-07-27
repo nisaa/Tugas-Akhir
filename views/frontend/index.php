@@ -140,7 +140,7 @@ include "views/frontend/components/header.php";
                   <div class="item">
                     <div class="row">
                       <div class="col-md-5">
-                        <div class="image">
+                        <div class="image kos-image">
                           <img src="resources/images/<?= $kos->gambar_kosan ?>">
                         </div>
                       </div>
@@ -161,27 +161,27 @@ include "views/frontend/components/header.php";
                   <table class="table table-bordered text-center">
                     <tr>
                     <?php
-                      $fasilitasKamar = new App\RoomFacility;
+                      $fasilitas = new App\RoomFacility;
                       // ambil fasilitas berdasarkan kosan
-                      $roomFacility = $fasilitasKamar->fetchDetail($id);
-                      // cek semua fasilitas
-                      if ($roomFacility->kamar_mandi_dalam == 'yes') {
+                      $fasilitasKamar = $fasilitas->fetchDetail($id);
+                      // cek semua fasilitas kamar
+                      if ($fasilitasKamar->kamar_mandi_dalam == 'yes') {
                         echo "<td class=\"items\"><i class=\"fa fa-bed\"> Tempat Tidur</i></td>";
                       }
 
-                      if ($roomFacility->tempat_tidur == 'yes') {
+                      if ($fasilitasKamar->tempat_tidur == 'yes') {
                         echo "<td class=\"items\"><i class=\"fa fa-tint\"> Kamar Mandi Dalam</td>";
                       }
 
-                      $fasilitasUmum = new App\PublicFacility;
+                      $fasilitas = new App\PublicFacility;
                       // ambil fasilitas berdasarkan kosan
-                      $publicFacility = $fasilitasUmum->fetchDetail($id);
-                      // cek semua fasilitas
-                      if ($publicFacility->parkir_motor == 'yes') {
+                      $fasilitasUmum = $fasilitas->fetchDetail($id);
+                      // cek semua fasilitas umum
+                      if ($fasilitasUmum->parkir_motor == 'yes') {
                         echo "<td class=\"items\"><i class=\"fa fa-motorcycle\"> Parkir Motor</td>";
                       }
 
-                      if ($publicFacility->parkir_mobil == 'yes') {
+                      if ($fasilitasUmum->parkir_mobil == 'yes') {
                         echo "<td class=\"items\"><i class=\"fa fa-car\"> Parkir Mobil</td>";
                       }
                     ?>
@@ -195,41 +195,37 @@ include "views/frontend/components/header.php";
         } ?>
         </div>
 
-            <h4>Kosan Baru</h4>
-            <div class="row">
-              <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                  <img src="resources/images/kos1.jpg" alt="kos1">
-                <div class="caption">
-                    <h4>Thumbnail label</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, quis saepe. Necessitatibus, eum,</p>
-                    <p><a href="#" class="btn bg-maroon btn-flat" role="button">Lihat</a></p>
-                  </div>
-                </div>
-              </div>
+        <h4>Kosan Baru</h4>
 
-              <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                  <img src="resources/images/kos2.jpg" alt="kos2">
-                  <div class="caption">
-                    <h4>Thumbnail label</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, quis saepe. Necessitatibus, eum,</p>
-                    <p><a href="#" class="btn bg-maroon btn-flat" role="button">Lihat</a></p>
-                  </div>
-                </div>
-              </div>
+        <?php
 
-              <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                  <img src="resources/images/kos3.jpg" alt="kos3">
-                  <div class="caption">
-                    <h4>Thumbnail label</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, quis saepe. Necessitatibus, eum,</p>
-                    <p><a href="#" class="btn bg-maroon btn-flat" role="button">Lihat</a></p>
-                  </div>
-                </div>
+          $kos = new App\Kost;
+          $kosan = $kos->fetchNewDataKost();
+
+          if (count($kosan) == 0) {
+
+        ?>
+        <div>
+          Tidak ada data yang ditampilkan
+        </div>
+        <?php } else {
+          foreach ($kosan as $kosan) {
+
+        ?>
+        <div class="row">
+          <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+              <img src="resources/images/<?= $kosan->gambar_kosan ?>">
+            <div class="caption">
+                <h4><?= $kosan->nama_kosan ?></h4>
+                <p><?= $kosan->keterangan ?></p>
+                <p><a href="detail_kosan.php?id=<?= $kosan->kode_kosan?>" class="btn bg-maroon btn-flat" role="button">Lihat</a></p>
               </div>
             </div>
+          </div>
+        <?php }
+        } ?>
+        </div>
       </div>
     </section>
 
@@ -265,4 +261,4 @@ include "views/frontend/components/header.php";
 
 include "views/frontend/components/footer.php";
 
-
+?>
