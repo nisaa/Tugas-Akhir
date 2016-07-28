@@ -228,7 +228,7 @@ include "components/header.php";
                         <td><?= $kos->harga_sewa2 ?></td>
                         <td>
                           <a href="edit_kosan.php?id=<?= $kos->kode_kosan ?>" class="btn btn-default btn-xs"><i class="fa fa-edit fa-fw"></i>Edit</a>
-                          <a href="proses_hapus_kosan.php?id=<?= $kos->kode_kosan ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash fa-fw"></i>Hapus</a>
+                          <button class="btn btn-danger btn-xs" onclick="hapus_kosan(<?= $kos->kode_kosan . ',\'' . $kos->nama_kosan ?>')"><i class="fa fa-trash fa-fw"></i>Hapus</button>
                         </td>
                       </tr>
                       <?php
@@ -274,6 +274,27 @@ include "components/header.php";
     </div>
   </div>
 </div>
+
+<script>
+  function hapus_kosan(id, nama) {
+    BootstrapDialog.confirm({
+        title: 'Perhatian',
+        message: 'Apakah Anda yakin ingin menghapus ' + nama,
+        type: BootstrapDialog.TYPE_DEFAULT,
+        draggable: true, // <-- Default value is false
+        btnCancelLabel: 'Batal',
+        btnOKLabel: 'Hapus',
+        btnOKClass: 'btn-danger',
+        callback: function(result) {
+            if(result) {
+                window.location.href = 'proses_hapus_kosan.php?id=' + id;
+            } else {
+                return false;
+            }
+        }
+    });
+  }
+</script>
 
 <?php
 

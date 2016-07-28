@@ -2,9 +2,6 @@
 
 include "components/header.php";
 
-$lupaPassword = new App\User;
-$lupaPassword->forgotPassword();
-
 ?>
 
 <section id="forget-password">

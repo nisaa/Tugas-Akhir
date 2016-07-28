@@ -293,9 +293,28 @@ class User
         return true;
     }
 
+    public function fetchDataEmail($email)
+    {
+        if($this->status == "pencari_kos") {
+            $sql = "SELECT * FROM members";
+        } else if ($this->status == "pemilik_kos") {
+            $sql = "SELECT * FROM pemilik_kos";
+        }
+        $sql .= " WHERE email=:email";
+
+        $statement = $this->getDb()->prepare($sql);
+        $statement->bindParam(':email', $email, PDO::PARAM_STR);
+
+        $statement->execute();
+
+        $result = $statement->fetch(PDO::FETCH_OBJ);
+
+        return $result;
+    }
+
     public function forgotPassword($data)
     {
-        // password acak
+        // generate password
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*_";
         $password = substr(str_shuffle($chars),0,8);
 
@@ -311,7 +330,7 @@ class User
                   Username: [nama username] <br/>
                   Password baru: [password]";
 
-        $to = $data['email']
+        $to = $data['email'];
 
         // Untuk mengirim email HTML, header tipe konten harus diatur
         $headers  = 'MIME-Version: 1.0' . "\r\n";

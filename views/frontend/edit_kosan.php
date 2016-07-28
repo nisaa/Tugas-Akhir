@@ -263,7 +263,7 @@ include "components/header.php";
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="nomor_tlp2">Nomor Telepon Kedua</label>
-                                                    <input type="text" class="form-control" name="nomor_tlp2" value="<?= $kos->nama_pemilik ?>">
+                                                    <input type="text" class="form-control" name="nomor_tlp2" value="<?= $kos->nomor_tlp2 ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="gambar_kosan">Foto Kosan</label>
@@ -576,8 +576,7 @@ include "components/header.php";
                                     <div class="row">
                                         <div class="col-md-7">
                                             <div>
-                                              <span class="text-danger"> > </span>
-                                              Anda dapat memindahkan marker di peta sesuai dengan alamat kos
+                                              <span class="text-danger">Anda dapat memindahkan marker di peta sesuai dengan alamat kos</span>
                                             </div>
                                             <div class="form-group">
                                                 <label for="nama">Nama Kosan di Map</label>

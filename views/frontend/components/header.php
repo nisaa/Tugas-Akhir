@@ -10,6 +10,7 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<?php echo $siteUrl .  "resources/css/bootstrap.min.css"; ?>">
+    <link rel="stylesheet" href="<?php echo $siteUrl .  "resources/css/bootstrap-dialog.min.css"; ?>">
 
     <link rel="stylesheet" href="<?php echo $siteUrl .  "resources/css/font-awesome.min.css"; ?>">
 
@@ -27,6 +28,7 @@
 
     <script src="<?php echo $siteUrl . "resources/js/jquery-1.11.3.js"; ?>"></script>
     <script src="<?php echo $siteUrl . "resources/js/bootstrap.min.js"; ?>"></script>
+    <script src="<?php echo $siteUrl . "resources/js/bootstrap-dialog.min.js"; ?>"></script>
     <script src="<?php echo $siteUrl . "resources/js/smooth-scroll.min.js"; ?>"></script>
     <script src="<?php echo $siteUrl . "resources/js/script.js"; ?>"></script>
   </head>

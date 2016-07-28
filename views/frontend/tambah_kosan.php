@@ -580,8 +580,7 @@ include "components/header.php";
                                     <div class="row">
                                         <div class="col-md-7">
                                             <div>
-                                              <span class="text-danger"> > </span>
-                                              Anda dapat memindahkan marker di peta sesuai dengan alamat kos
+                                              <span class="text-danger">Anda dapat memindahkan marker di peta sesuai dengan alamat kos</span>
                                             </div>
                                             <div class="form-group">
                                                 <label for="nama">Nama Kosan di Map</label>

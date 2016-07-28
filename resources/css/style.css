@@ -385,6 +385,9 @@ label {
     width: 100%;
 }
 
+.copyright {
+    padding-left: 10%;
+}
 
 /* For media 768px and larger */
 @media (min-width: 768px) {

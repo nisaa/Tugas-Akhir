@@ -24,23 +24,3 @@ $(window).scroll(function() {
         $(".navbar-fixed-top").removeClass("attached");
     }
 });
-
-function nextTab(active) {
-    $(active).next().find('a[data-toggle="tab"]').click();
-}
-
-function prevTab(active) {
-    $(active).prev().find('a[data-toggle="tab"]').click();
-}
-
-$(".next-step").click(function () {
-    var $active = $('.nav-tabs li.active');
-
-    nextTab($active);
-});
-
-$(".prev-step").click(function () {
-    var $active = $('.nav-tabs li.active');
-
-    prevTab($active);
-});
