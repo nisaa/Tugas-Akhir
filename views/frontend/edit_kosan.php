@@ -100,6 +100,8 @@ include "components/header.php";
                                           <option>ITENAS, WIDYATAMA, LP3I</option>
                                           <option>UPI, UNPAS, NHI</option>
                                           <option>TELKOM UNIVERSITY</option>
+                                          <option>UNPAD, ITB JATINANGOR</option>
+                                          <option>Dekat Kampus Lain</option>
                                         </select>
                                     </div>
                                 </div>
@@ -227,6 +229,8 @@ include "components/header.php";
                                                       <option<?= ($kos->kategori_kampus == 'ITENAS, WIDYATAMA, LP3I') ? ' selected' : ''; ?>>ITENAS, WIDYATAMA, LP3I</option>
                                                       <option<?= ($kos->kategori_kampus == 'UPI, UNPAS, NHI') ? ' selected' : ''; ?>>UPI, UNPAS, NHI</option>
                                                       <option<?= ($kos->kategori_kampus == 'TELKOM UNIVERSITY') ? ' selected' : ''; ?>>TELKOM UNIVERSITY</option>
+                                                      <option<?= ($kos->kategori_kampus == 'UNPAD, ITB JATINANGOR') ? ' selected' : ''; ?>>UNPAD, ITB JATINANGOR</option>
+                                                      <option<?= ($kos->kategori_kampus == 'Dekat Kampus Lain') ? ' selected' : ''; ?>>Dekat Kampus Lain</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">

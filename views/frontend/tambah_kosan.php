@@ -228,6 +228,8 @@ include "components/header.php";
                                                   <option>ITENAS, WIDYATAMA, LP3I</option>
                                                   <option>UPI, UNPAS, NHI</option>
                                                   <option>TELKOM UNIVERSITY</option>
+                                                  <option>UNPAD, ITB JATINANGOR</option>
+                                                  <option>Dekat Kampus Lain</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">

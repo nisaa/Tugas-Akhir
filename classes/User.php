@@ -127,26 +127,6 @@ class User
         $this->status = $status;
     }
 
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    public function setTitle($title)
-    {
-        $this->title = $title;
-    }
-
-    public function getQuestion()
-    {
-        return $this->question;
-    }
-
-    public function setQuestion($question)
-    {
-        $this->question = $question;
-    }
-
     public function getDb()
     {
         if (is_null($this->db)) {
@@ -317,23 +297,26 @@ class User
 
     public function forgotPassword($data)
     {
+        $user = $this->fetchDataEmail($data['email']);
+
         // generate password
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*_";
-        $password = substr(str_shuffle($chars),0,8);
+        $password = substr(str_shuffle($chars), 0, 8);
 
         // enkripsi password
-        $newPassword = password_hash($password);
+        $newPassword = $this->setPassword($password);
 
         //kirim email
         $subjek = "Permintaan Password Baru";
 
         $pesan = "From: informasikosan@gmail.com <br/>
-                  Kami telah mereset password milik [Nama panjang] dan Anda dapat masuk kembali ke website kami. <br/>
+                  Kami telah mereset password milik " . $this->fetchDataEmail($data['email']) . "dan Anda dapat masuk kembali
+                  ke website kami. <br/>
                   DETAIL AKUN ANDA <br/>
-                  Username: [nama username] <br/>
-                  Password baru: [password]";
+                  Username: " . $this->setUsername($data['username']) . "<br/>
+                  Password baru: " . $password;
 
-        $to = $data['email'];
+        $to = $user;
 
         // Untuk mengirim email HTML, header tipe konten harus diatur
         $headers  = 'MIME-Version: 1.0' . "\r\n";
@@ -342,16 +325,16 @@ class User
         $kirimEmail = mail($to, $pesan, $subjek, $headers);
 
         if ($kirimEmail) {
-            if ($data['status'] == "pencari_kos") {
-                $sql = "UPDATE members SET password = $newPassword";
-            } else if ($data['status'] == "pemilik_kos") {
-                $sql = "UPDATE pemilik_kos SET password = $newPassword";
+            if ($this->setStatus($data['status']) == "pencari_kos") {
+                $sql = "UPDATE members SET password = $this->getPassword()";
+            } else if ($this->setStatus($data['status']) == "pemilik_kos") {
+                $sql = "UPDATE pemilik_kos SET password = $this->getPassword()";
             }
             $sql .= " WHERE email = :email";
 
             $statement = $this->getDb()->prepare($sql);
 
-            $statement->bindParam(":email", $data['email'], PDO::PARAM_STR);
+            $statement->bindParam(":email", $this->fetchDataEmail($data['email']), PDO::PARAM_STR);
 
             $statement->execute();
 
