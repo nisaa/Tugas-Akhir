@@ -11,10 +11,10 @@ $user = new App\User;
 
 $data['status'] = $_SESSION['logged_in_user']['status'];
 $data['fullname'] = isset($_POST['fullname']) ? $_POST['fullname'] : $_SESSION['logged_in_user']['full_name'];
-$data['password'] = isset($_POST['password']) ? $_POST['password'] : $_SESSION['logged_in_user']['password'];
-$data['address'] = isset($_POST['address']) ? $_POST['address'] : $_SESSION['logged_in_user']['alamat'];
+$data['password'] = isset($_POST['password']) ? $_POST['password'] : "";
+$data['address'] = isset($_POST['address']) ? $_POST['address'] : "";
 $data['email'] = isset($_POST['email']) ? $_POST['email'] : $_SESSION['logged_in_user']['email'];
-$data['phone'] = isset($_POST['phone']) ? $_POST['phone'] : $_SESSION['logged_in_user']['telp'];
+$data['phone'] = isset($_POST['phone']) ? $_POST['phone'] : "";
 // upload image
 if ($_FILES['gambar']['size'] > 0) {
     $ekstensi = end((explode('.', $_FILES['gambar']['name'])));
@@ -38,4 +38,4 @@ $_SESSION['logged_in_user']['email'] = $data['email'];
 $_SESSION['logged_in_user']['telp'] = $data['phone'];
 $_SESSION['logged_in_user']['gambar'] = $data['picture'];
 
-header('Location: ' . $siteUrl . 'profil.php');
+// header('Location: ' . $siteUrl . 'profil.php');
