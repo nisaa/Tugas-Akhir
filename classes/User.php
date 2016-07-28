@@ -324,20 +324,18 @@ class User
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
         $kirimEmail = mail($to, $pesan, $subjek, $headers);
-
         if ($kirimEmail) {
             if ($this->status == "pencari_kos") {
-                $sql = "UPDATE members SET password = $this->password";
+                $sql = "UPDATE members SET password = :password";
             } else if ($this->status == "pemilik_kos") {
-                $sql = "UPDATE pemilik_kos SET password = $this->password";
+                $sql = "UPDATE pemilik_kos SET password = :password";
             }
             $sql .= " WHERE email = :email";
 
             $statement = $this->getDb()->prepare($sql);
 
+            $statement->bindParam(":password", $this->password, PDO::PARAM_STR);
             $statement->bindParam(":email", $data['email'], PDO::PARAM_STR);
-
-            $statement->execute();
 
             $_SESSION['success_message'] = 'Permintaan Password Baru Anda telah dikirim. Silakan cek email Anda';
         } else {
