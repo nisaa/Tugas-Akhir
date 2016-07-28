@@ -23,12 +23,12 @@ include "components/header.php";
                       <div class="row">
                         <div class="col-md-6">
                           <label class="radio-inline">
-                            <input type="radio" name="status" id="pencari_kos" value="pencari_kos" checked> Pencari Kos
+                            <input type="radio" name="status" value="pencari_kos" checked> Pencari Kos
                           </label>
                         </div>
                         <div class="col-md-6">
                           <label class="radio-inline">
-                            <input type="radio" name="status" id="pemilik_kos" value="pemilik_kos"> Pemilik Kos
+                            <input type="radio" name="status" value="pemilik_kos"> Pemilik Kos
                           </label>
                         </div>
                       </div>
