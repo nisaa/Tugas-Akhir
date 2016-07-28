@@ -297,6 +297,7 @@ class User
 
     public function forgotPassword($data)
     {
+        $this->status = $data['status'];
         $user = $this->fetchDataEmail($data['email']);
 
         // generate password
@@ -310,13 +311,13 @@ class User
         $subjek = "Permintaan Password Baru";
 
         $pesan = "From: informasikosan@gmail.com <br/>
-                  Kami telah mereset password milik " . $this->fetchDataEmail($data['email']) . "dan Anda dapat masuk kembali
+                  Kami telah mereset password milik " . $user->full_name . "dan Anda dapat masuk kembali
                   ke website kami. <br/>
                   DETAIL AKUN ANDA <br/>
-                  Username: " . $this->setUsername($data['username']) . "<br/>
+                  Username: " . $user->username . "<br/>
                   Password baru: " . $password;
 
-        $to = $user;
+        $to = $user->email;
 
         // Untuk mengirim email HTML, header tipe konten harus diatur
         $headers  = 'MIME-Version: 1.0' . "\r\n";
@@ -325,22 +326,22 @@ class User
         $kirimEmail = mail($to, $pesan, $subjek, $headers);
 
         if ($kirimEmail) {
-            if ($this->setStatus($data['status']) == "pencari_kos") {
-                $sql = "UPDATE members SET password = $this->getPassword()";
-            } else if ($this->setStatus($data['status']) == "pemilik_kos") {
-                $sql = "UPDATE pemilik_kos SET password = $this->getPassword()";
+            if ($this->status == "pencari_kos") {
+                $sql = "UPDATE members SET password = $this->password";
+            } else if ($this->status == "pemilik_kos") {
+                $sql = "UPDATE pemilik_kos SET password = $this->password";
             }
             $sql .= " WHERE email = :email";
 
             $statement = $this->getDb()->prepare($sql);
 
-            $statement->bindParam(":email", $this->fetchDataEmail($data['email']), PDO::PARAM_STR);
+            $statement->bindParam(":email", $data['email'], PDO::PARAM_STR);
 
             $statement->execute();
 
-            echo 'Permintaan Password Baru Anda telah dikirim. Silakan cek email Anda';
+            $_SESSION['success_message'] = 'Permintaan Password Baru Anda telah dikirim. Silakan cek email Anda';
         } else {
-            echo 'Server tidak dapat mengirim email';
+            $_SESSION['success_message'] = 'Server tidak dapat mengirim email';
         }
 
         return true;
