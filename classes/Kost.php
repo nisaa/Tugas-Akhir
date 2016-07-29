@@ -269,102 +269,73 @@ class Kost
     {
         $sql = "SELECT * FROM kosan, fasilitas_kamar, fasilitas_umum WHERE kosan.kode_kosan = fasilitas_kamar.kode_kosan AND kosan.kode_kosan = fasilitas_umum.kode_kosan";
 
-        if ($fasilitasKamar['kamar_mandi_dalam']) {
+        if ($fasilitasKamar['kamar_mandi_dalam'] == 'yes') {
             $sql .= " AND kamar_mandi_dalam = :kamar_mandi_dalam";
         }
-        if ($fasilitasKamar['tempat_tidur']) {
+        if ($fasilitasKamar['tempat_tidur'] == 'yes') {
             $sql .= " AND tempat_tidur = :tempat_tidur";
         }
-        if ($fasilitasKamar['lemari']) {
+        if ($fasilitasKamar['lemari'] == 'yes') {
             $sql .= " AND lemari = :lemari";
         }
-        if ($fasilitasKamar['meja']) {
+        if ($fasilitasKamar['meja'] == 'yes') {
             $sql .= " AND meja = :meja";
         }
 
-        if ($fasilitasUmum['dapur_bersama']) {
+        if ($fasilitasUmum['dapur_bersama'] == 'yes') {
             $sql .= " AND dapur_bersama = :dapur_bersama";
         }
-        if ($fasilitasUmum['ruangan_tamu']) {
+        if ($fasilitasUmum['ruangan_tamu'] == 'yes') {
             $sql .= " AND ruangan_tamu = :ruangan_tamu";
         }
-        if ($fasilitasUmum['parkir_motor']) {
+        if ($fasilitasUmum['parkir_motor'] == 'yes') {
             $sql .= " AND parkir_motor = :parkir_motor";
         }
-        if ($fasilitasUmum['parkir_mobil']) {
+        if ($fasilitasUmum['parkir_mobil'] == 'yes') {
             $sql .= " AND parkir_mobil = :parkir_mobil";
         }
 
-        if ($kategoriKampus['kategori_kampus']) {
-            $sql .= " AND kategori_kampus = :kategori_kampus";
-        }
-
-        if ($hargaKosan['min']) {
-            $sql .= " AND harga_kosan >= :harga1";
-        }
-        if ($hargaKosan['max']) {
-            $sql .= " AND harga_kosan <= :harga2";
-        }
-
-        if ($typeKosan['type_kosan']) {
-            $sql .= " AND type_kosan = :type";
-        }
-
+        $sql .= " AND kategori_kampus = :kategori_kampus AND harga_kosan >= :harga1 AND harga_kosan <= :harga2 AND type_kosan = :type";
 
         $statement = $this->getDb()->prepare($sql);
 
-        if ($fasilitasKamar['kamar_mandi_dalam']) {
+        if ($fasilitasKamar['kamar_mandi_dalam'] == 'yes') {
             $statement->bindParam(":kamar_mandi_dalam", $fasilitasKamar['kamar_mandi_dalam'], PDO::PARAM_STR);
         }
 
-        if ($fasilitasKamar['tempat_tidur']) {
+        if ($fasilitasKamar['tempat_tidur'] == 'yes') {
             $statement->bindParam(":tempat_tidur", $fasilitasKamar['tempat_tidur'], PDO::PARAM_STR);
         }
 
-        if ($fasilitasKamar['lemari']) {
+        if ($fasilitasKamar['lemari'] == 'yes') {
             $statement->bindParam(":lemari", $fasilitasKamar['lemari'], PDO::PARAM_STR);
         }
 
-        if ($fasilitasKamar['meja']) {
+        if ($fasilitasKamar['meja'] == 'yes') {
             $statement->bindParam(":meja", $fasilitasKamar['meja'], PDO::PARAM_STR);
         }
 
 
-        if ($fasilitasUmum['dapur_bersama']) {
+        if ($fasilitasUmum['dapur_bersama'] == 'yes') {
             $statement->bindParam(":dapur_bersama", $fasilitasUmum['dapur_bersama'], PDO::PARAM_STR);
         }
 
-        if ($fasilitasUmum['ruangan_tamu']) {
+        if ($fasilitasUmum['ruangan_tamu'] == 'yes') {
             $statement->bindParam(":ruangan_tamu", $fasilitasUmum['ruangan_tamu'], PDO::PARAM_STR);
         }
 
-        if ($fasilitasUmum['parkir_motor']) {
+        if ($fasilitasUmum['parkir_motor'] == 'yes') {
             $statement->bindParam(":parkir_motor", $fasilitasUmum['parkir_motor'], PDO::PARAM_STR);
         }
 
-        if ($fasilitasUmum['parkir_mobil']) {
+        if ($fasilitasUmum['parkir_mobil'] == 'yes') {
             $statement->bindParam(":parkir_mobil", $fasilitasUmum['parkir_mobil'], PDO::PARAM_STR);
         }
 
-
-        if ($kategoriKampus['kategori_kampus']) {
-            $statement->bindParam(":kategori_kampus", $kategoriKampus['kategori_kampus'], PDO::PARAM_STR);
-        }
-
-
-        if ($hargaKosan['harga_kosan']) {
-            $statement->bindParam(":harga1", $hargaKosan['min'], PDO::PARAM_INT);
-        }
-
-        if ($hargaKosan['harga_kosan']) {
-            $statement->bindParam(":harga2", $hargaKosan['max'], PDO::PARAM_INT);
-        }
-
-
-        if ($typeKosan['type_kosan']) {
-            $statement->bindParam(":type", $typeKosan['type'], PDO::PARAM_STR);
-        }
-
+        $statement->bindParam(":kategori_kampus", $kategoriKampus, PDO::PARAM_STR);
+        $statement->bindParam(":harga1", $hargaKosan['min'], PDO::PARAM_INT);
+        $statement->bindParam(":harga2", $hargaKosan['max'], PDO::PARAM_INT);
+        $statement->bindParam(":type", $typeKosan, PDO::PARAM_STR);
 
         $statement->execute();
 
