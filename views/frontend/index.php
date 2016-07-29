@@ -48,22 +48,22 @@ include "views/frontend/components/header.php";
                         <label class="label-searching">Fasilitas Umum</label>
                           <div class="checkbox">
                             <label class="label-searching">
-                              <input type="checkbox" name="dapur_bersama" value="">Dapur
+                              <input type="checkbox" name="dapur_bersama">Dapur
                             </label>
                           </div>
                           <div class="checkbox">
                             <label class="label-searching">
-                              <input type="checkbox" name="ruangan_tamu" value="">Ruang Tamu
+                              <input type="checkbox" name="ruangan_tamu">Ruang Tamu
                             </label>
                           </div>
                           <div class="checkbox">
                             <label class="label-searching">
-                              <input type="checkbox" name="parkir_motor" value="">Parkir Motor
+                              <input type="checkbox" name="parkir_motor">Parkir Motor
                             </label>
                           </div>
                           <div class="checkbox">
                             <label class="label-searching">
-                              <input type="checkbox" name="parkir_mobil" value="">Parkir Mobil
+                              <input type="checkbox" name="parkir_mobil">Parkir Mobil
                             </label>
                           </div>
                       </div>
@@ -85,10 +85,10 @@ include "views/frontend/components/header.php";
                       <div class="form-group">
                         <label class="label-searching">Harga</label>
                         <select name="harga_kosan" class="form-control">
-                          <option> &lt;Rp 500.000/Bln </option>
-                          <option> Rp 500.000 - Rp 1.000.000/Bln</option>
-                          <option> &gt;Rp 1.000.000/Bln</option>
-                          <option>Pertahun</option>
+                          <option value="1"> &lt;Rp 500.000/Bln </option>
+                          <option value="2"> Rp 500.000 - Rp 1.000.000/Bln</option>
+                          <option value="3"> &gt;Rp 1.000.000/Bln</option>
+                          <option value="4">Pertahun</option>
                         </select>
                       </div>
                     </div>

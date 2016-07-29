@@ -15,23 +15,28 @@ $fasilitasUmum['parkir_motor'] = isset($_POST['parkir_motor']) ? 'yes' : 'no';
 $fasilitasUmum['parkir_mobil'] = isset($_POST['parkir_mobil']) ? 'yes' : 'no';
 
 // kategori kampus
-$kategoriKampus['kampus1'] = isset($_POST['UNIKOM, ITHB, UNPAD, ITB']);
-$kategoriKampus['kampus2'] = isset($_POST['UNISBA, UNPAS']);
-$kategoriKampus['kampus3'] = isset($_POST['ITENAS, WIDYATAMA, LP3I']);
-$kategoriKampus['kampus4'] = isset($_POST['UPI, UNPAS, NHI']);
-$kategoriKampus['kampus5'] = isset($_POST['TELKOM UNIVERSITY']);
-$kategoriKampus['kampus6'] = isset($_POST['UNPAD, ITB JATINANGOR']);
-$kategoriKampus['kampus7'] = isset($_POST['Dekat Kampus Lain']);
+$kategoriKampus = $_POST['kategori_kampus'];
 
 // harga kosan
-$hargaKosan['harga1'] = isset($_POST['500000']);
-$hargaKosan['harga2'] = isset($_POST['1000000']);
+$valueHarga = $_POST['harga_kosan'];
 
-//type kosan
-$typeKosan = $_POST['type_kosan'];
-$typeKosan['bln'] = isset($_POST['/Bln']);
-$typeKosan['thn'] = isset($_POST['/Thn']);
-
+if ($valueHarga == "1") {
+    $hargaKosan['min'] = 0;
+    $hargaKosan['max'] = 500000;
+    $typeKosan = '/Bln';
+} else if ($valueHarga == "2") {
+    $hargaKosan['min'] = 500000;
+    $hargaKosan['max'] = 1000000;
+    $typeKosan = '/Bln';
+} else if ($valueHarga == "3") {
+    $hargaKosan['min'] = 1000000;
+    $hargaKosan['max'] = 10000000;
+    $typeKosan = '/Bln';
+} else {
+    $hargaKosan['min'] = 0;
+    $hargaKosan['max'] = 100000000;
+    $typeKosan = '/Thn';
+}
 
 ?>
 
@@ -44,7 +49,6 @@ $typeKosan['thn'] = isset($_POST['/Thn']);
 
               $cariKosan = new App\Kost;
               $filterKosan = $cariKosan->searchAll($fasilitasKamar, $fasilitasUmum, $kategoriKampus, $hargaKosan, $typeKosan);
-
               echo count($filterKosan) . " hasil";
 
               if (count($filterKosan) == 0) {
@@ -96,7 +100,7 @@ $typeKosan['thn'] = isset($_POST['/Thn']);
                                 <?php
                                   $fasilitas = new App\RoomFacility;
                                   // ambil fasilitas berdasarkan kosan
-                                  $fasilitasKamar = $fasilitas->fetchDetail($kos->kode_kosan);
+                                  $fasilitasKamar = $fasilitas->fetchDetail($filter->kode_kosan);
                                   // cek semua fasilitas
                                   if ($fasilitasKamar->kamar_mandi_dalam == 'yes') {
                                     echo "<td class=\"items\"><i class=\"fa fa-bed\"> Tempat Tidur</i></td>";
@@ -108,7 +112,7 @@ $typeKosan['thn'] = isset($_POST['/Thn']);
 
                                   $fasilitas = new App\PublicFacility;
                                   // ambil fasilitas berdasarkan kosan
-                                  $fasilitasUmum = $fasilitas->fetchDetail($kos->kode_kosan);
+                                  $fasilitasUmum = $fasilitas->fetchDetail($filter->kode_kosan);
                                   // cek semua fasilitas
                                   if ($fasilitasUmum->parkir_motor == 'yes') {
                                     echo "<td class=\"items\"><i class=\"fa fa-motorcycle\"> Parkir Motor</td>";

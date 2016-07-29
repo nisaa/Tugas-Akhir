@@ -267,8 +267,6 @@ class Kost
 
     public function searchAll($fasilitasKamar, $fasilitasUmum, $kategoriKampus, $hargaKosan, $typeKosan)
     {
-
-
         $sql = "SELECT * FROM kosan, fasilitas_kamar, fasilitas_umum WHERE kosan.kode_kosan = fasilitas_kamar.kode_kosan AND kosan.kode_kosan = fasilitas_umum.kode_kosan AND kamar_mandi_dalam = :kamar_mandi_dalam AND tempat_tidur = :tempat_tidur AND lemari = :lemari AND meja = :meja AND dapur_bersama = :dapur_bersama AND ruangan_tamu = :ruangan_tamu AND parkir_motor = :parkir_motor AND parkir_mobil = :parkir_mobil AND kategori_kampus = :kategori_kampus AND harga_kosan >= :harga1 AND harga_kosan <= :harga2 AND type_kosan = :type";
 
         $statement = $this->getDb()->prepare($sql);
@@ -282,8 +280,8 @@ class Kost
         $statement->bindParam(":parkir_motor", $fasilitasUmum['parkir_motor'], PDO::PARAM_STR);
         $statement->bindParam(":parkir_mobil", $fasilitasUmum['parkir_mobil'], PDO::PARAM_STR);
         $statement->bindParam(":kategori_kampus", $kategoriKampus, PDO::PARAM_STR);
-        $statement->bindParam(":harga1", $hargaKosan[1], PDO::PARAM_INT);
-        $statement->bindParam(":harga2", $hargaKosan[2], PDO::PARAM_INT);
+        $statement->bindParam(":harga1", $hargaKosan['min'], PDO::PARAM_INT);
+        $statement->bindParam(":harga2", $hargaKosan['max'], PDO::PARAM_INT);
         $statement->bindParam(":type", $typeKosan, PDO::PARAM_STR);
 
         $statement->execute();
