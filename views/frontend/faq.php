@@ -4,7 +4,7 @@ include "components/header.php";
 
 ?>
 
-<section id="beginning">
+<div id="beginning">
     <div class="faq">
         <div class="container">
             <h3 class="faqs">Frequently Asked Question (FAQ)</h3>
@@ -52,7 +52,7 @@ include "components/header.php";
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <?php
 

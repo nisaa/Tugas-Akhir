@@ -26,7 +26,7 @@ if (mail('demo@localhost.com', $subjek, $pesan, $headers)) {
 
 ?>
 
-<section id="beginning">
+<div id="beginning">
     <div class="contact">
         <div class="container">
             <div class="title">
@@ -90,7 +90,7 @@ if (mail('demo@localhost.com', $subjek, $pesan, $headers)) {
             </div>
         </div>
     </div>
-</section>
+</div>
 
 
 <?php

@@ -251,12 +251,74 @@ class Kost
         return true;
     }
 
+    public function searchAddress($address)
+    {
+        $sql = "SELECT * FROM kosan WHERE alamat_kosan LIKE :address";
+
+        $statement = $this->getDb()->prepare($sql);
+        $statement->bindValue(':address', "%$address%", PDO::PARAM_STR);
+
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_OBJ);
+
+        return $result;
+    }
+
+    public function searchAll($fasilitasKamar, $fasilitasUmum, $kategoriKampus, $hargaKosan, $typeKosan)
+    {
+
+
+        $sql = "SELECT * FROM kosan, fasilitas_kamar, fasilitas_umum WHERE kosan.kode_kosan = fasilitas_kamar.kode_kosan AND kosan.kode_kosan = fasilitas_umum.kode_kosan AND kamar_mandi_dalam = :kamar_mandi_dalam AND tempat_tidur = :tempat_tidur AND lemari = :lemari AND meja = :meja AND dapur_bersama = :dapur_bersama AND ruangan_tamu = :ruangan_tamu AND parkir_motor = :parkir_motor AND parkir_mobil = :parkir_mobil AND UNIKOM, ITHB, UNPAD, ITB = :kampus1 AND UNISBA, UNPAS = :kampus2 AND ITENAS, WIDYATAMA, LP3I = :kampus3 AND UPI, UNPAS, NHI = :kampus4 AND TELKOM UNIVERSITY = :kampus5 AND UNPAD, ITB JATINANGOR = :kampus6 AND Dekat Kampus Lain = :kampus7 AND harga_kosan <= :harga1 AND type_kosan = :bln AND harga_kosan > :harga1 AND harga_kosan <= :harga2 AND type_kosan = :bln AND harga_kosan > :harga2 AND type_kosan = :bln AND type_kosan = :thn";
+
+        $statement = $this->getDb()->prepare($sql);
+
+        $statement->bindParam(":kamar_mandi_dalam", $fasilitasKamar['kamar_mandi_dalam'], PDO::PARAM_STR);
+        $statement->bindParam(":tempat_tidur", $fasilitasKamar['tempat_tidur'], PDO::PARAM_STR);
+        $statement->bindParam(":lemari", $fasilitasKamar['lemari'], PDO::PARAM_STR);
+        $statement->bindParam(":meja", $fasilitasKamar['meja'], PDO::PARAM_STR);
+        $statement->bindParam(":dapur_bersama", $fasilitasUmum['dapur_bersama'], PDO::PARAM_STR);
+        $statement->bindParam(":ruangan_tamu", $fasilitasUmum['ruangan_tamu'], PDO::PARAM_STR);
+        $statement->bindParam(":parkir_motor", $fasilitasUmum['parkir_motor'], PDO::PARAM_STR);
+        $statement->bindParam(":parkir_mobil", $fasilitasUmum['parkir_mobil'], PDO::PARAM_STR);
+        $statement->bindParam(":kampus1", $kategoriKampus['UNIKOM, ITHB, UNPAD, ITB'], PDO::PARAM_STR);
+        $statement->bindParam(":kampus2", $kategoriKampus['UNISBA, UNPAS'], PDO::PARAM_STR);
+        $statement->bindParam(":kampus3", $kategoriKampus['ITENAS, WIDYATAMA, LP3I'], PDO::PARAM_STR);
+        $statement->bindParam(":kampus4", $kategoriKampus['UPI, UNPAS, NHI'], PDO::PARAM_STR);
+        $statement->bindParam(":kampus5", $kategoriKampus['TELKOM UNIVERSITY'], PDO::PARAM_STR);
+        $statement->bindParam(":kampus6", $kategoriKampus['UNPAD, ITB JATINANGOR'], PDO::PARAM_STR);
+        $statement->bindParam(":kampus7", $kategoriKampus['Dekat Kampus Lain'], PDO::PARAM_STR);
+        $statement->bindParam(":harga1", $hargaKosan['500000'], PDO::PARAM_STR);
+        $statement->bindParam(":harga2", $hargaKosan['1000000'], PDO::PARAM_STR);
+        $statement->bindParam(":bln", $typeKosan['/Bln'], PDO::PARAM_STR);
+        $statement->bindParam(":thn", $typeKosan['/Thn'], PDO::PARAM_STR);
+
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_OBJ);
+
+        return $result;
+    }
+
     public function fetch($limit = 4)
     {
         $sql = "SELECT * FROM kosan ORDER BY kode_kosan LIMIT :limit";
 
         $statement = $this->getDb()->prepare($sql);
         $statement->bindParam(':limit', $limit, PDO::PARAM_INT);
+
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_OBJ);
+
+        return $result;
+    }
+
+    public function fetchKost()
+    {
+        $sql = "SELECT * FROM kosan ORDER BY kode_kosan";
+
+        $statement = $this->getDb()->prepare($sql);
 
         $statement->execute();
 

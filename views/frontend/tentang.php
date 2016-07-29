@@ -4,7 +4,7 @@ include "components/header.php";
 
 ?>
 
-<section id="beginning">
+<div id="beginning">
     <section id="about">
         <div class="container">
             <h3 class="about-ekosan">Tentang E-Kosan</h3>
@@ -77,5 +77,5 @@ include "components/header.php";
         include "components/footer.php";
 
     ?>
-</section>
+</div>
 

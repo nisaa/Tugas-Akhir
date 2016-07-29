@@ -112,14 +112,13 @@ include "views/frontend/components/header.php";
       <div class="container">
         <h2> INFORMASI KOSAN</h2>
         <p class="information">E-Kosan menyediakan informasi kosan di wilayah Bandung lengkap dengan fasilitasnya.<br>Kami berharap Anda dapat menemukan kosan yang sesuai dengan keinginan Anda.</p>
-        <a href="semua_kosan.php" type="button" class="btn bg-maroon btn-flat btn-more">Lihat Lebih Banyak Kosan</a>
         <br>
 
         <h4>Kosan Favorit</h4>
         <?php
 
           $kost = new App\Kost;
-          $kosts = $kost->fetch();
+          $kosts = $kost->fetchKost();
 
           if (count($kosts) == 0) {
 
@@ -130,9 +129,9 @@ include "views/frontend/components/header.php";
         <?php
         } else {
           $i = 1;
-          foreach ($kosts as $kos) {
+        foreach ($kosts as $kos) {
 
-            if ($i == 1) {
+          if ($i == 1) {
         ?>
         <div class="row">
         <?php
@@ -200,7 +199,7 @@ include "views/frontend/components/header.php";
               </div>
             </div>
           </div>
-          <?php
+            <?php
             if ($i == 2) {
               $i = 1;
               ?>
@@ -211,90 +210,12 @@ include "views/frontend/components/header.php";
             }
           }
         } ?>
-      </div>
-    </section>
-
-    <section id="kost">
-      <div class="container">
-        <h4>Kosan Baru</h4>
-
-        <?php
-
-          $kos = new App\Kost;
-          $kosan = $kos->fetchNewDataKost();
-
-          if (count($kosan) == 0) {
-
-        ?>
-        <div>
-          Tidak ada data yang ditampilkan
         </div>
-        <?php
-        } else {
-          $i = 1;
-          foreach ($kosan as $kosan) {
-
-            if ($i == 1) {
-        ?>
-        <div class="row">
-        <?php
-        }
-        ?>
-          <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-              <img src="resources/images/<?= $kosan->gambar_kosan ?>">
-            <div class="caption">
-                <h4><?= $kosan->nama_kosan ?></h4>
-                <p><?= $kosan->keterangan ?></p>
-                <p><a href="detail_kosan.php?id=<?= $kosan->kode_kosan?>" class="btn bg-maroon btn-flat" role="button">Lihat</a></p>
-              </div>
-            </div>
-          </div>
-        <?php
-            if ($i == 3) {
-              $i = 1;
-              ?>
-              </div>
-            <?php
-            } else {
-              $i++;
-            }
-          }
-        } ?>
-        </div>
-      </div>
-    </section>
-
-    <section id="campus">
-      <div class="container">
-        <h2>CARI KOSAN SEKITAR</h2>
-          <div class="row">
-            <div class="col-md-3 text-center">
-              <a href="" class="thumbnail pic-campus">
-                <img src="resources/images/unikom.png" alt="Unikom">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="" class="thumbnail pic-campus">
-                <img src="resources/images/unpad.png" alt="Unpad">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="" class="thumbnail pic-campus">
-                <img src="resources/images/itb.jpg" alt="Itb">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="" class="thumbnail pic-campus">
-                <img src="resources/images/telkom.png" alt="Telkom">
-              </a>
-            </div>
-          </div>
       </div>
     </section>
 
 <?php
 
-include "views/frontend/components/footer.php";
+include "components/footer.php";
 
 ?>

@@ -3,13 +3,13 @@
 include "components/header.php";
 
 ?>
-    <section id="profile">
+    <div id="profile">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
                   <div class="box">
                       <div class="box-body">
-                        <form action="" method="post">
+                        <form action="filter_kosan.php" method="post">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -613,7 +613,7 @@ include "components/header.php";
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <script type="text/javascript">
     function updateMarkerPosition(latLng) {

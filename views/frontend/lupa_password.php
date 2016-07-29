@@ -4,7 +4,7 @@ include "components/header.php";
 
 ?>
 
-<section id="forget-password">
+<div id="forget-password">
     <div class="container">
         <div class="login-box">
             <div class="login-box-header text-center">
@@ -42,7 +42,7 @@ include "components/header.php";
             </div>
         </div>
     </div>
-</section>
+</div>
 
 
 <?php

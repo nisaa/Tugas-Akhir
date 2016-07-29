@@ -4,13 +4,13 @@ include "components/header.php";
 
 ?>
 
-<section id="profile">
+<div id="profile">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
               <div class="box">
                   <div class="box-body">
-                    <form action="">
+                    <form action="filter_kosan.php" method="post">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -113,9 +113,9 @@ include "components/header.php";
                                 <div class="form-group">
                                 <label>Harga</label>
                                 <select name="harga_kosan" class="form-control">
-                                  <option> &lt;Rp 500.000/bln </option>
-                                  <option> Rp 500.000 - Rp 1.000.000/bln</option>
-                                  <option> &gt;Rp 1.000.000/bln</option>
+                                  <option> &lt;Rp 500.000/Bln </option>
+                                  <option> Rp 500.000 - Rp 1.000.000/Bln</option>
+                                  <option> &gt;Rp 1.000.000/Bln</option>
                                   <option>Pertahun</option>
                                 </select>
                               </div>
@@ -245,7 +245,7 @@ include "components/header.php";
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <!-- Modal Kirim Pesan -->
 <div class="modal fade" id="modalKirimPesan" tabindex="-1" role="dialog">

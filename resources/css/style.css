@@ -245,6 +245,14 @@ label {
     padding-bottom: 20px;
 }
 
+.display-setting {
+    padding-top: 100px;
+}
+
+.btn-more {
+    margin-left: 42%;
+}
+
 /* ABOUT */
 #about, #visi-misi, #address {
     background-color: #fff;

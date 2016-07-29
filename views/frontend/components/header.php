@@ -50,10 +50,10 @@
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
-        <form action="index.php?action=search" method="post">
+        <form action="cari_alamat.php" method="post">
           <div class="form-inline">
               <div class="form-group input-group pull-right">
-                  <input type="text" class="form-control" name="query" placeholder="Cari alamat kosan">
+                  <input type="text" class="form-control" name="address" placeholder="Cari alamat kosan">
                   <span class="input-group-btn">
                       <button type="submit" class="btn btn-default"><i class="fa fa-search fa-fw"></i></button>
                   </span>
@@ -144,8 +144,6 @@
         </div>
       </div>
     </div>
-  </body>
-</html>
 
 
 
