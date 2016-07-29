@@ -267,12 +267,27 @@ class Kost
 
     public function searchAll($fasilitasKamar, $fasilitasUmum, $kategoriKampus, $hargaKosan, $typeKosan)
     {
-        $sql = "SELECT * FROM kosan, fasilitas_kamar, fasilitas_umum WHERE kosan.kode_kosan = fasilitas_kamar.kode_kosan AND kosan.kode_kosan = fasilitas_umum.kode_kosan AND kamar_mandi_dalam = :kamar_mandi_dalam AND tempat_tidur = :tempat_tidur AND lemari = :lemari AND meja = :meja AND dapur_bersama = :dapur_bersama AND ruangan_tamu = :ruangan_tamu AND parkir_motor = :parkir_motor AND parkir_mobil = :parkir_mobil AND kategori_kampus = :kategori_kampus AND harga_kosan >= :harga1 AND harga_kosan <= :harga2 AND type_kosan = :type";
+        $sql = "SELECT * FROM kosan, fasilitas_kamar, fasilitas_umum WHERE kosan.kode_kosan = fasilitas_kamar.kode_kosan AND kosan.kode_kosan = fasilitas_umum.kode_kosan";
+
+        if ($fasilitasKamar['kamar_mandi_dalam']) {
+            $sql .= " AND kamar_mandi_dalam = :kamar_mandi_dalam";
+        }
+        if ($fasilitasKamar['tempat_tidur']) {
+            $sql .= " AND tempat_tidur = :tempat_tidur";
+        }
+        // lanjutin
+          AND lemari = :lemari AND meja = :meja AND dapur_bersama = :dapur_bersama AND ruangan_tamu = :ruangan_tamu AND parkir_motor = :parkir_motor AND parkir_mobil = :parkir_mobil AND kategori_kampus = :kategori_kampus AND harga_kosan >= :harga1 AND harga_kosan <= :harga2 AND type_kosan = :type";
 
         $statement = $this->getDb()->prepare($sql);
 
-        $statement->bindParam(":kamar_mandi_dalam", $fasilitasKamar['kamar_mandi_dalam'], PDO::PARAM_STR);
-        $statement->bindParam(":tempat_tidur", $fasilitasKamar['tempat_tidur'], PDO::PARAM_STR);
+        if ($fasilitasKamar['kamar_mandi_dalam']) {
+            $statement->bindParam(":kamar_mandi_dalam", $fasilitasKamar['kamar_mandi_dalam'], PDO::PARAM_STR);
+        }
+
+        if ($fasilitasKamar['tempat_tidur']) {
+            $statement->bindParam(":tempat_tidur", $fasilitasKamar['tempat_tidur'], PDO::PARAM_STR);
+        }
+        // lanjutin
         $statement->bindParam(":lemari", $fasilitasKamar['lemari'], PDO::PARAM_STR);
         $statement->bindParam(":meja", $fasilitasKamar['meja'], PDO::PARAM_STR);
         $statement->bindParam(":dapur_bersama", $fasilitasUmum['dapur_bersama'], PDO::PARAM_STR);
