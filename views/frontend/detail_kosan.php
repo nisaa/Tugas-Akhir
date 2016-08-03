@@ -171,6 +171,18 @@ include "components/header.php";
                         <p> Hubungi <?= $kostDetail->nama_pemilik ?>:
                             <br><i class="fa fa-phone"></i> <?= $kostDetail->nomor_tlp . " / " . $kostDetail->nomor_tlp2 ?>
                         </p>
+                        <span><b> Yang Melihat</b></span>
+                        <?php
+                          $view = $kostDetail->jumlah_view;
+                          $viewAmount = $view + 1;
+
+                          $sql = "UPDATE kosan SET jumlah_view = :viewAmount WHERE kode_kosan = :id";
+
+                          $statement = $kost->getDb()->prepare($sql);
+                          $statement->bindParam(':id', $id, PDO::PARAM_INT);
+                          $statement->bindParam(':jumlah_view', $viewAmount, PDO::PARAM_INT);
+                        ?>
+                        <p><i class="fa fa-eye"> <?= $viewAmount ?></i> orang</p>
                       </div>
                     </div>
                     <p></p>

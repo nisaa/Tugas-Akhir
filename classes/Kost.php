@@ -20,6 +20,7 @@ class Kost
     private $creator_id;
     private $phone;
     private $phone2;
+    private $view;
 
     private $db;
 
@@ -161,6 +162,16 @@ class Kost
     public function setPhone2($phone)
     {
         $this->phone2 = $phone;
+    }
+
+    public function getView()
+    {
+        return $this->view;
+    }
+
+    public function setView($view)
+    {
+        $this->view = $view;
     }
 
     public function getDb()

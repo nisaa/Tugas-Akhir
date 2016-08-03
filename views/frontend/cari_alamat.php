@@ -24,8 +24,8 @@ include "components/header.php";
             <?php
             } else {
                 $i = 1;
-              foreach ($kosts as $kos) {
-                if ($i == 1) {
+                foreach ($kosts as $kos) {
+                  if ($i == 1) {
             ?>
             <div class="row">
             <?php
