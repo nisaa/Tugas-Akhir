@@ -253,6 +253,15 @@ label {
     margin-left: 42%;
 }
 
+.page-404 {
+    background: #fff;
+    background-image: url('404-page.png');
+}
+
+.another-link {
+    padding-left: 40px;
+}
+
 /* ABOUT */
 #about, #visi-misi, #address {
     background-color: #fff;

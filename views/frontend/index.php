@@ -150,7 +150,7 @@ include "views/frontend/components/header.php";
                     <div class="row">
                       <div class="col-md-5">
                         <div class="image kos-image">
-                          <img src="resources/images/<?= $kos->gambar_kosan ?>">
+                          <img src="resources/images/<?= $kos->gambar_kosan ?>" onerror="this.src='resources/images/no-img.png'">
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -242,7 +242,7 @@ include "views/frontend/components/header.php";
         ?>
           <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
-              <img src="resources/images/<?= $kosan->gambar_kosan ?>">
+              <img src="resources/images/<?= $kosan->gambar_kosan ?>" onerror="this.src='resources/images/no-img.png'">
             <div class="caption">
                 <h4><?= $kosan->nama_kosan ?></h4>
                 <p><?= $kosan->keterangan ?></p>
@@ -270,22 +270,22 @@ include "views/frontend/components/header.php";
         <h2>CARI KOSAN SEKITAR</h2>
           <div class="row">
             <div class="col-md-3 text-center">
-              <a href="" class="thumbnail pic-campus">
+              <a href="kosan_kampus.php" class="thumbnail pic-campus" data-placement="bottom" title="UNIKOM">
                 <img src="resources/images/unikom.png" alt="Unikom">
               </a>
             </div>
             <div class="col-md-3">
-              <a href="" class="thumbnail pic-campus">
+              <a href="kosan_kampus.php" class="thumbnail pic-campus" data-placement="bottom" title="UNPAD">
                 <img src="resources/images/unpad.png" alt="Unpad">
               </a>
             </div>
             <div class="col-md-3">
-              <a href="" class="thumbnail pic-campus">
+              <a href="kosan_kampus.php" class="thumbnail pic-campus" data-placement="bottom" title="ITB">
                 <img src="resources/images/itb.jpg" alt="Itb">
               </a>
             </div>
             <div class="col-md-3">
-              <a href="" class="thumbnail pic-campus">
+              <a href="kosan_telkom.php" class="thumbnail pic-campus" data-placement="bottom" title="TELKOM UNIVERSITY">
                 <img src="resources/images/telkom.png" alt="Telkom">
               </a>
             </div>

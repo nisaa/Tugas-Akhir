@@ -114,7 +114,7 @@ include "views/frontend/components/header.php";
         <p class="information">E-Kosan menyediakan informasi kosan di wilayah Bandung lengkap dengan fasilitasnya.<br>Kami berharap Anda dapat menemukan kosan yang sesuai dengan keinginan Anda.</p>
         <br>
 
-        <h4>Kosan Favorit</h4>
+        <h4>Semua Data Kosan</h4>
         <?php
 
           $kost = new App\Kost;

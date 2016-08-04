@@ -157,7 +157,7 @@ include "components/header.php";
                     <div class="row">
                       <div class="col-md-8">
                         <div class="detail-image">
-                          <img src="<?php echo $siteUrl . "resources/images/" . $kostDetail->gambar_kosan ?>"/>
+                          <img src="<?php echo $siteUrl . "resources/images/" . $kostDetail->gambar_kosan ?>" onerror="this.src='resources/images/no-img.png'"/>
                         </div>
                       </div>
                       <div class="col-md-4">
@@ -167,6 +167,8 @@ include "components/header.php";
                         <p><?= $kostDetail->keterangan ?></p>
                         <span><b> Penghuni</b></span>
                         <p><?= $kostDetail->jenis_hunian ?></p>
+                        <span><b> Lokasi Kampus Terdekat</b></span>
+                        <p><?= $kostDetail->kategori_kampus ?></p>
                         <span><b> Kontak</b></span>
                         <p> Hubungi <?= $kostDetail->nama_pemilik ?>:
                             <br><i class="fa fa-phone"></i> <?= $kostDetail->nomor_tlp . " / " . $kostDetail->nomor_tlp2 ?>
@@ -180,7 +182,9 @@ include "components/header.php";
 
                           $statement = $kost->getDb()->prepare($sql);
                           $statement->bindParam(':id', $id, PDO::PARAM_INT);
-                          $statement->bindParam(':jumlah_view', $viewAmount, PDO::PARAM_INT);
+                          $statement->bindParam(':viewAmount', $viewAmount, PDO::PARAM_INT);
+
+                          $statement->execute();
                         ?>
                         <p><i class="fa fa-eye"> <?= $viewAmount ?></i> orang</p>
                       </div>

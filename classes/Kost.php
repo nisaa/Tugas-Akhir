@@ -357,7 +357,7 @@ class Kost
 
     public function fetch($limit = 4)
     {
-        $sql = "SELECT * FROM kosan ORDER BY kode_kosan LIMIT :limit";
+        $sql = "SELECT * FROM kosan ORDER BY jumlah_view DESC LIMIT :limit";
 
         $statement = $this->getDb()->prepare($sql);
         $statement->bindParam(':limit', $limit, PDO::PARAM_INT);
@@ -416,6 +416,32 @@ class Kost
 
         $statement = $this->getDb()->prepare($sql);
         $statement->bindParam(':limit', $limit, PDO::PARAM_INT);
+
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_OBJ);
+
+        return $result;
+    }
+
+    public function fetchKostForCampuss()
+    {
+        $sql = "SELECT * FROM kosan WHERE kategori_kampus = 'UNIKOM, ITHB, UNPAD, ITB'";
+
+        $statement = $this->getDb()->prepare($sql);
+
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_OBJ);
+
+        return $result;
+    }
+
+    public function fetchKostForTelkom()
+    {
+        $sql = "SELECT * FROM kosan WHERE kategori_kampus = 'TELKOM UNIVERSITY'";
+
+        $statement = $this->getDb()->prepare($sql);
 
         $statement->execute();
 
