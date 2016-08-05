@@ -209,10 +209,13 @@ include "views/frontend/components/header.php";
         } ?>
         </div>
       </div>
-      <?php
-        $kost = new App\Kost;
-        $kos = $kost->fetchKost();
-        echo $kost->pagination() ?>
+      <div class="text-center">
+        <?php
+          $kost = new App\Kost;
+          $kos = $kost->fetchKost();
+          echo $kost->pagination();
+        ?>
+      </div>
     </section>
 
 <?php
