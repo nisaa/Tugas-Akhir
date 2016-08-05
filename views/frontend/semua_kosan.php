@@ -212,7 +212,7 @@ include "views/frontend/components/header.php";
       <?php
         $kost = new App\Kost;
         $kos = $kost->fetchKost();
-        echo $kost->pagination() ?>
+        echo $kost->pagination(6, $page) ?>
     </section>
 
 <?php
