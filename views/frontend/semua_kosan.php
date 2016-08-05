@@ -117,9 +117,6 @@ include "views/frontend/components/header.php";
         <h4>Semua Data Kosan</h4>
         <?php
 
-          $kost = new App\Kost;
-          $kosts = $kost->fetchKost();
-
           if (count($kosts) == 0) {
 
         ?>
@@ -212,6 +209,9 @@ include "views/frontend/components/header.php";
         } ?>
         </div>
       </div>
+      <?php
+        $halaman = new App\Kost;
+        $hal = $halaman->pagination(); ?>
     </section>
 
 <?php

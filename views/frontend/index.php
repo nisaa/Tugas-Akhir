@@ -118,9 +118,6 @@ include "views/frontend/components/header.php";
         <h4>Kosan Favorit</h4>
         <?php
 
-          $kost = new App\Kost;
-          $kosts = $kost->fetch();
-
           if (count($kosts) == 0) {
 
         ?>
@@ -219,9 +216,6 @@ include "views/frontend/components/header.php";
         <h4>Kosan Baru</h4>
 
         <?php
-
-          $kos = new App\Kost;
-          $kosan = $kos->fetchNewDataKost();
 
           if (count($kosan) == 0) {
 

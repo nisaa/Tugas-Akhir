@@ -10,8 +10,6 @@ include "components/header.php";
             <h4>Kosan Sekitar Kampus</h4>
 
             <?php
-              $kost = new App\Kost;
-              $kosts = $kost->fetchKostForCampuss();
 
               if (count($kosts) == 0) {
 

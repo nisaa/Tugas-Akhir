@@ -10,10 +10,6 @@ include "components/header.php";
             <h4>Hasil pencarian</h4>
 
             <?php
-              $address = $_POST['address'];
-
-              $kost = new App\Kost;
-              $kosts = $kost->searchAddress($address);
 
               echo count($kosts) . " hasil";
 

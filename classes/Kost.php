@@ -369,11 +369,30 @@ class Kost
         return $result;
     }
 
-    public function fetchKost()
+    public function fetchAllKost()
     {
+
         $sql = "SELECT * FROM kosan ORDER BY kode_kosan";
 
         $statement = $this->getDb()->prepare($sql);
+
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_OBJ);
+
+        return $result;
+    }
+
+    public function fetchKost($start_from, $limit = 6)
+    {
+
+        $sql = "SELECT * FROM kosan ORDER BY kode_kosan LIMIT :start_from, :limit";
+
+        $statement = $this->getDb()->prepare($sql);
+        $num_result = $statement->rowCount();
+
+        $statement->bindParam(':start_from', $limit, PDO::PARAM_INT);
+        $statement->bindParam(':limit', $limit, PDO::PARAM_INT);
 
         $statement->execute();
 
@@ -448,6 +467,85 @@ class Kost
         $result = $statement->fetchAll(PDO::FETCH_OBJ);
 
         return $result;
+    }
+
+    public function pagination($total, $per_page = 6, $page = 1, $url = '?')
+    {
+        $adjacents = "2";
+
+        $lastlabel = "Last <i class='fa fa-angle-double-right'></i>";
+
+        $page = ($page <= 0) ? 1 : $page;
+        $start = ($page - 1) * $per_page;
+
+        $prev = $page - 1;
+        $next = $page + 1;
+
+        $lastpage = ceil($total/$per_page);
+
+        $lpm1 = $lastpage - 1;
+
+        $pagination = "";
+        if($lastpage >= 1){
+            $pagination .= "<ul class='pagination'>";
+            $pagination .= "<li class='active'>Halaman " . $page . " dari " . $lastpage . "</li>";
+
+            if ($lastpage < 5 + ($adjacents * 2)){
+                for ($counter = 1; $counter <= $lastpage; $counter++){
+                    if ($counter == $page)
+                        $pagination.= "<li class='active'>" . $counter . "</li>";
+                    else
+                        $pagination.= "<a href='" . $url . "page=" . $counter . "'>" . $counter . "</a>";
+                }
+
+            } else if($lastpage > 3 + ($adjacents * 2)){
+
+                if($page < 1 + ($adjacents * 2)) {
+
+                    for ($counter = 1; $counter < 2 + ($adjacents * 2); $counter++){
+                        if ($counter == $page)
+                            $pagination.= "<li class='active'>" . $counter . "</li>";
+                        else
+                            $pagination.= "<a href='" . $url . "page=" . $counter . "'>" . $counter . "</a>";
+                    }
+                    $pagination.= "<nav aria-label='...''></nav>";
+                    $pagination.= "<a href=' " . $url . "page=" . $lpm1 . "'>" . $lpm1 . "</a>";
+                    $pagination.= "<a href=' " . $url . "page=" . $lastpage . "'>" . $lastpage . "</a>";
+
+                } else if($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2)) {
+
+                    $pagination.= "<a href='" . $url . "page=1'>1</a>";
+                    $pagination.= "<nav aria-label='...''></nav>";
+                    for ($counter = $page - 1; $counter <= $page + 1; $counter++) {
+                        if ($counter == $page)
+                            $pagination.= "<li class='active'>" . $counter . "</li>";
+                        else
+                            $pagination.= "<a href='" . $url . "page=" . $counter . "'>" . $counter . "</a>";
+                    }
+                    $pagination.= "<nav aria-label='...''></nav>";
+                    $pagination.= "<a href='" . $url . "page=" . $lastpage . "'>" . $lastpage . "</a>";
+
+                } else {
+
+                    $pagination.= "<a href='" . $url . "page=1'>1</a>";
+                    $pagination.= "<nav aria-label='...''></nav>";
+                    for ($counter = $lastpage - (2 + ($adjacents * 2)); $counter <= $lastpage; $counter++) {
+                        if ($counter == $page)
+                            $pagination.= "<li class='active'>" . $counter . "</li>";
+                        else
+                            $pagination.= "<a href='" . $url . "page=" . $counter . "'>" . $counter . "</a>";
+                    }
+                }
+            }
+
+                if ($page < $counter - 1) {
+                    $pagination.= "<a href='" . $url . "page=" . $lastpage . "'>" . $lastlabel . "</a>";
+                }
+
+            $pagination.= "</div>";
+        }
+
+        return $pagination;
     }
 }
 
