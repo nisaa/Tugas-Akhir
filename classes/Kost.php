@@ -392,7 +392,7 @@ class Kost
         $statement = $this->getDb()->prepare($sql);
         $num_result = $statement->rowCount();
 
-        $statement->bindParam(':start_from', $limit, PDO::PARAM_INT);
+        $statement->bindParam(':start_from', $star_from, PDO::PARAM_INT);
         $statement->bindParam(':limit', $limit, PDO::PARAM_INT);
 
         $statement->execute();
