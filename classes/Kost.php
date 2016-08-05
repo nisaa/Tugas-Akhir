@@ -383,7 +383,7 @@ class Kost
         return $result;
     }
 
-    public function fetchKost($start_from, $page = 1, $limit = 6)
+    public function fetchKost($page = 1, $limit = 6)
     {
         $star_from = ($page - 1) * $limit;
 
@@ -472,17 +472,17 @@ class Kost
 
     public function pagination($per_page = 6, $page = 1, $url = '?')
     {
-        $sql = "SELECT count(kode_kosan) FROM kosan";
+        $sql = "SELECT count(kode_kosan) AS total FROM kosan";
 
         $statement = $this->getDb()->prepare($sql);
 
         $statement->execute();
 
-        $result = $statement->fetchAll(PDO::FETCH_OBJ);
+        $result = $statement->fetch(PDO::FETCH_OBJ);
 
-        return $result;
+        $total = $result->total;
 
-        $adjacents = "2";
+        $adjacents = 2;
 
         $lastlabel = "Last <i class='fa fa-angle-double-right'></i>";
 
