@@ -210,8 +210,9 @@ include "views/frontend/components/header.php";
         </div>
       </div>
       <?php
-        $halaman = new App\Kost;
-        $hal = $halaman->pagination(); ?>
+        $kost = new App\Kost;
+        $kos = $kost->fetchKost();
+        echo $kost->pagination() ?>
     </section>
 
 <?php
