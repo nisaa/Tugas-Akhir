@@ -209,8 +209,11 @@ include "views/frontend/components/header.php";
         } ?>
         </div>
       </div>
-      <?php
-        echo $kost->pagination(6, $page) ?>
+      <div class="text-center">
+        <?php
+          echo $kost->pagination(6, $page)
+        ?>
+      </div>
     </section>
 
 <?php
